@@ -9,7 +9,7 @@ Sistema hecho por la comisión Algorithm Avengers (Silvestre Migliaro y David L�
 
 ## Modelo de entidad-relación 📚️
 
-![diagrama](https://i.imgur.com/8F395iO.jpg)
+![diagrama](https://i.imgur.com/CTu5txF.jpg)
 
 Las entidades modelan:
 - Cliente: los clientes que pueden visualizar la página y hacer compras de productos por lote
