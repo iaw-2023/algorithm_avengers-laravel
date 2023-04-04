@@ -2,14 +2,14 @@
 Nuestra ropa no te cambia, te muestra tal cual sos
 
 ## Idea general 🧠️
-El sistema será un aplicación web para administrar la compra/venta de remeras artesanales del proyecto Manos Argentinas 
+El sistema será un aplicación web para administrar la compra/venta de remeras artesanales del proyecto Manos Argentinas. 
 Los clientes podrán crearse cuentas, añadir al carrito y realizar compras de los diferentes productos que ofrece la página.
-Por su lado, los empleados podrán subir, dar de baja y actualizar los productos
+Por su lado, los empleados podrán subir, dar de baja y actualizar los productos.
 Sistema hecho por la comisión Algorithm Avengers (Silvestre Migliaro y David López)
 
 ## Modelo de entidad-relación 📚️
 
-![diagrama](./Diagrama entidad-relación.jpg)
+![diagrama](https://i.imgur.com/8F395iO.jpg)
 
 Las entidades modelan:
 - Cliente: los clientes que pueden visualizar la página y hacer compras de productos por lote
