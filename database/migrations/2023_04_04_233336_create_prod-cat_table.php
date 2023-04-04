@@ -11,15 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('productos', function (Blueprint $table) {
+        Schema::create('prod-cat', function (Blueprint $table) {
             $table->id();
-            $table->unsignedSmallInteger('Id')->unique();
-            $table->string('nombre');
-            $table->text('descripcion');
-            $table->float('precio', 8, 2);
-            $table->string('imagen');
-            $table->enum('talles', ['XS', 'S', 'M', 'L', 'XL', 'XXL', 'XXXL', 'XXXXL', 'XXXXXL']);
+            $table->unsignedBigInteger('id_categoria');
+            $table->unsignedBigInteger('id_producto');
             $table->timestamps();
+
+            $table->foreign('id_categoria')->references('id')->on('categoria')->onUpdate('cascade');
+            $table->foreign('id_producto')->references('id')->on('productos')->onUpdate('cascade');
         });
     }
 
@@ -28,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('productos');
+        Schema::dropIfExists('prod-cat');
     }
 };

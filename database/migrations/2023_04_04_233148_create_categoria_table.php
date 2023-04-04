@@ -11,17 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('compras', function (Blueprint $table) {
+        Schema::create('categoria', function (Blueprint $table) {
             $table->id();
             $table->unsignedSmallInteger('codigo')->unique();
-            $table->float('precio', 8, 2);
-            $table->date('fecha');
-            $table->string('direccion_entrega');
-            $table->unsignedBigInteger('id_cliente');
+            $table->string('nombre');
+            $table->text('descripcion');
             $table->timestamps();
-
-            $table->foreign('id_cliente')->references('id')->on('clientes')
-                ->onUpdate('cascade');
         });
     }
 
@@ -30,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('compras');
+        Schema::dropIfExists('categoria');
     }
 };
