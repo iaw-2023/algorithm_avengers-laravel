@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('id_compra');
             $table->unsignedBigInteger('id_producto');
-            $table->unsignedTinyInt('cantidad');
+            $table->unsignedTinyInteger('cantidad');
             $table->timestamps();
 
             $table->foreign('id_compra')->references('id')->on('compras')->onUpdate('cascade');
