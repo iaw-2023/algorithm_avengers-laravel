@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->string('contrasena');
             $table->string('nombre');
-            $table->unsignedBigInteger('telefono');
+            $table->string('telefono');
             $table->string('domicilio');
             $table->timestamps();
         });
