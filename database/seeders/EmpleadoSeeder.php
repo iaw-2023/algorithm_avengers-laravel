@@ -15,8 +15,12 @@ class EmpleadoSeeder extends Seeder
     public function run(): void
     {
         DB::table('empleados')->insert([
-            'nombre_usuario' => Str::Random(25),
-            'contrasena' => hash::make('password')
+            'nombre_usuario' => 'juan_perez',
+            'contrasena' => hash::make('12345')
+        ]);
+        DB::table('empleados')->insert([
+            'nombre_usuario' => 'jorge_susvin',
+            'contrasena' => hash::make('54321')
         ]);
     }
 }

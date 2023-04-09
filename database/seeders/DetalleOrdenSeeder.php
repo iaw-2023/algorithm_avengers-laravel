@@ -13,10 +13,21 @@ class DetalleOrdenSeeder extends Seeder
      */
     public function run(): void
     {
-        DB::table('detalle-orden')->insert([
+        DB::table('detalle_orden')->insert([
             'id_compra' => 1,
             'id_producto' => 1,
-            'cantidad' => random_int(0, 1000)
+            'cantidad' => random_int(1)
         ]);
+        DB::table('detalle_orden')->insert([
+            'id_compra' => 1,
+            'id_producto' => 6,
+            'cantidad' => 1
+        ]);
+        DB::table('detalle_orden')->insert([
+            'id_compra' => 1,
+            'id_producto' => 2,
+            'cantidad' => 2
+        ]);
+
     }
 }
