@@ -18,8 +18,8 @@ return new class extends Migration
             $table->unsignedTinyInteger('cantidad');
             $table->timestamps();
 
-            $table->foreign('id_compra')->references('id')->on('compras')->onDelete('cascade');
-            $table->foreign('id_producto')->references('id')->on('productos')->onDelete('cascade');
+            $table->foreign('id_compra')->references('id')->on('compras')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('id_producto')->references('id')->on('productos')->onDelete('cascade')->onUpdate('cascade');
         });
     }
 
