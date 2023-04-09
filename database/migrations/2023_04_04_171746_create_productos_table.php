@@ -18,7 +18,7 @@ return new class extends Migration
             $table->text('descripcion');
             $table->float('precio', 8, 2);
             $table->string('imagen');
-            $table->enum('talles', ['XS', 'S', 'M', 'L', 'XL', 'XXL', 'XXXL', 'XXXXL', 'XXXXXL']);
+            $table->string('talles');
             $table->timestamps();
         });
     }
