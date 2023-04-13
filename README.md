@@ -45,7 +45,7 @@ Las entidades modelan:
 	El usuario cliente podrá crearse una cuenta (por primera vez), iniciar sesión, crear compras, cerrar sesión y modificar/eliminar su cuenta.
 	El usuario empleado podrá crear/modificar/eliminar productos, crear/modificar/eliminar categorías, y modificar/eliminar su cuenta
 
-<br />
+---
 
 ## Pasos
 
