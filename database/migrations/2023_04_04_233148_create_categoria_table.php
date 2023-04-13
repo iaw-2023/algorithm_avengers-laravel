@@ -16,6 +16,7 @@ return new class extends Migration
             $table->unsignedSmallInteger('codigo')->unique();
             $table->string('nombre');
             $table->text('descripcion');
+            $table->boolean('activo')->default(true);
             $table->timestamps();
         });
     }

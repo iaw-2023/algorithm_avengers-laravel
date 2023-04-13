@@ -19,6 +19,7 @@ return new class extends Migration
             $table->float('precio', 8, 2);
             $table->string('imagen');
             $table->string('talles');
+            $table->boolean('activo')->default(true);
             $table->timestamps();
         });
     }

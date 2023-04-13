@@ -17,5 +17,7 @@ yarn-error.log
 /.fleet
 /.idea
 /.vscode
-.drawio.bkp
-.drawio.dtmp
+
+# Añadidos por mi
+*.drawio.bkp
+*.drawio.dtmp
