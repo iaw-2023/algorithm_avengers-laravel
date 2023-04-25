@@ -21,3 +21,4 @@ yarn-error.log
 # Añadidos por mi
 *.drawio.bkp
 *.drawio.dtmp
+.vercel

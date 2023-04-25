@@ -13,6 +13,10 @@ use Illuminate\Support\Facades\Route;
 
 Route::middleware('guest')->group(function () {
     /*
+    Con esto se deshabilita la opción de Registrar.
+    En un futuro se puede llegar a requerir, por eso no lo borro ni del controlador ni de la vista,
+    pero queda oculto
+    
     Route::get('register', [RegisteredUserController::class, 'create'])
                 ->name('register');
 
