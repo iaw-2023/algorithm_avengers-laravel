@@ -26,23 +26,21 @@
                 </tr>
             </thead>
             <tbody>
+                @foreach ($productos as $prod)
                 <tr>
-                <th scope="row">1</th>
-                <td>Mark</td>
-                <td>Otto</td>
-                <td>@mdo</td>
+                    <th scope="row">{{ $prod->Id }}</th>
+                    <td>{{ $prod->nombre }}</td>
+                    <td>$ {{ $prod->precio }}</td>
+                    <td>
+                        <span style="display:block;text-overflow: ellipsis;width: 200px;overflow: hidden; white-space: nowrap;">
+                            {{ $prod->descripcion }}
+                        </span>
+                    </td>
+                    <td>{{ $prod->talles }}</td>
+                    <td><img src="{{ $prod->imagen }}" alt="No es posible cargar la imagen" style="max-width:100px;width:100%"></td>
+                    <td>Editar | Borrar</td>
                 </tr>
-                <tr>
-                <th scope="row">2</th>
-                <td>Jacob</td>
-                <td>Thornton</td>
-                <td>@fat</td>
-                </tr>
-                <tr>
-                <th scope="row">3</th>
-                <td colspan="2">Larry the Bird</td>
-                <td>@twitter</td>
-                </tr>
+                @endforeach
             </tbody>
         </table>
     </body>

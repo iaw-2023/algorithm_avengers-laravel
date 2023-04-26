@@ -9,9 +9,4 @@ class Producto extends Model
 {
     use HasFactory;
 
-    public function getAll(): View{
-        $productos = DB::table('productos')->get();
-
-        return view('productos.index', ['productos' => $productos]);
-    }
 }

@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ProductoController;
 
 /*
 |--------------------------------------------------------------------------
@@ -31,5 +32,7 @@ Route::middleware('auth')->group(function () {
 Route::get('/productos', function(){
     return view('productos.index');
 });
+
+Route::resource('productos', ProductoController::class);
 
 require __DIR__.'/auth.php';
