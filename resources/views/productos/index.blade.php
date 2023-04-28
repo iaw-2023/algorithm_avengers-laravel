@@ -28,7 +28,7 @@
             <tbody>
                 @foreach ($productos as $prod)
                 <tr>
-                    <th scope="row">{{ $prod->Id }}</th>
+                    <th scope="row">{{ $prod->id }}</th>
                     <td>{{ $prod->nombre }}</td>
                     <td>$ {{ $prod->precio }}</td>
                     <td>
@@ -38,10 +38,28 @@
                     </td>
                     <td>{{ $prod->talles }}</td>
                     <td><img src="{{ $prod->imagen }}" alt="No es posible cargar la imagen" style="max-width:100px;width:100%"></td>
-                    <td>Editar | Borrar</td>
+                    <td>
+                        <div class="btn-group-vertical" role="group" aria-label="Vertical button group">
+                            <form action="{{ url('/productos/'.$prod->id) }}" method="post">
+                                @csrf
+
+                                <input type="submit" class="btn btn-primary" value="Editar">
+                            </form>
+                                        
+                            <form action="{{ url('/productos/'.$prod->id) }}" method="post">
+                                @csrf
+                                {{ method_field('DELETE') }}
+                                <input type="submit" class="btn btn-danger" onclick="return confirm('¿Borrar {{ $prod->nombre }}?')" value="Borrar">
+                            </form>
+                        </div>
+                    </td>
                 </tr>
                 @endforeach
             </tbody>
         </table>
+        <form action="{{ url('/productos/'.$prod->id) }}" method="post">
+            {{ method_field('DELETE') }}
+            <input type="submit" class="btn btn-primary" value="+ Nuevo producto">
+        </form>
     </body>
 </html>

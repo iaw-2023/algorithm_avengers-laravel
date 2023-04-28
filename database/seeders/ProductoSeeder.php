@@ -17,7 +17,6 @@ class ProductoSeeder extends Seeder
         // talles = ['XS', 'S', 'M', 'L', 'XL', 'XXL', 'XXXL', 'XXXXL', 'XXXXXL'];
 
         DB::table('productos')->insert([
-            'Id' => 1,
             'nombre' => 'Remeras Rebeldes San Martin Revolución',
             'descripcion' => 'Remera hombre adulto. Remera muuuyyyy Argentina 100% Algodón.
             Nuestras Remeras son y serán algo distinto en nuestra linea de producto, ya que es el único espacio que nos permite expresarnos de una forma valiente, certera y convincente de lo que sentimos,
@@ -30,7 +29,6 @@ class ProductoSeeder extends Seeder
             'talles' => 'S,M,L'
         ]);
         DB::table('productos')->insert([
-            'Id' => 2,
             'nombre' => 'Buzo Rebelde Friza Malvinas',
             'descripcion' => 'Buzo de Friza estampado de hombro adulto, manga ranglan, estampa en la espalda Reflex. ',
             'precio' => 20499.00,
@@ -38,7 +36,6 @@ class ProductoSeeder extends Seeder
             'talles' => 'S,M,L,XL'
         ]);
         DB::table('productos')->insert([
-            'Id' => 3,
             'nombre' => 'Remeras Rebeldes El Diego',
             'descripcion' => 'Talles Especiales Hombre adulto',
             'precio' => 7999.99,
@@ -46,7 +43,6 @@ class ProductoSeeder extends Seeder
             'talles' => 'XL,XXL,XXXL'
         ]);
         DB::table('productos')->insert([
-            'Id' => 4,
             'nombre' => 'Remeras Rebeldes Revolución',
             'descripcion' => 'Manga larga mujer',
             'precio' => 2584.56,
@@ -54,7 +50,6 @@ class ProductoSeeder extends Seeder
             'talles' => 'XS,S,M,L,XL'
         ]);
         DB::table('productos')->insert([
-            'Id' => 5,
             'nombre' => 'Remeras Rebeldes Escuela Pública E Inclusiva',
             'descripcion' => 'Remera manga corta mujer adulta',
             'precio' => 4500.00,
@@ -62,7 +57,6 @@ class ProductoSeeder extends Seeder
             'talles' => 'XS,S,M,L'
         ]);
         DB::table('productos')->insert([
-            'Id' => 6,
             'nombre' => 'Vestido Rebelde Wiphala Transformacion',
             'descripcion' => 'Vestido Rebelde manga corta 90 % Algodón y 10 % poliester.',
             'precio' => 14000,
@@ -70,7 +64,6 @@ class ProductoSeeder extends Seeder
             'talles' => 'XS,S,M,L,XL'
         ]);
         DB::table('productos')->insert([
-            'Id' => 7,
             'nombre' => 'Remeras Rebeldes Malvinas Full Estampa',
             'descripcion' => 'Remera manga corta hombre adulto',
             'precio' => 7999.99,
@@ -78,7 +71,6 @@ class ProductoSeeder extends Seeder
             'talles' => 'S,M,L,XL'
         ]);
         DB::table('productos')->insert([
-            'Id' => 8,
             'nombre' => 'Remeras Rebeldes Maestres',
             'descripcion' => 'Talles especiales hombre adulto',
             'precio' => 7999.99,
@@ -86,7 +78,6 @@ class ProductoSeeder extends Seeder
             'talles' => 'XL,XXL,XXXL,XXXXL'
         ]);
         DB::table('productos')->insert([
-            'Id' => 9,
             'nombre' => 'Remeras Rebeldes Argentina No Se Usa',
             'descripcion' => 'Remera manga corta hombre adulto',
             'precio' => 7999.99,
@@ -94,7 +85,6 @@ class ProductoSeeder extends Seeder
             'talles' => 'S,M,L,XL'
         ]);
         DB::table('productos')->insert([
-            'Id' => 10,
             'nombre' => 'Remeras Rebeldes Estrella Roja',
             'descripcion' => 'Manga larga con capucha mujer adulta',
             'precio' => 3699.00,
