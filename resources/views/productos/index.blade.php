@@ -57,8 +57,7 @@
                 @endforeach
             </tbody>
         </table>
-        <form action="{{ url('/productos/'.$prod->id) }}" method="post">
-            {{ method_field('DELETE') }}
+        <form action="{{ url('/productos/create') }}" method="get">
             <input type="submit" class="btn btn-primary" value="+ Nuevo producto">
         </form>
     </body>
