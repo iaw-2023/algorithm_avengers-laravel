@@ -17,7 +17,7 @@
             <legend>Cargar nuevo producto</legend>
             @include('productos.form');
 
-            <button type="submit" class="btn btn-primary">Submit</button>
+            <input type="submit" class="btn btn-primary" onclick="return confirm('¿Guardar nuevo producto?')" value="Guardar">
         </form>
     </body>
 </html>

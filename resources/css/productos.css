@@ -1,0 +1,14 @@
+#descripcion {
+    display: block; 
+    text-overflow: ellipsis; 
+    max-width: 200px;
+    width: 100%; 
+    overflow: hidden; 
+    white-space: wrap; 
+    max-height: 200px;
+}
+
+#imagen {
+    max-width:100px;
+    width:100%
+}

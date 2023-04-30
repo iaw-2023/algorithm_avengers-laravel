@@ -30,4 +30,17 @@ class ProductoController extends Controller
 
         return redirect('productos');
     }
+
+    public function edit($id){
+        $producto = Producto::findOrFail($id);
+
+        return view('productos.edit', compact('producto'));
+    }
+
+    public function update(Request $request, $id){
+        $datos = request()->except(['_token', '_method']);
+        Producto::where('id', '=', $id)->update($datos);
+
+        return redirect('productos');
+    }
 }

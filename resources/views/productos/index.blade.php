@@ -4,6 +4,8 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="../../css/productos.css">
+
         <!-- Bootstrap CSS -->
         <link href="{{asset('bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
         
@@ -12,7 +14,7 @@
         <title>Productos</title>
     </head>
     <body>
-
+        <legend>Listado de productos</legend>
         <table class="table table-hover">
             <thead>
                 <tr>
@@ -30,19 +32,17 @@
                 <tr>
                     <th scope="row">{{ $prod->id }}</th>
                     <td>{{ $prod->nombre }}</td>
-                    <td>$ {{ $prod->precio }}</td>
+                    <td>$ {{ number_format($prod->precio, 2, ',',' ') }}</td>
                     <td>
-                        <span style="display:block;text-overflow: ellipsis;width: 200px;overflow: hidden; white-space: nowrap;">
+                        <span id="descripcion" style="display: block; text-overflow: ellipsis; max-width: 200px; width: 100%; overflow: hidden; white-space: wrap; max-height: 200px;">
                             {{ $prod->descripcion }}
                         </span>
                     </td>
                     <td>{{ $prod->talles }}</td>
-                    <td><img src="{{ $prod->imagen }}" alt="No es posible cargar la imagen" style="max-width:100px;width:100%"></td>
+                    <td><img src="{{ $prod->imagen }}" class="rounded mx-auto d-block" alt="No es posible cargar la imagen" style="max-width:100px;width:100%" id="imagen"></td>
                     <td>
                         <div class="btn-group-vertical" role="group" aria-label="Vertical button group">
-                            <form action="{{ url('/productos/'.$prod->id) }}" method="post">
-                                @csrf
-
+                            <form action="{{ url('/productos/'.$prod->id.'/edit') }}">
                                 <input type="submit" class="btn btn-primary" value="Editar">
                             </form>
                                         
