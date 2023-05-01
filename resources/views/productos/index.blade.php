@@ -23,6 +23,7 @@
                     <th scope="col">Precio</th>
                     <th scope="col">Descripción</th>
                     <th scope="col">Talles</th>
+                    <th scope="col">Categorías</th>
                     <th scope="col">Imagen</th>
                     <th scope="col">Acciones</th>
                 </tr>
@@ -39,7 +40,12 @@
                         </span>
                     </td>
                     <td>{{ $prod->talles }}</td>
-                    <td><img src="{{ $prod->imagen }}" class="rounded mx-auto d-block" alt="No es posible cargar la imagen" style="max-width:100px;width:100%" id="imagen"></td>
+                    <td>
+                    @foreach ($categorias[$prod->id] as $cat)
+                        <p>{{ $cat }}</p>
+                    @endforeach
+                    </td>
+                    <td><img src="{{ $prod->imagen }}" class="rounded mx-auto d-block" alt="No es posible cargar la imagen" style="max-height:200px;height:100%" id="imagen"></td>
                     <td>
                         <div class="btn-group-vertical" role="group" aria-label="Vertical button group">
                             <form action="{{ url('/productos/'.$prod->id.'/edit') }}">

@@ -4,11 +4,28 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Producto;
+use App\Models\ProdCat;
+use App\Models\Categoria;
 
 class ProductoController extends Controller
 {
     public function index(){
         $datos['productos'] = Producto::where('activo', true)->get();
+        $datos['categorias'] = array();
+
+        $productos = Producto::select('id')->where('activo', true)->get();
+
+        foreach($productos->toArray() as $prod){
+            $categorias = ProdCat::select('id_categoria')->where('id_producto', $prod['id'])->get();
+            $datos['categorias'][$prod['id']] = array();
+            $i = 0;
+
+            foreach($categorias->toArray() as $cat){
+                $nombre = Categoria::select('nombre')->where('id', $cat['id_categoria'])->first();
+                $datos['categorias'][$prod['id']][$i++] = $nombre['nombre'];
+            }
+        }
+
         return view('productos.index', $datos);
     }
 
