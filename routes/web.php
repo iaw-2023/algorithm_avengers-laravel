@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductoController;
+use App\Http\Controllers\CategoriaController;
 
 /*
 |--------------------------------------------------------------------------
@@ -34,5 +35,7 @@ Route::get('/productos', function(){
 });
 
 Route::resource('productos', ProductoController::class);
+
+Route::resource('categorias', CategoriaController::class);
 
 require __DIR__.'/auth.php';
