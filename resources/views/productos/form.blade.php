@@ -1,6 +1,6 @@
 <div class="input-group mb-3">
     <span class="input-group-text">Nombre</span>
-    <input type="text" class="form-control" aria-label="Nombre del producto" name="nombre" value="{{ isset($producto->nombre) ? $producto->nombre : '' }}">
+    <input type="text" class="form-control" aria-label="Nombre del producto" name="nombre" value="{{ isset($producto->nombre) ? $producto->nombre : '' }}" required>
 </div>
 
 <div class="input-group mb-3">
@@ -11,7 +11,7 @@
 <div class="input-group mb-3">
     <span class="input-group-text">Precio</span>
     <span class="input-group-text">$</span>
-    <input type="number" step="0.01" class="form-control" aria-label="Precio en pesos, con punto y dos decimales" name="precio" value="{{ isset($producto->precio) ? $producto->precio : '' }}">
+    <input type="number" step="0.01" class="form-control" aria-label="Precio en pesos, con punto y dos decimales" name="precio" value="{{ isset($producto->precio) ? $producto->precio : '' }}" required>
 </div>
 
 <div class="input-group mb-3">
@@ -24,5 +24,5 @@
 
 <div class="input-group mb-3">
     <span class="input-group-text">Talles</span>
-    <input type="text" class="form-control" aria-label="Lista de talles (separados por ',')" aria-describedby="inputGroup-sizing-default" name="talles" value="{{ isset($producto->talles) ? $producto->talles : '' }}">
+    <input type="text" class="form-control" aria-label="Lista de talles (separados por ',')" aria-describedby="inputGroup-sizing-default" name="talles" value="{{ isset($producto->talles) ? $producto->talles : '' }}" required>
 </div>
