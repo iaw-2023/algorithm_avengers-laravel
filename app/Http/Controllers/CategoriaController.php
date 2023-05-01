@@ -4,11 +4,21 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Categoria;
+use App\Models\ProdCat;
 
 class CategoriaController extends Controller
 {
     public function index(){
         $datos['categorias'] = Categoria::where('activo', true)->get();
+
+        //$indice['categorias'] = Categoria::select('id')->where('activo', true);
+        
+        $datos['cantidades'] = array();
+
+        foreach (Categoria::select('id')->where('activo', true) as $id){
+            $datos['cantidades'[$id]] = ProdCat::where('id_categoria', $id)->count();
+        }
+
         return view('categorias.index', $datos);
     }
 
