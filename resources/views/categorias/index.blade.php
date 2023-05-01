@@ -35,11 +35,7 @@
                             {{ $cat->descripcion }}
                         </span>
                     </td>
-                    <td>
-                        @foreach ($cantidades as $cant)
-                            $cant
-                        @endforead
-                    </td>
+                    <td>{{ $cantidades[$cat->id] }}</td>
                     <td>
                         <div class="btn-group-vertical" role="group" aria-label="Vertical button group">
                             <form action="{{ url('/categorias/'.$cat->id.'/edit') }}">
