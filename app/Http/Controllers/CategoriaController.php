@@ -12,17 +12,36 @@ class CategoriaController extends Controller
         return view('categorias.index', $datos);
     }
 
-    public function edit(Request $request): View
-    {
+    public function create(){
+        return view('categorias.create');
     }
 
-    public function update(ProfileUpdateRequest $request): RedirectResponse
-    {
+    public function edit($id){
+        $categoria = Categoria::findOrFail($id);
+
+        return view('categorias.edit', compact('categoria'));
     }
 
-    public function destroy(Request $request): RedirectResponse
-    {
+    public function update(Request $request, $id){
+        $datos = request()->except(['_token', '_method']);
+        Categoria::where('id', '=', $id)->update($datos);
 
+        return redirect('categorias');
+    }
+
+    public function store(Request $request){
+        $datos = $request->except('_token');
+        Categoria::insert($datos);
+        
+        return redirect('categorias');
+    }
+
+    public function destroy(Categoria $categoria){
+        $elemento = Categoria::where('id', $categoria->id)->first();
+        $elemento->activo = false;
+        $elemento->save();
+
+        return redirect('categorias');
     }
 }
 

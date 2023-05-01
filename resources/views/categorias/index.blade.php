@@ -4,14 +4,14 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" type="text/css" href="../../css/catuctos.css">
+        <link rel="stylesheet" type="text/css" href="../../css/categorias.css">
 
         <!-- Bootstrap CSS -->
         <link href="{{asset('bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
         
         <!-- Bootstrap Bundle with Popper -->
         <script src="{{asset('bootstrap/js/bootstrap.bundle.min.js')}}"></script>
-        <title>catuctos</title>
+        <title>Categorías</title>
     </head>
     <body>
         <legend>Listado de categorías</legend>
@@ -35,14 +35,14 @@
                             {{ $cat->descripcion }}
                         </span>
                     </td>
-                    <td>Aún no solucionado</td>
+                    <td>{{ rand(1,10) }}</td>
                     <td>
                         <div class="btn-group-vertical" role="group" aria-label="Vertical button group">
-                            <form action="{{ url('/catuctos/'.$cat->id.'/edit') }}">
+                            <form action="{{ url('/categorias/'.$cat->id.'/edit') }}">
                                 <input type="submit" class="btn btn-primary" value="Editar">
                             </form>
                                         
-                            <form action="{{ url('/catuctos/'.$cat->id) }}" method="post">
+                            <form action="{{ url('/categorias/'.$cat->id) }}" method="post">
                                 @csrf
                                 {{ method_field('DELETE') }}
                                 <input type="submit" class="btn btn-danger" onclick="return confirm('¿Borrar {{ $cat->nombre }}?')" value="Borrar">
@@ -53,8 +53,8 @@
                 @endforeach
             </tbody>
         </table>
-        <form action="{{ url('/catuctos/create') }}" method="get">
-            <input type="submit" class="btn btn-primary" value="+ Nuevo catucto">
+        <form action="{{ url('/categorias/create') }}" method="get">
+            <input type="submit" class="btn btn-primary" value="+ Nueva categoría">
         </form>
     </body>
 </html>
