@@ -14,7 +14,7 @@ class ProductoController extends Controller
         $datos['categorias'] = array();
 
         $productos = Producto::select('id')->where('activo', true)->get();
-
+        // falta de eficiencia en esta consulta? 
         foreach($productos->toArray() as $prod){
             $categorias = ProdCat::select('id_categoria')->where('id_producto', $prod['id'])->get();
             $datos['categorias'][$prod['id']] = array();
@@ -30,7 +30,8 @@ class ProductoController extends Controller
     }
 
     public function create(){
-        return view('productos.create');
+        $datos['total_categorias'] = Categoria::where('activo', true)->get();
+        return view('productos.create', $datos);
     }
 
     public function store(Request $request){
@@ -49,9 +50,21 @@ class ProductoController extends Controller
     }
 
     public function edit($id){
-        $producto = Producto::findOrFail($id);
+        //$producto = Producto::findOrFail($id);
 
-        return view('productos.edit', compact('producto'));
+        //return view('productos.edit', compact('producto'));
+        $datos['producto'] = Producto::findOrFail($id);
+        $datos['total_categorias'] = Categoria::where('activo', true)->get();
+        $datos['categorias'] = array();
+        $categorias = ProdCat::select('id_categoria')->where('id_producto', $id)->get();
+        $i = 0;
+        
+        foreach($categorias->toArray() as $cat){
+            $consulta = Categoria::select('nombre')->where('id', $cat['id_categoria'])->first();
+            $datos['categorias'][$i++] = $consulta['nombre'];
+        }
+
+        return view('productos.edit', $datos);
     }
 
     public function update(Request $request, $id){

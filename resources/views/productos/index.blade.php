@@ -4,7 +4,7 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" type="text/css" href="../../css/productos.css">
+        <link rel="stylesheet" type="text/css" href="{{ asset('css/productos.css') }}">
 
         <!-- Bootstrap CSS -->
         <link href="{{asset('bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
@@ -35,7 +35,7 @@
                     <td>{{ $prod->nombre }}</td>
                     <td>$ {{ number_format($prod->precio, 2, ',',' ') }}</td>
                     <td>
-                        <span id="descripcion" style="display: block; text-overflow: ellipsis; max-width: 200px; width: 100%; overflow: hidden; white-space: wrap; max-height: 200px;">
+                        <span id="descripcion">
                             {{ $prod->descripcion }}
                         </span>
                     </td>
@@ -45,7 +45,7 @@
                         <p>{{ $cat }}</p>
                     @endforeach
                     </td>
-                    <td><img src="{{ $prod->imagen }}" class="rounded mx-auto d-block" alt="No es posible cargar la imagen" style="max-height:200px;height:100%" id="imagen"></td>
+                    <td><img src="{{ $prod->imagen }}" class="rounded mx-auto d-block" alt="No es posible cargar la imagen" id="imagen"</td>
                     <td>
                         <div class="btn-group-vertical" role="group" aria-label="Vertical button group">
                             <form action="{{ url('/productos/'.$prod->id.'/edit') }}">
