@@ -15,20 +15,24 @@ class CategoriaSeeder extends Seeder
     public function run(): void
     {
         DB::table('categorias')->insert([
-            'nombre' => 'Adultos',
-            'descripcion' => 'Ropa diseñada para adultos'
-        ]);
-        DB::table('categorias')->insert([
-            'nombre' => 'Niños',
-            'descripcion' => 'Ropa especialmente diseñada para niños y niñas'
+            'nombre' => 'Masculinidades',
+            'descripcion' => 'Ropa diseñada para masculinidades'
         ]);
         DB::table('categorias')->insert([
             'nombre' => 'Femenidades',
             'descripcion' => 'Ropa diseñada para feminidades'
         ]);
         DB::table('categorias')->insert([
-            'nombre' => 'Masculinidades',
-            'descripcion' => 'Ropa diseñada para masculinidades'
+            'nombre' => 'Unisex',
+            'descripcion' => 'Ropa diseñada sin género específico'
+        ]);
+        DB::table('categorias')->insert([
+            'nombre' => 'Infancias',
+            'descripcion' => 'Ropa especialmente diseñada para niños y niñas'
+        ]);
+        DB::table('categorias')->insert([
+            'nombre' => 'Adultos',
+            'descripcion' => 'Ropa diseñada para adultos'
         ]);
         DB::table('categorias')->insert([
             'nombre' => 'Remeras',
