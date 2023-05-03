@@ -17,7 +17,7 @@
         @csrf
         {{ method_field('PATCH') }}
         <legend>Editar producto</legend>
-        @include('productos.form');
+        @include('productos.form')
         
         <input type="submit" class="btn btn-primary" onclick="return confirm('¿Guardar cambios?')" value="Guardar">
     </form>

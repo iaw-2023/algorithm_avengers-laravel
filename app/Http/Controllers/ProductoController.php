@@ -27,6 +27,7 @@ class ProductoController extends Controller
 
     public function create(){
         $datos['total_categorias'] = Categoria::where('activo', true)->get();
+        $datos['talles_validos'] = Producto::getTallesValidos();
         return view('productos.create', $datos);
     }
 

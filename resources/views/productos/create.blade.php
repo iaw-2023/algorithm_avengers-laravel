@@ -15,7 +15,7 @@
         <form action="{{ url('/productos') }}" method="post">
             @csrf
             <legend>Cargar nuevo producto</legend>
-            @include('productos.form');
+            @include('productos.form')
 
             <input type="submit" class="btn btn-primary" onclick="return confirm('¿Guardar nuevo producto?')" value="Guardar">
         </form>

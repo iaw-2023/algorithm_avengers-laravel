@@ -68,3 +68,5 @@
         @endforeach
     </select>    
 </div>
+
+<a href="{{ url('productos/') }}" class="btn btn-primary" onclick="return confirm('¿Descartar cambios y volver?')">Volver</a>
