@@ -9,7 +9,7 @@ use App\Models\Categoria;
 class ProductoController extends Controller
 {
     public function index(){
-        $datos['productos'] = Producto::where('activo', true)->get();
+        $datos['productos'] = Producto::where('activo', true)->orderBy('id', 'ASC')->get();
         $datos['categorias'] = array();
 
         /*
@@ -46,10 +46,8 @@ class ProductoController extends Controller
     }
 
     public function edit($id){
-        //$producto = Producto::findOrFail($id);
-
-        //return view('productos.edit', compact('producto'));
         $datos['producto'] = Producto::findOrFail($id);
+        $datos['talles_validos'] = Producto::getTallesValidos();
         $producto = $datos['producto'];
 
         $datos['categoria'] = Categoria::select('nombre')->where('id', $producto['categoria'])->first();

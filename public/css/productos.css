@@ -16,3 +16,8 @@
     max-height:200px;
     height:100%
 }
+
+#talles_validos {
+    float: left;
+    padding-left: 70px;
+}

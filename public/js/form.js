@@ -1,18 +1,8 @@
-CLASS_GROUP_ITEM = "list-group-item";
-CLASS_SMALL_BUTTON = "btn btn-danger btn-sm";
-
-function createItem(value, text){
-    var item = document.createElement("li");
-    item.setAttribute("value", value);
-    item.innerText = text;
-    item.setAttribute("class", CLASS_GROUP_ITEM);
+function validarTalles(talles_validos, talles_actual){
+    talles = talles_actual.toUpperCase();
+    talles = talles.replaceAll(/\s/, '');
     
-    var boton = document.createElement("button");
-    boton.setAttribute("class", CLASS_SMALL_BUTTON);
-    boton.innerText = "-";
+    console.log(talles_validos.includes(talles));
 
-    item.appendChild(boton);
-
-
-    document.getElementById("total-categorias").appendChild(item);
+    return talles_validos.includes(talles);
 }
