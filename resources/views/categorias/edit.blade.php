@@ -17,7 +17,7 @@
         @csrf
         {{ method_field('PATCH') }}
         <legend>Editar categoria</legend>
-        @include('categorias.form');
+        @include('categorias.form')
         
         <input type="submit" class="btn btn-primary" onclick="return confirm('¿Guardar cambios?')" value="Guardar">
     </form>

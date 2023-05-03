@@ -15,7 +15,7 @@
         <form action="{{ url('/categorias') }}" method="post">
             @csrf
             <legend>Crear nueva categoría</legend>
-            @include('categorias.form');
+            @include('categorias.form')
 
             <input type="submit" class="btn btn-primary" onclick="return confirm('¿Guardar nueva categoría?')" value="Guardar">
         </form>

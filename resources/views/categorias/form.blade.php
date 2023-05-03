@@ -7,3 +7,4 @@
     <span class="input-group-text">Descripción</span>
     <textarea class="form-control" aria-label="Área de texto" name="descripcion">{{ isset($categoria->descripcion) ? $categoria->descripcion : ''  }}</textarea>
 </div>
+<a href="{{ url('categorias/') }}" class="btn btn-primary" onclick="return confirm('¿Descartar cambios y volver?')">Volver</a>
