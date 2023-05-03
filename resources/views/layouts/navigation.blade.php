@@ -21,10 +21,10 @@
                     <x-nav-link :href="route('categorias.index')" :active="request()->routeIs('categorias.index')">
                         Categorías
                     </x-nav-link>
-                    <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
+                    <x-nav-link :href="route('clientes')" :active="request()->routeIs('clientes')">
                         Clientes
                     </x-nav-link>
-                    <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
+                    <x-nav-link :href="route('compras')" :active="request()->routeIs('compras')">
                         Compras
                     </x-nav-link>
                 </div>

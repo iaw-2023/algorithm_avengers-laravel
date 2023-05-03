@@ -4,6 +4,8 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductoController;
 use App\Http\Controllers\CategoriaController;
+use App\Http\Controllers\ClienteController;
+use App\Http\Controllers\CompraController;
 
 /*
 |--------------------------------------------------------------------------
@@ -30,20 +32,12 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-Route::get('/productos', function(){
-    return view('productos.index');
-});
-
 Route::resource('productos', ProductoController::class);
 
 Route::resource('categorias', CategoriaController::class);
 
-Route::get('/compras', function(){
-    return view('compras.index');
-});
+Route::get('/clientes', [ClienteController::class,'index'])->name('clientes');
 
-Route::get('/clientes', function(){
-    return view('clientes.index');
-});
+Route::get('/compras', [CompraController::class, 'index'])->name('compras');
 
 require __DIR__.'/auth.php';
