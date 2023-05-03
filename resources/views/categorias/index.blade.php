@@ -14,6 +14,7 @@
         <title>Categorías</title>
     </head>
     <body>
+    <x-app-layout>
         <legend>Listado de categorías</legend>
         <table class="table table-hover">
             <thead>
@@ -56,5 +57,6 @@
         <form action="{{ url('/categorias/create') }}" method="get">
             <input type="submit" class="btn btn-primary" value="+ Nueva categoría">
         </form>
+    </x-app-layout>
     </body>
 </html>

@@ -12,6 +12,7 @@
         <title>Crear nueva categoría</title>
     </head>
     <body>
+    <x-app-layout>
         <form action="{{ url('/categorias') }}" method="post">
             @csrf
             <legend>Crear nueva categoría</legend>
@@ -19,5 +20,6 @@
 
             <input type="submit" class="btn btn-primary" onclick="return confirm('¿Guardar nueva categoría?')" value="Guardar">
         </form>
+    </x-app-layout>
     </body>
 </html>

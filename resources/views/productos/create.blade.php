@@ -12,6 +12,7 @@
         <title>Cargar nuevo producto</title>
     </head>
     <body>
+    <x-app-layout>
         <form action="{{ url('/productos') }}" method="post">
             @csrf
             <legend>Cargar nuevo producto</legend>
@@ -19,5 +20,6 @@
 
             <input type="submit" class="btn btn-primary" onclick="return confirm('¿Guardar nuevo producto?')" value="Guardar">
         </form>
+    </x-app-layout>
     </body>
 </html>

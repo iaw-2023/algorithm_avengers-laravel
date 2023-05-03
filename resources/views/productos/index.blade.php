@@ -14,6 +14,7 @@
         <title>Productos</title>
     </head>
     <body>
+    <x-app-layout>
         <legend>Listado de productos</legend>
         <table class="table table-hover">
             <thead>
@@ -62,5 +63,6 @@
         <form action="{{ url('/productos/create') }}" method="get">
             <input type="submit" class="btn btn-primary" value="+ Nuevo producto">
         </form>
+    </x-app-layout>
     </body>
 </html>

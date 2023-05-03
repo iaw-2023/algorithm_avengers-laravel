@@ -13,6 +13,7 @@
     <title>Editar producto</title>
 </head>
 <body>
+<x-app-layout>
     <form action="{{ url('/productos/'.$producto->id) }}" method="post">
         @csrf
         {{ method_field('PATCH') }}
@@ -21,6 +22,6 @@
         
         <input type="submit" class="btn btn-primary" onclick="return confirm('¿Guardar cambios?')" value="Guardar">
     </form>
-    
+</x-app-layout>
 </body>
 </html>

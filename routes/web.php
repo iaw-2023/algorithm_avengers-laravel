@@ -17,7 +17,7 @@ use App\Http\Controllers\CategoriaController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('auth.login');
 });
 
 Route::get('/dashboard', function () {
@@ -37,5 +37,13 @@ Route::get('/productos', function(){
 Route::resource('productos', ProductoController::class);
 
 Route::resource('categorias', CategoriaController::class);
+
+Route::get('/compras', function(){
+    return view('compras.index');
+});
+
+Route::get('/clientes', function(){
+    return view('clientes.index');
+});
 
 require __DIR__.'/auth.php';
