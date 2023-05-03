@@ -39,33 +39,18 @@
 
 <div class="input-group mb-3">
     <span class="input-group-text">Categorías</span>    
-    
-    @if(isset($categorias))
-        @foreach($categorias as $cat)
-        <select class="form-select" disabled>
-            <option selected>{{ $cat }}</option>
-            <button type="button" class="btn btn-danger btn-sm">-</button>
-        </select>
-        @endforeach
-    @endif
-    
-    <select class="form-select">
-        <option selected>Agregar categoría</option>
-        @foreach($total_categorias as $cats)
-        <option value="{{ $cats->id }}">{{ $cats->nombre }}</option>
-        @endforeach
-    </select>
+       
+    <select class="form-select" name="categoria">
+        @if(!isset($producto->categoria))
+            <option selected>Agregar categoría</option>
+        @endif
 
-    <div class="btn-group">
-        <button type="button" class="btn btn-primary">+</button>
-        <button type="button" class="btn btn-primary dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
-            <span class="visually-hidden">Toggle Dropdown</span>
-        </button>
-        <ul class="dropdown-menu">
-            @foreach($total_categorias as $cats)
-            <li><button class="dropdown-item" onclick="createItem('{{ $cats->id }}', '{{ $cats->nombre }}')" value="{{ $cats->id }}">{{ $cats->nombre }}</button></li>
-            @endforeach
-        </ul>
-    </div>
-    
+        @foreach($total_categorias as $cats)
+            @if(isset($producto->categoria) && ( $producto->categoria == $cats->id ))
+                <option selected value="{{ $cats->id }}">{{ $cats->nombre }}</option>    
+            @else
+                <option value="{{ $cats->id }}">{{ $cats->nombre }}</option>
+            @endif
+        @endforeach
+    </select>    
 </div>

@@ -23,7 +23,7 @@
                     <th scope="col">Precio</th>
                     <th scope="col">Descripción</th>
                     <th scope="col">Talles</th>
-                    <th scope="col">Categorías</th>
+                    <th scope="col">Categoría</th>
                     <th scope="col">Imagen</th>
                     <th scope="col">Acciones</th>
                 </tr>
@@ -40,11 +40,7 @@
                         </span>
                     </td>
                     <td>{{ $prod->talles }}</td>
-                    <td>
-                    @foreach ($categorias[$prod->id] as $cat)
-                        <p>{{ $cat }}</p>
-                    @endforeach
-                    </td>
+                    <td> {{ $categorias[$prod->id] }} </td>
                     <td><img src="{{ $prod->imagen }}" class="rounded mx-auto d-block" alt="No es posible cargar la imagen" id="imagen"</td>
                     <td>
                         <div class="btn-group-vertical" role="group" aria-label="Vertical button group">

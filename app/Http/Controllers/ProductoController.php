@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Producto;
-use App\Models\ProdCat;
 use App\Models\Categoria;
 
 class ProductoController extends Controller
@@ -13,17 +12,14 @@ class ProductoController extends Controller
         $datos['productos'] = Producto::where('activo', true)->get();
         $datos['categorias'] = array();
 
-        $productos = Producto::select('id')->where('activo', true)->get();
-        // falta de eficiencia en esta consulta? 
-        foreach($productos->toArray() as $prod){
-            $categorias = ProdCat::select('id_categoria')->where('id_producto', $prod['id'])->get();
-            $datos['categorias'][$prod['id']] = array();
-            $i = 0;
-
-            foreach($categorias->toArray() as $cat){
-                $nombre = Categoria::select('nombre')->where('id', $cat['id_categoria'])->first();
-                $datos['categorias'][$prod['id']][$i++] = $nombre['nombre'];
-            }
+        /*
+            A cada producto le adjunto el nombre de su categoría en un
+            arreglo $categorias donde el nombre de la categoría para el
+            elemento x se encuentra en $categorias[x]
+        */
+        foreach($datos['productos']->toArray() as $prod){
+            $categoria = Categoria::select('nombre')->where('id', $prod['categoria'])->first();
+            $datos['categorias'][$prod['id']] = $categoria['nombre'];
         }
 
         return view('productos.index', $datos);
@@ -54,15 +50,10 @@ class ProductoController extends Controller
 
         //return view('productos.edit', compact('producto'));
         $datos['producto'] = Producto::findOrFail($id);
+        $producto = $datos['producto'];
+
+        $datos['categoria'] = Categoria::select('nombre')->where('id', $producto['categoria'])->first();
         $datos['total_categorias'] = Categoria::where('activo', true)->get();
-        $datos['categorias'] = array();
-        $categorias = ProdCat::select('id_categoria')->where('id_producto', $id)->get();
-        $i = 0;
-        
-        foreach($categorias->toArray() as $cat){
-            $consulta = Categoria::select('nombre')->where('id', $cat['id_categoria'])->first();
-            $datos['categorias'][$i++] = $consulta['nombre'];
-        }
 
         return view('productos.edit', $datos);
     }
