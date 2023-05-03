@@ -1,3 +1,7 @@
+#precio{
+    min-width: 150px;
+}
+
 #descripcion {
     display: block; 
     text-overflow: ellipsis; 
