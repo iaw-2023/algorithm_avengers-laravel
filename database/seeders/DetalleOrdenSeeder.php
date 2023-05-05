@@ -16,7 +16,7 @@ class DetalleOrdenSeeder extends Seeder
         DB::table('detalle_orden')->insert([
             'id_compra' => 1,
             'id_producto' => 1,
-            'cantidad' => random_int(1,127)
+            'cantidad' => 4
         ]);
         DB::table('detalle_orden')->insert([
             'id_compra' => 1,

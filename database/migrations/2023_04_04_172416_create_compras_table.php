@@ -13,7 +13,6 @@ return new class extends Migration
     {
         Schema::create('compras', function (Blueprint $table) {
             $table->id();
-            $table->unsignedSmallInteger('codigo')->unique();
             $table->float('precio', 8, 2);
             $table->date('fecha');
             $table->string('direccion_entrega');

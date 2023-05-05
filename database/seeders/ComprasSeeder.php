@@ -16,8 +16,7 @@ class ComprasSeeder extends Seeder
     public function run(): void
     {
         DB::table('compras')->insert([
-            'codigo' => 1,
-            'precio' => rand(0, PHP_INT_MAX),
+            'precio' => 86997.96,
             'fecha' => date("Y-m-d"),
             'direccion_entrega' => 'Lomas de Santa Anita 353',
             'id_cliente' => 1
