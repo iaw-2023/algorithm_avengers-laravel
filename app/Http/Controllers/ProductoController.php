@@ -9,18 +9,11 @@ use App\Models\Categoria;
 class ProductoController extends Controller
 {
     public function index(){
-        $datos['productos'] = Producto::where('activo', true)->orderBy('id', 'ASC')->get();
-        $datos['categorias'] = array();
-
-        /*
-            A cada producto le adjunto el nombre de su categoría en un
-            arreglo $categorias donde el nombre de la categoría para el
-            elemento x se encuentra en $categorias[x]
-        */
-        foreach($datos['productos']->toArray() as $prod){
-            $categoria = Categoria::select('nombre')->where('id', $prod['categoria'])->first();
-            $datos['categorias'][$prod['id']] = $categoria['nombre'];
-        }
+        $datos['productos'] = Producto::addSelect(['categoria_nombre' => Categoria::select('nombre')
+                ->whereColumn('categoria', 'categorias.id')])
+            ->where('activo', true)
+            ->orderBy('id', 'ASC')
+            ->get();
 
         return view('productos.index', $datos);
     }
@@ -51,8 +44,11 @@ class ProductoController extends Controller
         $datos['talles_validos'] = Producto::getTallesValidos();
         $producto = $datos['producto'];
 
-        $datos['categoria'] = Categoria::select('nombre')->where('id', $producto['categoria'])->first();
-        $datos['total_categorias'] = Categoria::where('activo', true)->get();
+        $datos['categoria'] = Categoria::select('nombre')
+            ->where('id', $producto['categoria'])
+            ->first();
+        $datos['total_categorias'] = Categoria::where('activo', true)
+            ->get();
 
         return view('productos.edit', $datos);
     }

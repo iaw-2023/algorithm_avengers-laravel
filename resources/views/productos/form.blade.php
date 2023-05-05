@@ -54,11 +54,7 @@
 <div class="input-group mb-3">
     <span class="input-group-text">Categorías</span>    
        
-    <select class="form-select" name="categoria">
-        @if(!isset($producto->categoria))
-            <option selected>Seleccionar categoría</option>
-        @endif
-
+    <select required class="form-select" name="categoria">
         @foreach($total_categorias as $cats)
             @if(isset($producto->categoria) && ( $producto->categoria == $cats->id ))
                 <option selected value="{{ $cats->id }}">{{ $cats->nombre }}</option>    
@@ -69,4 +65,4 @@
     </select>    
 </div>
 
-<a href="{{ url('productos/') }}" class="btn btn-primary" onclick="return confirm('¿Descartar cambios y volver?')">Volver</a>
+<a href="{{ url('productos/') }}" class="btn btn-danger" onclick="return confirm('¿Descartar cambios y volver?')">Volver</a>
