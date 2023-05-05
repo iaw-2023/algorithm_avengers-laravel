@@ -1,19 +1,21 @@
-<!DOCTYPE html>
+<script src="{{ asset('js/form.js') }}"></script>
+<link rel="stylesheet" type="text/css" href="{{ asset('css/productos.css') }}">
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="{{ asset('js/form.js') }}"></script>
-    <link rel="stylesheet" type="text/css" href="{{ asset('css/productos.css') }}">
+<!-- Bootstrap CSS -->
+<link href="{{asset('bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
+    
+<!-- Bootstrap Bundle with Popper -->
+<script src="{{asset('bootstrap/js/bootstrap.bundle.min.js')}}"></script>
 
-    <!-- Bootstrap CSS -->
-    <link href="{{asset('bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
-        
-    <!-- Bootstrap Bundle with Popper -->
-    <script src="{{asset('bootstrap/js/bootstrap.bundle.min.js')}}"></script>
-</head>
-
+@if(count($errors) > 0)
+    <div class="alert alert-danger" role="alert">
+        <ul>
+        @foreach( $errors->all() as $error)
+            <li>{{ $error }}</li>
+        @endforeach
+        </ul>
+    </div>
+@endif
 
 <div class="input-group mb-3">
     <span class="input-group-text">Nombre</span>
@@ -53,8 +55,12 @@
 
 <div class="input-group mb-3">
     <span class="input-group-text">Categorías</span>    
-       
+    
     <select required class="form-select" name="categoria">
+        @if(!isset($producto->categoria))
+            <option selected value="">Seleccione una categoría</option>    
+        @endif  
+        
         @foreach($total_categorias as $cats)
             @if(isset($producto->categoria) && ( $producto->categoria == $cats->id ))
                 <option selected value="{{ $cats->id }}">{{ $cats->nombre }}</option>    

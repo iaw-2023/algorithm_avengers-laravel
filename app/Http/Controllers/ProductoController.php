@@ -25,6 +25,25 @@ class ProductoController extends Controller
     }
 
     public function store(Request $request){
+        $talles_validos = Producto::getTallesValidos();
+
+        $campos = [
+            'nombre' => 'required|string',
+            'descripcion' => 'required|string',
+            'precio' => 'required|decimal:2',
+            'imagen' => 'required|active_url|',
+            'talles' => ['required','string','regex:/('.implode(')?,?(', $talles_validos).')?/'],
+            'categoria' => 'required|integer|min:1'
+        ];
+
+        $mensaje = [
+            'required' => 'El atributo :attribute es requerido',
+            'min' => 'La categoría es requerida',
+            'active_url' => 'La URL de la imagen debe ser una URL activa'
+        ];
+
+        $this->validate($request, $campos, $mensaje);
+
         $datos = $request->except('_token');
         Producto::insert($datos);
         
