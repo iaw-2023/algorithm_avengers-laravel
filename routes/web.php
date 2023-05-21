@@ -6,14 +6,6 @@ use App\Http\Controllers\ProductoController;
 use App\Http\Controllers\CategoriaController;
 use App\Http\Controllers\ClienteController;
 use App\Http\Controllers\CompraController;
-use App\Http\Resources\ProductoResource;
-use App\Models\Producto;
-use App\Http\Resources\CompraResource;
-use App\Models\Compra;
-use App\Http\Resources\ClienteResource;
-use App\Models\Cliente;
-use App\Http\Resources\CategoriaResource;
-use App\Models\Categoria;
 
 /*
 |--------------------------------------------------------------------------
