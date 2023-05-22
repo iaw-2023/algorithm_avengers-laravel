@@ -4,15 +4,12 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <!-- Bootstrap CSS -->
-        <link href="{{asset('bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
-            
-            <!-- Bootstrap Bundle with Popper -->
-            <script src="{{asset('bootstrap/js/bootstrap.bundle.min.js')}}"></script>
+        <!-- Bootstrap 5 (CSS y JS) -->
+        @vite(['resources/js/app.js'])
         <title>Crear nueva categoría</title>
     </head>
     <body>
-    <x-app-layout>
+    <x-ma_layout>
         <form action="{{ url('/categorias') }}" method="post">
             @csrf
             <legend>Crear nueva categoría</legend>
@@ -20,6 +17,6 @@
 
             <input type="submit" class="btn btn-primary" onclick="return confirm('¿Guardar nueva categoría?')" value="Guardar">
         </form>
-    </x-app-layout>
+    </x-ma_layout>
     </body>
 </html>

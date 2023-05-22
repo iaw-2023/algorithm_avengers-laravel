@@ -1,11 +1,8 @@
 <script src="{{ asset('js/form.js') }}"></script>
 <link rel="stylesheet" type="text/css" href="{{ asset('css/productos.css') }}">
 
-<!-- Bootstrap CSS -->
-<link href="{{asset('bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
-    
-<!-- Bootstrap Bundle with Popper -->
-<script src="{{asset('bootstrap/js/bootstrap.bundle.min.js')}}"></script>
+<!-- Bootstrap 5 (CSS y JS) -->
+@vite(['resources/js/app.js'])
 
 @if(count($errors) > 0)
     <div class="alert alert-danger" role="alert">

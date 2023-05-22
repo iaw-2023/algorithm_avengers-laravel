@@ -6,15 +6,12 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" type="text/css" href="../../css/categorias.css">
 
-        <!-- Bootstrap CSS -->
-        <link href="{{asset('bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
-        
-        <!-- Bootstrap Bundle with Popper -->
-        <script src="{{asset('bootstrap/js/bootstrap.bundle.min.js')}}"></script>
+        <!-- Bootstrap 5 (CSS y JS) -->
+        @vite(['resources/js/app.js'])
         <title>Categorías</title>
     </head>
     <body>
-    <x-app-layout>
+    <x-ma_layout>
         <legend>Listado de categorías</legend>
         <table class="table table-hover">
             <thead>
@@ -57,6 +54,6 @@
         <form action="{{ url('/categorias/create') }}" method="get">
             <input type="submit" class="btn btn-primary" value="+ Nueva categoría">
         </form>
-    </x-app-layout>
+    </x-ma_layout>
     </body>
 </html>
