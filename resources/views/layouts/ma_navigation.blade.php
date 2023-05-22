@@ -41,7 +41,7 @@
         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" id="texto-blanco">
             {{ Auth::user()->name }}
         </a>
-        <ul class="dropdown-menu">
+        <ul class="dropdown-menu position-absolute end-0">
             <li>
                 <x-ma_dropdown-link :href="route('profile.edit')">
                     {{ __('Profile') }}

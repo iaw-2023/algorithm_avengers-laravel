@@ -20,5 +20,16 @@ class UserSeeder extends Seeder
             'password' => Hash::make('admin123'),
             'email_verified_at' => date('Y-m-d H:i:s')
         ]);
+
+        DB::table('users')->insert([
+            'name' => 'juan_perez',
+            'email' => 'jperez@iaw.com',
+            'password' => hash::make('12345')
+        ]);
+        DB::table('users')->insert([
+            'name' => 'jorge_susvin',
+            'email' => 'jsusvin@iaw.com',
+            'password' => hash::make('54321')
+        ]);
     }
 }
