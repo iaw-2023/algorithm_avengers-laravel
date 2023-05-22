@@ -6,11 +6,8 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" type="text/css" href="{{ asset('css/productos.css') }}">
 
-        <!-- Bootstrap CSS -->
-        <link href="{{asset('bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
-        
-        <!-- Bootstrap Bundle with Popper -->
-        <script src="{{asset('bootstrap/js/bootstrap.bundle.min.js')}}"></script>
+        <!-- Bootstrap 5 (CSS y JS) -->
+        @vite(['resources/js/app.js'])
         <title>Productos</title>
     </head>
     <body>
@@ -65,4 +62,5 @@
         </form>
     </x-app-layout>
     </body>
+    
 </html>
