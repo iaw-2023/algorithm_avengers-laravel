@@ -43,17 +43,23 @@ Route::get('productos', function(){
 Route::get('productos/{id}', function(string $id){
     return new ProductoResource(Producto::findOrFail($id));
 });
-/* Estos me tiran error y no sé por qué
-Route::post('productos', 'ProductoController@store');
-Route::put('productos/{id}', 'ProductoController@update');
-Route::delete('productos/{id}', 'ProductoController@destroy');
-*/
+
 // Compras
 Route::get('compras/{id}', function(string $id){
     return new CompraResource(Compra::findOrFail($id));
 });
 Route::get('compras', function(){
     return CompraResource::collection(Compra::all());
+});
+Route::post('compras', [CompraController::class, 'storeAPI']);
+Route::put('compras/{id}', function(Request $request, $id){
+    $compra = Compra::findOrFail($id);
+    $compra->update($request->all());
+
+    return $compra;
+});
+Route::delete('compras/{id}', function($id){
+    Compra::find($id)->delete();
 });
 
 // Clientes
@@ -62,6 +68,18 @@ Route::get('clientes/{id}', function(string $id){
 });
 Route::get('clientes', function(){
     return ClienteResource::collection(Cliente::all());
+});
+Route::post('clientes', function(Request $request){
+    return Cliente::create($request->all);
+});
+Route::put('clientes/{id}', function(Request $request, $id){
+    $cliente = Cliente::findOrFail($id);
+    $cliente->update($request->all());
+
+    return $cliente;
+});
+Route::delete('clientes/{id}', function($id){
+    Cliente::find($id)->delete();
 });
 
 // Categorias

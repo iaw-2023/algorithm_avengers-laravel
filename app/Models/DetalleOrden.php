@@ -10,4 +10,11 @@ class DetalleOrden extends Model
     use HasFactory;
 
     protected $table = 'detalle_orden';
+
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
+    protected $fillable = ['id_compra'];
 }
