@@ -12,9 +12,9 @@ class DetalleOrden extends Model
     protected $table = 'detalle_orden';
 
     /**
-     * The attributes that are mass assignable.
+     * The attributes that aren't mass assignable.
      *
      * @var array
      */
-    protected $fillable = ['id_compra'];
+    protected $guarded = [];
 }

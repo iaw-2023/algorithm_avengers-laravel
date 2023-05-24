@@ -31,28 +31,36 @@ class CompraController extends Controller
     }
 
     public function storeAPI(Request $request){
-        $compra = Compra::create($request->except('detalle'));
+        // creo la nueva compra
+        $compra = Compra::create([
+            'precio' => -1,
+            'fecha' => date('Y-m-d'),
+            'direccion_entrega' => $request->input('direccion_entrega'),
+            'id_cliente' => $request->input('id_cliente'),
+        ]);
         $id_compra = $compra['id'];
         
         $detalle = $request->input('detalle');
         
+        // calculo el precio de la compra en base a los productos que la componen
         $precio = 0.0;
         foreach($detalle as $item){
             $precio_producto = Producto::select('precio')->where('id', $item['id_producto'])->first();
-            $precio += $precio_producto['precio'] * $item['cantidad'];
+            $precio += (float) $precio_producto['precio'] * $item['cantidad'];
         
-            $detalle_orden = DetalleOrden::create([
+            $detalle_orden = DetalleOrden::create(
+                [
                 'id_compra' => $id_compra,
                 'id_producto' => $item['id_producto'],
                 'cantidad' => $item['cantidad'],
-            ]);
-            $detalle_orden->save();
+                ]
+            );
+            
         }
 
+        // actualizo la compra con su precio
         Compra::where('id', $id_compra)->update(['precio' => $precio]);
         
-        dd(Compra::where('id', $id_compra));
-
         return response()->json(['message' => 'Compra creada correctamente'], 201);
     }
 }
