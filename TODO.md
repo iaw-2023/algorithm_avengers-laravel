@@ -16,6 +16,7 @@
 
 ### Vistas
 - [ ] Paginar todas las vistas
+- [ ] Recuperar contraseña
 
 ### Preguntas
 - No me carga los css definidos por mi (solucionado)

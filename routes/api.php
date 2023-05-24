@@ -52,15 +52,6 @@ Route::get('compras', function(){
     return CompraResource::collection(Compra::all());
 });
 Route::post('compras', [CompraController::class, 'storeAPI']);
-Route::put('compras/{id}', function(Request $request, $id){
-    $compra = Compra::findOrFail($id);
-    $compra->update($request->all());
-
-    return $compra;
-});
-Route::delete('compras/{id}', function($id){
-    Compra::find($id)->delete();
-});
 
 // Clientes
 Route::get('clientes/{id}', function(string $id){
@@ -70,7 +61,7 @@ Route::get('clientes', function(){
     return ClienteResource::collection(Cliente::all());
 });
 Route::post('clientes', function(Request $request){
-    return Cliente::create($request->all);
+    return Cliente::create($request->all());
 });
 Route::put('clientes/{id}', function(Request $request, $id){
     $cliente = Cliente::findOrFail($id);

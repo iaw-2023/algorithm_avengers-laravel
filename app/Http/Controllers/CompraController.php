@@ -61,6 +61,6 @@ class CompraController extends Controller
         // actualizo la compra con su precio
         Compra::where('id', $id_compra)->update(['precio' => $precio]);
         
-        return response()->json(['message' => 'Compra creada correctamente'], 201);
+        return $compra;
     }
 }
