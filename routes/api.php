@@ -60,14 +60,10 @@ Route::get('clientes/{id}', function(string $id){
 Route::get('clientes', function(){
     return ClienteResource::collection(Cliente::all());
 });
-Route::post('clientes', function(Request $request){
-    return Cliente::create($request->all());
-});
+Route::post('clientes', [ClienteController::class, 'storeAPI']);
+//Route::patch('clientes/{id}', [ClienteController::class, 'updateAPI']);
 Route::put('clientes/{id}', function(Request $request, $id){
-    $cliente = Cliente::findOrFail($id);
-    $cliente->update($request->all());
-
-    return $cliente;
+    dd($request->all());
 });
 Route::delete('clientes/{id}', [ClienteController::class, 'destroy']);
 

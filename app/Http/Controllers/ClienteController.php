@@ -31,4 +31,30 @@ class ClienteController extends Controller
         $elemento->activo = false;
         $elemento->save();
     }
+
+    public function storeAPI(Request $request){
+        $cliente = Cliente::create([
+            'email' => $request->input('email'),
+            'contrasena' => $request->input('contrasena'),
+            'nombre' => $request->input('nombre'),
+            'telefono' => $request->input('telefono'),
+            'domicilio' => $request->input('domicilio')
+        ]);
+        return Cliente::select('id', 'email', 'nombre', 'telefono', 'domicilio')
+            ->where('id', $cliente['id'])
+            ->first();
+    }
+
+    public function updateAPI(Request $request, $id){
+        //dd($request->all());
+        return Cliente::where('id', $id)
+            ->where('activo', true)
+            ->update([
+                'email' => $request->input('email'),
+                'contrasena' => $request->input('contrasena'),
+                'nombre' => $request->input('email'),
+                'telefono' => $request->input('telefono'),
+                'domicilio' => $request->input('domicilio')
+            ]);
+    }
 }

@@ -14,5 +14,13 @@ class Cliente extends Model
      *
      * @var array
      */
-    protected $guarded = [];
+ //   protected $guarded = ['id', 'activo'];
+
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
+    protected $fillable = ['email', 'contrasena', 'nombre', 'telefono', 'domicilio'];
+
 }
