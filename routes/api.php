@@ -61,10 +61,7 @@ Route::get('clientes', function(){
     return ClienteResource::collection(Cliente::all());
 });
 Route::post('clientes', [ClienteController::class, 'storeAPI']);
-//Route::patch('clientes/{id}', [ClienteController::class, 'updateAPI']);
-Route::put('clientes/{id}', function(Request $request, $id){
-    dd($request->all());
-});
+Route::put('clientes/{id}', [ClienteController::class, 'updateAPI']);
 Route::delete('clientes/{id}', [ClienteController::class, 'destroy']);
 
 // Categorias

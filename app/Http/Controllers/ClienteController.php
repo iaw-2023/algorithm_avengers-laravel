@@ -46,15 +46,18 @@ class ClienteController extends Controller
     }
 
     public function updateAPI(Request $request, $id){
-        //dd($request->all());
-        return Cliente::where('id', $id)
+        Cliente::where('id', $id)
             ->where('activo', true)
             ->update([
                 'email' => $request->input('email'),
                 'contrasena' => $request->input('contrasena'),
-                'nombre' => $request->input('email'),
+                'nombre' => $request->input('nombre'),
                 'telefono' => $request->input('telefono'),
                 'domicilio' => $request->input('domicilio')
             ]);
+
+        return Cliente::select('id', 'email', 'nombre', 'telefono', 'domicilio')
+            ->where('id', $id)
+            ->first();
     }
 }

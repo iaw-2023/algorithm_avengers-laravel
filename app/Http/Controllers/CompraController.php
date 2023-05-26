@@ -61,6 +61,8 @@ class CompraController extends Controller
         // actualizo la compra con su precio
         Compra::where('id', $id_compra)->update(['precio' => $precio]);
         
-        return $compra;
+        return Compra::select('id', 'fecha', 'precio', 'id_cliente', 'direccion_entrega')
+            ->where('id', $id_compra)
+            ->first();
     }
 }
