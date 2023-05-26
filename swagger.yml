@@ -34,17 +34,32 @@ paths:
       tags:
         - productos
       summary: Muestra todos los productos
-      description: Muestra todos los productos junto con su categoría asociada
+      description: Muestra la información de todos los productos junto con la información de su categoría asociada
       responses:
         '200':
-          description: successful operation
+          description: Operación realizada con éxito
           content:
             application/json:
               schema:
                 type: array
                 items:
                   $ref: '#/components/schemas/Producto'
-  /pet/findByTags:
+  /productos/{id}:
+    get:
+      tags:
+        - productos
+      summary: Muestra la información de un producto
+      description: Dado un id válido de un producto, muestra la información de este producto junto con la información de su categoría asociada
+      responses:
+        '200':
+          description: Operación realizada con éxito
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Producto'
+  /pet/findByTags:    
     get:
       tags:
         - pet
