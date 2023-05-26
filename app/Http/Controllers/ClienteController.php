@@ -10,6 +10,7 @@ class ClienteController extends Controller
 {
     public function index(){
         $datos['clientes'] = Cliente::select('id','email', 'nombre', 'telefono','domicilio')
+            ->where('activo', true)
             ->orderBy('nombre', 'ASC')
             ->get();
         $datos['cant_compras'] = array();
@@ -25,4 +26,9 @@ class ClienteController extends Controller
         return view('clientes.index', $datos);
     }
 
+    public function destroy($id){
+        $elemento = Cliente::where('id', $id)->first();
+        $elemento->activo = false;
+        $elemento->save();
+    }
 }

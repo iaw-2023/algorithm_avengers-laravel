@@ -69,9 +69,7 @@ Route::put('clientes/{id}', function(Request $request, $id){
 
     return $cliente;
 });
-Route::delete('clientes/{id}', function($id){
-    Cliente::find($id)->delete();
-});
+Route::delete('clientes/{id}', [ClienteController::class, 'destroy']);
 
 // Categorias
 Route::get('categorias/{id}', function(string $id){
