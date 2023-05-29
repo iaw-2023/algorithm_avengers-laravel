@@ -64,9 +64,8 @@ paths:
           content:
             application/json:
               schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/Producto'
+                type: object
+                $ref: '#/components/schemas/Producto'
   
 
   /categorias:
@@ -105,9 +104,8 @@ paths:
           content: 
             application/json:
               schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/Categoria'
+                type: object
+                $ref: '#/components/schemas/Categoria'
 
   /clientes:
     get:
@@ -124,6 +122,28 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/Cliente'
+  /clientes/{id}:
+    get:
+      tags:
+        - clientes
+      summary: Devuelve el cliente con el id especificado
+      description: Dado un id, devuelve el cliente correspondiente a ese id
+      parameters:
+        - name: id
+          in: path
+          description: ID del cliente buscado
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: Operación realizada con éxito
+          content:
+            application/json:
+              schema:
+                type: object
+                $ref: '#/components/schemas/Cliente'
   /store/order:
     post:
       tags:
@@ -385,6 +405,23 @@ paths:
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 components:
   schemas:
     Producto:
@@ -401,20 +438,15 @@ components:
           type: string
           example: "Buzo estampado en la espalda"
         categoria:
-          $ref: '#/components/schemas/Categoria_Producto'
-
+          type: object
+          properties:
+            id:
+              $ref: '#/components/schemas/Categoria/properties/id'
+            nombre: 
+              $ref: '#/components/schemas/Categoria/properties/nombre'
       xml:
         name: productos
-    Categoria_Producto:
-      type: object
-      properties:
-        id:
-          type: integer
-          format: int64
-          example: 3
-        nombre:
-          type: string
-          example: "Masculinidades"
+
     Categoria:
       type: object
       properties:
@@ -428,6 +460,8 @@ components:
         descripcion:
           type: string
           example: "Ropa diseñada para masculinidades"
+    xml:
+        name: categorias
 
     Cliente:
       type: object
@@ -448,6 +482,8 @@ components:
         domicilio:
           type: string
           example: "San Martín 1810"
+      xml:
+        name: clientes
 
     Order:
       type: object
