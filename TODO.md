@@ -28,6 +28,8 @@
 - Los usuarios válidos son los empleados o admin es un usuario no empleado? Todo lo que está en empleado va a user y uso User como tabla de empleados (aclararlo en la documentación)
 - Puedo acceder a las rutas si no estoy loggeado? Middleware
 
+- Es conveniente enviar la contraseña del usuario por PUT ya encriptada (por cuestiones de seguridad) o es preferible hacer la encriptación en el servidor?
+
 ### Notas
 
 #### React + Next.js

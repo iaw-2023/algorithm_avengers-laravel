@@ -144,6 +144,39 @@ paths:
               schema:
                 type: object
                 $ref: '#/components/schemas/Cliente'
+    put:
+      tags:
+        - clientes
+      summary: Modifica los datos del cliente con el id especificado
+      description: Dado un id, modifica los datos del cliente correspondiente a ese id y lo retorna
+      parameters:
+        - name: id
+          in: path
+          description: ID del cliente a modificar
+          required: true
+          schema:
+            type: integer
+            format: int64
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ClientePut'
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/ClientePut'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/ClientePut'
+      responses:
+        '200':
+          description: Operación realizada con éxito
+          content:
+            application/json:
+              schema:
+                type: object
+                $ref: '#/components/schemas/Cliente'
+
   /store/order:
     post:
       tags:
@@ -472,6 +505,7 @@ components:
           example: 2
         email:
           type: string
+          format: email
           example: "juan_gonzález@example.com"
         nombre:
           type: string
@@ -485,6 +519,31 @@ components:
       xml:
         name: clientes
 
+    ClientePut:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+          example: 2
+        email:
+          type: string
+          format: email
+          example: "juan_gonzález@example.com"
+        contrasena:
+          type: string
+          example: "2af329f4923f1ccde3cbaeb949e3fe32"
+        nombre:
+          type: string
+          example: "Juan González"
+        telefono:
+          type: string
+          example: "+54 1 111 111 1111"
+        domicilio:
+          type: string
+          example: "San Martín 1810"
+      xml:
+        name: clientes
     Order:
       type: object
       properties:
