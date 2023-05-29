@@ -232,6 +232,53 @@ paths:
               schema:
                 type: array
                 $ref: '#/components/schemas/Compra'
+    post:
+      tags:
+        - compras
+      summary: Almacena una nueva compra en el sistema
+      description: Almacena una nueva compra en el sistema y la retorna
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CompraPost'
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/CompraPost'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/CompraPost'
+      responses:
+        '200':
+          description: Operación realizada con éxito
+          content:
+            application/json:
+              schema:
+                type: object
+                $ref: '#/components/schemas/Compra'
+
+  /compras/{id}:
+    get:
+      tags:
+        - compras
+      summary: Devuelve la compra con el id especificado
+      description: Dado un id, devuelve la compra correspondiente a ese id
+      parameters:
+        - name: id
+          in: path
+          description: ID de la compra buscada
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: Operación realizada con éxito
+          content: 
+            application/json:
+              schema:
+                type: array
+                $ref: '#/components/schemas/Compra'
 
   /store/order:
     post:
@@ -631,6 +678,30 @@ components:
               $ref: '#/components/schemas/Cliente/properties/email'
             nombre:
               $ref: '#/components/schemas/Cliente/properties/nombre'
+      xml:
+        name: compra
+
+    CompraPost:
+      type: object
+      properties:
+        id_cliente:
+          $ref: '#/components/schemas/Cliente/properties/id'
+        direccion_entrega:
+          type: string
+          example: Juan Manuel de Rosas 1845
+        detalle:
+          type: array
+          items:
+            type: object
+            properties:
+              id_producto:
+                $ref: '#/components/schemas/Producto/properties/id'
+              cantidad:
+                type: integer
+                format: int64
+                example: 3
+        xml:
+          name: compra_post
 
     DetalleOrden:
       type: object
