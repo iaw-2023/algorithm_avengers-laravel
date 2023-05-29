@@ -122,6 +122,31 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/Cliente'
+    post:
+      tags:
+        - clientes
+      summary: Almacena un nuevo cliente en el sistema
+      description: Almacena un nuevo cliente en el sistema y lo retorna
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ClientePut'
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/ClientePut'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/ClientePut'
+      responses:
+        '200':
+          description: Operación realizada con éxito
+          content:
+            application/json:
+              schema:
+                type: object
+                $ref: '#/components/schemas/Cliente'
+
   /clientes/{id}:
     get:
       tags:
