@@ -176,6 +176,22 @@ paths:
               schema:
                 type: object
                 $ref: '#/components/schemas/Cliente'
+    delete:
+      tags:
+        - clientes
+      summary: Elimina el cliente con el id especificado
+      description: Dado un id, lo elimina
+      parameters:
+        - name: id
+          in: path
+          description: ID del cliente a eliminar
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: Operación realizada con éxito
 
   /store/order:
     post:
