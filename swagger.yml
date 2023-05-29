@@ -44,6 +44,9 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/Producto'
+        default:
+          description: Unexpected error
+
   /productos/{id}:
     get:
       tags:
@@ -66,7 +69,8 @@ paths:
               schema:
                 type: object
                 $ref: '#/components/schemas/Producto'
-  
+        default:
+          description: Unexpected error
 
   /categorias:
     get:
@@ -83,6 +87,8 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/Categoria'
+        default:
+          description: Unexpected error
   
   /categorias/{id}:
     get:
@@ -106,6 +112,8 @@ paths:
               schema:
                 type: object
                 $ref: '#/components/schemas/Categoria'
+        default:
+          description: Unexpected error
 
   /clientes:
     get:
@@ -122,6 +130,9 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/Cliente'
+        default:
+          description: Unexpected error
+
     post:
       tags:
         - clientes
@@ -146,6 +157,8 @@ paths:
               schema:
                 type: object
                 $ref: '#/components/schemas/Cliente'
+        default:
+          description: Unexpected error
 
   /clientes/{id}:
     get:
@@ -169,6 +182,8 @@ paths:
               schema:
                 type: object
                 $ref: '#/components/schemas/Cliente'
+        default:
+          description: Unexpected error
     put:
       tags:
         - clientes
@@ -201,6 +216,8 @@ paths:
               schema:
                 type: object
                 $ref: '#/components/schemas/Cliente'
+        default:
+          description: Unexpected error
     delete:
       tags:
         - clientes
@@ -217,6 +234,8 @@ paths:
       responses:
         '200':
           description: Operación realizada con éxito
+        default:
+          description: Unexpected error
 
   /compras:
     get:
@@ -232,6 +251,8 @@ paths:
               schema:
                 type: array
                 $ref: '#/components/schemas/Compra'
+        default:
+          description: Unexpected error
     post:
       tags:
         - compras
@@ -256,6 +277,8 @@ paths:
               schema:
                 type: object
                 $ref: '#/components/schemas/Compra'
+        default:
+          description: Unexpected error
 
   /compras/{id}:
     get:
@@ -279,6 +302,8 @@ paths:
               schema:
                 type: array
                 $ref: '#/components/schemas/Compra'
+        default:
+          description: Unexpected error
 
 
 components:
@@ -359,6 +384,7 @@ components:
         contrasena:
           type: string
           example: "2af329f4923f1ccde3cbaeb949e3fe32"
+          description: Contraseña codificada en md5
         nombre:
           type: string
           example: "Juan González"
