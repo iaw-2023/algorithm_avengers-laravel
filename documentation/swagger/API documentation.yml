@@ -7,8 +7,8 @@ info:
     Nuestra ropa no te cambia, te muestra tal cual sos
     
     Some useful links:
-    - [The Pet Store repository](https://github.com/swagger-api/swagger-petstore)
-    - [The source API definition for the Pet Store](https://github.com/swagger-api/swagger-petstore/blob/master/src/main/resources/openapi.yaml)
+    - [Repositorio de Manos Argentinas - Tienda Online](https://github.com/iaw-2023/algorithm_avengers-laravel.git)
+    - [Código fuente de la documentación de la API](https://github.com/iaw-2023/algorithm_avengers-laravel/blob/view_modifications/documentation/swagger/API%20documentation.yml)
   
   contact:
     email: algorithm.avengers.iaw@gmail.com
@@ -18,7 +18,7 @@ info:
   version: "1"
 
 servers:
-  - url: https://petstore3.swagger.io/api/v3
+  - url: https://vercel.com/dalo12/tienda-manos-argentinas
 tags:
   - name: productos
     description: Accede a los productos
@@ -482,17 +482,9 @@ components:
           type: string
       xml:
         name: '##default'
-  
-  securitySchemes:
-    petstore_auth:
-      type: oauth2
-      flows:
-        implicit:
-          authorizationUrl: https://petstore3.swagger.io/oauth/authorize
-          scopes:
-            write:pets: modify pets in your account
-            read:pets: read your pets
+
     api_key:
-      type: apiKey
+      type: string
+      //type: apiKey
       name: api_key
       in: header
