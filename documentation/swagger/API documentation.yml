@@ -222,6 +222,8 @@ paths:
               schema:
                 type: object
                 $ref: '#/components/schemas/Cliente'
+        '404':
+          description: ID no encontrado. Probablemente se haya ingresado un ID no válido.        
         default:
           description: Unexpected error
     delete:
@@ -240,6 +242,8 @@ paths:
       responses:
         '200':
           description: Operación realizada con éxito
+        '404':
+          description: ID no encontrado. Probablemente se haya ingresado un ID no válido.  
         default:
           description: Unexpected error
 
@@ -255,7 +259,7 @@ paths:
           content: 
             application/json:
               schema:
-                type: array
+                type: object
                 $ref: '#/components/schemas/Compra'
         default:
           description: Unexpected error
@@ -306,7 +310,7 @@ paths:
           content: 
             application/json:
               schema:
-                type: array
+                type: object
                 $ref: '#/components/schemas/Compra'
         '404':
           description: ID no encontrado. Probablemente se haya ingresado un ID no válido.
@@ -490,9 +494,3 @@ components:
           type: string
       xml:
         name: '##default'
-
-    api_key:
-      type: string
-      //type: apiKey
-      name: api_key
-      in: header
