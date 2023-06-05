@@ -11,9 +11,21 @@ use App\Models\Producto;
 class CompraResource extends JsonResource
 {
     /**
-     * Transform the resource into an array.
-     *
-     * @return array<string, mixed>
+     * @OA\Get(
+     *      tags={"compras"},
+     *      path="/rest/compras",
+     *      summary="Devuelve todos las compras",
+     *      description="Devuelve todas las compras efectuadas hasta el momento",
+     *      @OA\Response(
+     *          response="200",
+     *          description="Operación realizada con éxito",
+     *          @OA\JsonContent(ref="#/components/schemas/Compra")
+     *      ),
+     *      @OA\Response(
+     *          response="default",
+     *          description="Error inesperado"
+     *      )
+     * )
      */
     public function toArray(Request $request): array
     {

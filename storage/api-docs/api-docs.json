@@ -74,6 +74,56 @@
                 }
             }
         },
+        "/rest/clientes": {
+            "get": {
+                "tags": [
+                    "clientes"
+                ],
+                "summary": "Devuelve todos los clientes",
+                "description": "Devuelve todos los clientes registrados en el sistema",
+                "operationId": "6f3c69649e8ec497f05d6089d6c8c12e",
+                "responses": {
+                    "200": {
+                        "description": "Operación realizada con éxito",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Cliente"
+                                }
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "Error inesperado"
+                    }
+                }
+            }
+        },
+        "/rest/compras": {
+            "get": {
+                "tags": [
+                    "compras"
+                ],
+                "summary": "Devuelve todos las compras",
+                "description": "Devuelve todas las compras efectuadas hasta el momento",
+                "operationId": "435018b814bd88d7881b7dcc96640777",
+                "responses": {
+                    "200": {
+                        "description": "Operación realizada con éxito",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Compra"
+                                }
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "Error inesperado"
+                    }
+                }
+            }
+        },
         "/rest/productos": {
             "get": {
                 "tags": [
