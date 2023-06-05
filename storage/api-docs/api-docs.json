@@ -124,6 +124,45 @@
                 }
             }
         },
+        "/rest/compras/{id}": {
+            "get": {
+                "tags": [
+                    "compras"
+                ],
+                "summary": "Devuelve la compra con el id especificado",
+                "description": "Dado un id, devuelve la compra correspondiente a ese id",
+                "operationId": "bc7c33448decb894f1f948b70708366c",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID de la compra buscada",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Operación realizada con éxito",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Compra"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "ID no encontrado. Probablemente se haya ingresado un ID no válido."
+                    },
+                    "default": {
+                        "description": "Error inesperado"
+                    }
+                }
+            }
+        },
         "/rest/productos": {
             "get": {
                 "tags": [
@@ -234,6 +273,37 @@
                 },
                 "type": "object"
             },
+            "ClientePut": {
+                "properties": {
+                    "id": {
+                        "type": "integer",
+                        "example": 2
+                    },
+                    "email": {
+                        "type": "string",
+                        "format": "email",
+                        "example": "juan_gonzález@example.com"
+                    },
+                    "contrasena": {
+                        "description": "Contraseña codificada en md5",
+                        "type": "string",
+                        "example": "2af329f4923f1ccde3cbaeb949e3fe32"
+                    },
+                    "nombre": {
+                        "type": "string",
+                        "example": "Juan González"
+                    },
+                    "telefono": {
+                        "type": "string",
+                        "example": "+54 1 111 111 1111"
+                    },
+                    "domicilio": {
+                        "type": "string",
+                        "example": "San Martín 1810"
+                    }
+                },
+                "type": "object"
+            },
             "Compra": {
                 "properties": {
                     "id": {
@@ -271,6 +341,33 @@
                             }
                         },
                         "type": "object"
+                    }
+                },
+                "type": "object"
+            },
+            "CompraPost": {
+                "properties": {
+                    "id_cliente": {
+                        "$ref": "#/components/schemas/Cliente/properties/id"
+                    },
+                    "direccion_entrega": {
+                        "type": "string",
+                        "example": "Juan Manuel de Rosas 1845"
+                    },
+                    "detalle": {
+                        "type": "array",
+                        "items": {
+                            "properties": {
+                                "id_producto": {
+                                    "$ref": "#/components/schemas/Producto/properties/id"
+                                },
+                                "cantidad": {
+                                    "type": "integer",
+                                    "example": 3
+                                }
+                            },
+                            "type": "object"
+                        }
                     }
                 },
                 "type": "object"

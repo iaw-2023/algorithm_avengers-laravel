@@ -50,6 +50,36 @@ use Illuminate\Database\Eloquent\Model;
  *                      ref="#/components/schemas/Cliente/properties/nombre"
  *                  )
  *          )
+ * ),
+ * 
+ * @OA\Schema(
+ *      schema="CompraPost",
+ *      type="object",
+ *          @OA\Property(
+ *              property="id_cliente",
+ *              ref="#/components/schemas/Cliente/properties/id"
+ *          ),
+ *          @OA\Property(
+ *              property="direccion_entrega",
+ *              type="string",
+ *              example="Juan Manuel de Rosas 1845"
+ *          ),
+ *          @OA\Property(
+ *              property="detalle",
+ *              type="array",
+ *              @OA\Items(
+ *                  type="object",
+ *                  @OA\Property(
+ *                      property="id_producto",
+ *                      ref="#/components/schemas/Producto/properties/id"
+ *                  ),
+ *                  @OA\Property(
+ *                      property="cantidad",
+ *                      type="integer",
+ *                      example=3
+ *                  )
+ *              ) 
+ *          )           
  * )
  */
 
