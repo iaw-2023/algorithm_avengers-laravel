@@ -69,6 +69,8 @@ paths:
               schema:
                 type: object
                 $ref: '#/components/schemas/Producto'
+        '404':
+          description: ID no encontrado. Probablemente se haya ingresado un ID no válido.
         default:
           description: Unexpected error
 
@@ -112,6 +114,8 @@ paths:
               schema:
                 type: object
                 $ref: '#/components/schemas/Categoria'
+        '404':
+          description: ID no encontrado. Probablemente se haya ingresado un ID no válido.
         default:
           description: Unexpected error
 
@@ -182,6 +186,8 @@ paths:
               schema:
                 type: object
                 $ref: '#/components/schemas/Cliente'
+        '404':
+          description: ID no encontrado. Probablemente se haya ingresado un ID no válido.
         default:
           description: Unexpected error
     put:
@@ -302,6 +308,8 @@ paths:
               schema:
                 type: array
                 $ref: '#/components/schemas/Compra'
+        '404':
+          description: ID no encontrado. Probablemente se haya ingresado un ID no válido.
         default:
           description: Unexpected error
 
