@@ -158,6 +158,92 @@
                 },
                 "type": "object"
             },
+            "Cliente": {
+                "properties": {
+                    "id": {
+                        "type": "integer",
+                        "example": 2
+                    },
+                    "email": {
+                        "type": "string",
+                        "format": "email",
+                        "example": "juan_gonzález@example.com"
+                    },
+                    "nombre": {
+                        "type": "string",
+                        "example": "Juan González"
+                    },
+                    "telefono": {
+                        "type": "string",
+                        "example": "+54 1 111 111 1111"
+                    },
+                    "domicilio": {
+                        "type": "string",
+                        "example": "San Martín 1810"
+                    }
+                },
+                "type": "object"
+            },
+            "Compra": {
+                "properties": {
+                    "id": {
+                        "type": "integer",
+                        "example": 1
+                    },
+                    "precio": {
+                        "type": "number",
+                        "example": 12345.67
+                    },
+                    "fecha": {
+                        "type": "string",
+                        "format": "date"
+                    },
+                    "direccion_entrega": {
+                        "type": "string",
+                        "example": "Belgrano 1812"
+                    },
+                    "detalle_orden": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/DetalleOrden"
+                        }
+                    },
+                    "cliente": {
+                        "properties": {
+                            "id": {
+                                "$ref": "#/components/schemas/Cliente/properties/id"
+                            },
+                            "email": {
+                                "$ref": "#/components/schemas/Cliente/properties/email"
+                            },
+                            "nombre": {
+                                "$ref": "#/components/schemas/Cliente/properties/nombre"
+                            }
+                        },
+                        "type": "object"
+                    }
+                },
+                "type": "object"
+            },
+            "DetalleOrden": {
+                "properties": {
+                    "id": {
+                        "type": "integer",
+                        "example": 4
+                    },
+                    "id_producto": {
+                        "$ref": "#/components/schemas/Producto/properties/id"
+                    },
+                    "cantidad": {
+                        "type": "integer",
+                        "example": 2
+                    },
+                    "nombre_producto": {
+                        "$ref": "#/components/schemas/Producto/properties/nombre"
+                    }
+                },
+                "type": "object"
+            },
             "Producto": {
                 "properties": {
                     "id": {
