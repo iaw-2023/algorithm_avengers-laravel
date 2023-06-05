@@ -11,6 +11,10 @@
         {
             "src": "/(.*)",
             "dest": "/api/index.php"
+        },
+        {
+            "src": "/css/(.*)",
+            "dest": "/css/$1"
         }
     ],
     "env": {

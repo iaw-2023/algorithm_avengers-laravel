@@ -1,4 +1,3 @@
-<script src="{{ asset('js/form.js') }}"></script>
 <link rel="stylesheet" type="text/css" href="{{ asset('css/productos.css') }}">
 
 <!-- Bootstrap 5 (CSS y JS) -->
