@@ -16,7 +16,15 @@ class ClienteResource extends JsonResource
      *      @OA\Response(
      *          response="200",
      *          description="Operación realizada con éxito",
-     *          @OA\JsonContent(ref="#/components/schemas/Cliente")
+     *          @OA\JsonContent(
+     *              @OA\Property(
+     *                  property="data",
+     *                  type="array",
+     *                  @OA\Items(
+     *                      ref="#/components/schemas/Cliente"
+     *                  )
+     *              )
+     *          )
      *      ),
      *      @OA\Response(
      *          response="default",

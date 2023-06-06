@@ -19,7 +19,15 @@ class CompraResource extends JsonResource
      *      @OA\Response(
      *          response="200",
      *          description="Operación realizada con éxito",
-     *          @OA\JsonContent(ref="#/components/schemas/Compra")
+     *          @OA\JsonContent(
+     *              @OA\Property(
+     *                  property="data",
+     *                  type="array",
+     *                  @OA\Items(
+     *                      ref="#/components/schemas/Compra"
+     *                  )
+     *              )
+     *          )
      *      ),
      *      @OA\Response(
      *          response="default",
