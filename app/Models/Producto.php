@@ -25,6 +25,11 @@ use Illuminate\Database\Eloquent\Model;
  *              example="Buzo estampado en la espalda"
  *          ),
  *          @OA\Property(
+ *              property="precio",
+ *              type="number",
+ *              example=1234.56
+ *          ),
+ *          @OA\Property(
  *              property="categoria",
  *              type="object",
  *                  @OA\Property(
