@@ -52,6 +52,56 @@ class CompraResource extends JsonResource
      *          response="default",
      *          description="Error inesperado"
      *      )
+     * ),
+     * 
+     * @OA\Post(
+     *      tags={"compras"},
+     *      path="/rest/compras",
+     *      summary="Almacena una nueva compra en el sistema",
+     *      description="Almacena una nueva compra en el sistema y la retorna",
+     *      @OA\RequestBody(
+     *         @OA\MediaType(
+     *             mediaType="application/json",
+     *             @OA\Schema(
+     *                @OA\Property(
+     *                     property="id_cliente",
+     *                     ref="#/components/schemas/Cliente/properties/id",
+     *                     example=2
+     *                ),
+     *                @OA\Property(
+     *                     property="direccion_entrega",
+     *                     type="string",
+     *                     example="Juan Manuel de Rosas 1845"
+     *                 ),
+     *                 @OA\Property(
+     *                     property="detalle",
+     *                     type="array",
+     *                     @OA\Items(
+     *                          type="object",
+     *                          @OA\Property(
+     *                                property="id_producto",
+     *                                ref="#/components/schemas/Producto/properties/id",
+     *                                example=1
+     *                          ),
+     *                          @OA\Property(
+     *                               property="cantidad",
+     *                               type="integer",
+     *                               example=3
+     *                          )
+     *                      )
+     *                 )
+     *             )
+     *          )
+     *      ),
+     *      @OA\Response(
+     *          response="200",
+     *          description="Operación realizada con éxito",
+     *          @OA\JsonContent(ref="#/components/schemas/Compra")
+     *      ),
+     *      @OA\Response(
+     *          response="default",
+     *          description="Error inesperado"
+     *      )
      * )
      */
     public function toArray(Request $request): array

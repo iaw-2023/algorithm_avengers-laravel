@@ -110,34 +110,32 @@
                         "application/json": {
                             "schema": {
                                 "properties": {
-                                    "id": {
-                                        "type": "integer",
-                                        "example": 2
-                                    },
                                     "email": {
                                         "type": "string",
-                                        "format": "email",
-                                        "example": "juan_gonzález@example.com"
+                                        "format": "email"
                                     },
                                     "contrasena": {
                                         "description": "Contraseña codificada en md5",
-                                        "type": "string",
-                                        "example": "2af329f4923f1ccde3cbaeb949e3fe32"
+                                        "type": "string"
                                     },
                                     "nombre": {
-                                        "type": "string",
-                                        "example": "Juan González"
+                                        "type": "string"
                                     },
                                     "telefono": {
-                                        "type": "string",
-                                        "example": "+54 1 111 111 1111"
+                                        "type": "string"
                                     },
                                     "domicilio": {
-                                        "type": "string",
-                                        "example": "San Martín 1810"
+                                        "type": "string"
                                     }
                                 },
-                                "type": "object"
+                                "type": "object",
+                                "example": {
+                                    "email": "juan_gonzález@example.com",
+                                    "contrasena": "2af329f4923f1ccde3cbaeb949e3fe32",
+                                    "nombre": "Juan González",
+                                    "telefono": "+54 1 111 111 1111",
+                                    "domicilio": "San Martín 1810"
+                                }
                             }
                         }
                     }
@@ -159,6 +157,147 @@
                 }
             }
         },
+        "/rest/clientes/{id}": {
+            "get": {
+                "tags": [
+                    "clientes"
+                ],
+                "summary": "Devuelve el cliente con el id especificado",
+                "description": "Dado un id, devuelve el cliente correspondiente a ese id",
+                "operationId": "60e9659e620912829116e559b83c71bc",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID del cliente buscado",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Operación realizada con éxito",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Cliente"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "ID no encontrado. Probablemente se haya ingresado un ID no válido."
+                    },
+                    "default": {
+                        "description": "Error inesperado"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "clientes"
+                ],
+                "summary": "Modifica los datos del cliente con el id especificado",
+                "description": "Dado un id, modifica los datos del cliente correspondiente a ese id y lo retorna",
+                "operationId": "aafbce86f15fec671fd1258435e3c3e6",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID del cliente a modificar",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "email": {
+                                        "type": "string",
+                                        "format": "email"
+                                    },
+                                    "contrasena": {
+                                        "description": "Contraseña codificada en md5",
+                                        "type": "string"
+                                    },
+                                    "nombre": {
+                                        "type": "string"
+                                    },
+                                    "telefono": {
+                                        "type": "string"
+                                    },
+                                    "domicilio": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object",
+                                "example": {
+                                    "email": "juan_gonzález@example.com",
+                                    "contrasena": "2af329f4923f1ccde3cbaeb949e3fe32",
+                                    "nombre": "Juan González",
+                                    "telefono": "+54 1 111 111 1111",
+                                    "domicilio": "San Martín 1810"
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Operación realizada con éxito",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Cliente"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "ID no encontrado. Probablemente se haya ingresado un ID no válido."
+                    },
+                    "default": {
+                        "description": "Error inesperado"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "clientes"
+                ],
+                "summary": "Elimina el cliente con el id especificado",
+                "description": "Dado un id, elimina el cliente correspondiente a ese id",
+                "operationId": "a795b2b56fb4db6da7e9f03dd42ee140",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID del cliente a eliminar",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Operación realizada con éxito"
+                    },
+                    "404": {
+                        "description": "ID no encontrado. Probablemente se haya ingresado un ID no válido."
+                    },
+                    "default": {
+                        "description": "Error inesperado"
+                    }
+                }
+            }
+        },
         "/rest/compras": {
             "get": {
                 "tags": [
@@ -167,6 +306,62 @@
                 "summary": "Devuelve todos las compras",
                 "description": "Devuelve todas las compras efectuadas hasta el momento",
                 "operationId": "435018b814bd88d7881b7dcc96640777",
+                "responses": {
+                    "200": {
+                        "description": "Operación realizada con éxito",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Compra"
+                                }
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "Error inesperado"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "compras"
+                ],
+                "summary": "Almacena una nueva compra en el sistema",
+                "description": "Almacena una nueva compra en el sistema y la retorna",
+                "operationId": "7f4b0ceea688ee4e55391ae90bbb0949",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "id_cliente": {
+                                        "$ref": "#/components/schemas/Cliente/properties/id"
+                                    },
+                                    "direccion_entrega": {
+                                        "type": "string",
+                                        "example": "Juan Manuel de Rosas 1845"
+                                    },
+                                    "detalle": {
+                                        "type": "array",
+                                        "items": {
+                                            "properties": {
+                                                "id_producto": {
+                                                    "$ref": "#/components/schemas/Producto/properties/id"
+                                                },
+                                                "cantidad": {
+                                                    "type": "integer",
+                                                    "example": 3
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
                 "responses": {
                     "200": {
                         "description": "Operación realizada con éxito",
@@ -317,37 +512,6 @@
                         "type": "string",
                         "format": "email",
                         "example": "juan_gonzález@example.com"
-                    },
-                    "nombre": {
-                        "type": "string",
-                        "example": "Juan González"
-                    },
-                    "telefono": {
-                        "type": "string",
-                        "example": "+54 1 111 111 1111"
-                    },
-                    "domicilio": {
-                        "type": "string",
-                        "example": "San Martín 1810"
-                    }
-                },
-                "type": "object"
-            },
-            "ClientePut": {
-                "properties": {
-                    "id": {
-                        "type": "integer",
-                        "example": 2
-                    },
-                    "email": {
-                        "type": "string",
-                        "format": "email",
-                        "example": "juan_gonzález@example.com"
-                    },
-                    "contrasena": {
-                        "description": "Contraseña codificada en md5",
-                        "type": "string",
-                        "example": "2af329f4923f1ccde3cbaeb949e3fe32"
                     },
                     "nombre": {
                         "type": "string",

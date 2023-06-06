@@ -33,38 +33,29 @@ class ClienteResource extends JsonResource
      *         @OA\MediaType(
      *             mediaType="application/json",
      *             @OA\Schema(
-     *                 @OA\Property(
-     *                     property="id",
-     *                     type="integer",
-     *                     example=2
-     *                ),
      *                @OA\Property(
      *                     property="email",
      *                     type="string",
-     *                     format="email",
-     *                     example="juan_gonzález@example.com"
+     *                     format="email"
      *                ),
      *                @OA\Property(
      *                     property="contrasena",
      *                     type="string",
-     *                     example="2af329f4923f1ccde3cbaeb949e3fe32",
      *                     description="Contraseña codificada en md5"
      *                 ),
      *                 @OA\Property(
      *                     property="nombre",
-     *                     type="string",
-     *                     example="Juan González"
+     *                     type="string"
      *                 ),
      *                 @OA\Property(
      *                     property="telefono",
-     *                     type="string",
-     *                     example="+54 1 111 111 1111"
+     *                     type="string"
      *                 ),
      *                 @OA\Property(
      *                     property="domicilio",
-     *                     type="string",
-     *                     example="San Martín 1810"
-     *                 )  
+     *                     type="string"
+     *                 ),
+     *                 example={"email":"juan_gonzález@example.com","contrasena":"2af329f4923f1ccde3cbaeb949e3fe32","nombre":"Juan González","telefono":"+54 1 111 111 1111","domicilio":"San Martín 1810"}
      *             )
      *          )
      *      ),
@@ -77,8 +68,117 @@ class ClienteResource extends JsonResource
      *          response="default",
      *          description="Error inesperado"
      *      )
-     * )
+     * ),
      * 
+     * @OA\Get(
+     *      tags={"clientes"},
+     *      path="/rest/clientes/{id}",
+     *      summary="Devuelve el cliente con el id especificado",
+     *      description="Dado un id, devuelve el cliente correspondiente a ese id",
+     *      @OA\Parameter(
+     *          description="ID del cliente buscado",
+     *          in="path",
+     *          name="id",
+     *          required=true,
+     *          @OA\Schema(type="integer")
+     *      ),
+     *      @OA\Response(
+     *          response="200",
+     *          description="Operación realizada con éxito",
+     *          @OA\JsonContent(ref="#/components/schemas/Cliente")
+     *      ),
+     *      @OA\Response(
+     *          response="404",
+     *          description="ID no encontrado. Probablemente se haya ingresado un ID no válido."
+     *      ),
+     *      @OA\Response(
+     *          response="default",
+     *          description="Error inesperado"
+     *      )
+     * ),
+     * 
+     * @OA\Put(
+     *      tags={"clientes"},
+     *      path="/rest/clientes/{id}",
+     *      summary="Modifica los datos del cliente con el id especificado",
+     *      description="Dado un id, modifica los datos del cliente correspondiente a ese id y lo retorna",
+     *      @OA\Parameter(
+     *          description="ID del cliente a modificar",
+     *          in="path",
+     *          name="id",
+     *          required=true,
+     *          @OA\Schema(type="integer")
+     *      ),
+     *      @OA\RequestBody(
+     *         @OA\MediaType(
+     *             mediaType="application/json",
+     *             @OA\Schema(
+     *                @OA\Property(
+     *                     property="email",
+     *                     type="string",
+     *                     format="email"
+     *                ),
+     *                @OA\Property(
+     *                     property="contrasena",
+     *                     type="string",
+     *                     description="Contraseña codificada en md5"
+     *                 ),
+     *                 @OA\Property(
+     *                     property="nombre",
+     *                     type="string"
+     *                 ),
+     *                 @OA\Property(
+     *                     property="telefono",
+     *                     type="string"
+     *                 ),
+     *                 @OA\Property(
+     *                     property="domicilio",
+     *                     type="string"
+     *                 ),
+     *                 example={"email":"juan_gonzález@example.com","contrasena":"2af329f4923f1ccde3cbaeb949e3fe32","nombre":"Juan González","telefono":"+54 1 111 111 1111","domicilio":"San Martín 1810"}
+     *             )
+     *          )
+     *      ),
+     *      @OA\Response(
+     *          response="200",
+     *          description="Operación realizada con éxito",
+     *          @OA\JsonContent(ref="#/components/schemas/Cliente")
+     *      ),
+     *      @OA\Response(
+     *          response="404",
+     *          description="ID no encontrado. Probablemente se haya ingresado un ID no válido."
+     *      ),
+     *      @OA\Response(
+     *          response="default",
+     *          description="Error inesperado"
+     *      )
+     * ),
+     * 
+     * @OA\Delete(
+     *      tags={"clientes"},
+     *      path="/rest/clientes/{id}",
+     *      summary="Elimina el cliente con el id especificado",
+     *      description="Dado un id, elimina el cliente correspondiente a ese id",
+     *      @OA\Parameter(
+     *          description="ID del cliente a eliminar",
+     *          in="path",
+     *          name="id",
+     *          required=true,
+     *          @OA\Schema(type="integer")
+     *      ),
+     *      @OA\Response(
+     *          response="200",
+     *          description="Operación realizada con éxito"
+     *      ),
+     *      @OA\Response(
+     *          response="404",
+     *          description="ID no encontrado. Probablemente se haya ingresado un ID no válido."
+     *      ),
+     *      @OA\Response(
+     *          response="default",
+     *          description="Error inesperado"
+     *      )
+     * )
      */
     public function toArray(Request $request): array
     {
