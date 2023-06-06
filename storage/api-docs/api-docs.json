@@ -97,6 +97,66 @@
                         "description": "Error inesperado"
                     }
                 }
+            },
+            "post": {
+                "tags": [
+                    "clientes"
+                ],
+                "summary": "Almacena un nuevo cliente en el sistema",
+                "description": "Almacena un nuevo cliente en el sistema y lo retorna",
+                "operationId": "35d71e8ff908bcb1b12a527948b685a4",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "id": {
+                                        "type": "integer",
+                                        "example": 2
+                                    },
+                                    "email": {
+                                        "type": "string",
+                                        "format": "email",
+                                        "example": "juan_gonzález@example.com"
+                                    },
+                                    "contrasena": {
+                                        "description": "Contraseña codificada en md5",
+                                        "type": "string",
+                                        "example": "2af329f4923f1ccde3cbaeb949e3fe32"
+                                    },
+                                    "nombre": {
+                                        "type": "string",
+                                        "example": "Juan González"
+                                    },
+                                    "telefono": {
+                                        "type": "string",
+                                        "example": "+54 1 111 111 1111"
+                                    },
+                                    "domicilio": {
+                                        "type": "string",
+                                        "example": "San Martín 1810"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Operación realizada con éxito",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Cliente"
+                                }
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "Error inesperado"
+                    }
+                }
             }
         },
         "/rest/compras": {
