@@ -89,7 +89,7 @@ class CompraResource extends JsonResource
      *                          @OA\Property(
      *                                property="id_producto",
      *                                ref="#/components/schemas/Producto/properties/id",
-     *                                example=1
+     *                                example=2
      *                          ),
      *                          @OA\Property(
      *                               property="cantidad",
@@ -119,7 +119,7 @@ class CompraResource extends JsonResource
             'precio' => $this->precio,
             'fecha' => $this->fecha,
             'direccion_entrega' => $this->direccion_entrega,
-            'detalle' => DetalleOrden::select('id', 'id_producto', 'cantidad')
+            'detalle' => DetalleOrden::select('id', 'id_compra', 'id_producto', 'cantidad')
             ->addSelect(
                 ['nombre_producto' => Producto::select('nombre')
                     ->whereColumn('id_producto', 'productos.id')])

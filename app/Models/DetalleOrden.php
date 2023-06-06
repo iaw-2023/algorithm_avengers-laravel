@@ -15,6 +15,11 @@ use Illuminate\Database\Eloquent\Model;
  *              example=4
  *          ),
  *          @OA\Property(
+ *              property="id_compra",
+ *              type="integer",
+ *              example=1
+ *          ),
+ *          @OA\Property(
  *              property="id_producto",
  *              ref="#/components/schemas/Producto/properties/id"
  *          ),
