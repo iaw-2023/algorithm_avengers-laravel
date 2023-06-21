@@ -1,0 +1,23 @@
+#precio{
+    min-width: 150px;
+}
+
+#descripcion {
+    display: block; 
+    text-overflow: ellipsis; 
+    max-width: 200px;
+    width: 100%; 
+    overflow: hidden; 
+    white-space: wrap; 
+    max-height: 200px;
+}
+
+#imagen {
+    max-height:200px;
+    height:100%
+}
+
+#talles_validos {
+    float: left;
+    padding-left: 70px;
+}

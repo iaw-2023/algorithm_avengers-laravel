@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('nombre');
             $table->string('telefono');
             $table->string('domicilio');
+            $table->boolean('activo')->default(true);
             $table->timestamps();
         });
     }

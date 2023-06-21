@@ -14,48 +14,39 @@ class CategoriaSeeder extends Seeder
      */
     public function run(): void
     {
-        DB::table('categoria')->insert([
-            'codigo' => random_int(0, 10000),
-            'nombre' => Str::Random(25),
-            'descripcion' => Str::Random(50)
-        ]);
-        DB::table('categoria')->insert([
-            'codigo' => 1,
-            'nombre' => 'Adultos',
-            'descripcion' => 'Ropa diseñada para adultos'
-        ]);
-        DB::table('categoria')->insert([
-            'codigo' => 2,
-            'nombre' => 'Niños',
-            'descripcion' => 'Ropa especialmente diseñada para niños y niñas'
-        ]);
-        DB::table('categoria')->insert([
-            'codigo' => 3,
-            'nombre' => 'Femenidades',
-            'descripcion' => 'Ropa diseñada para feminidades'
-        ]);
-        DB::table('categoria')->insert([
-            'codigo' => 4,
+        DB::table('categorias')->insert([
             'nombre' => 'Masculinidades',
             'descripcion' => 'Ropa diseñada para masculinidades'
         ]);
-        DB::table('categoria')->insert([
-            'codigo' => 5,
+        DB::table('categorias')->insert([
+            'nombre' => 'Femenidades',
+            'descripcion' => 'Ropa diseñada para feminidades'
+        ]);
+        DB::table('categorias')->insert([
+            'nombre' => 'Unisex',
+            'descripcion' => 'Ropa diseñada sin género específico'
+        ]);
+        DB::table('categorias')->insert([
+            'nombre' => 'Infancias',
+            'descripcion' => 'Ropa especialmente diseñada para niños y niñas'
+        ]);
+        DB::table('categorias')->insert([
+            'nombre' => 'Adultos',
+            'descripcion' => 'Ropa diseñada para adultos'
+        ]);
+        DB::table('categorias')->insert([
             'nombre' => 'Remeras',
             'descripcion' => 'Remeras manga corta'
         ]);
-        DB::table('categoria')->insert([
-            'codigo' => 6,
+        DB::table('categorias')->insert([
             'nombre' => 'Camisetas',
             'descripcion' => 'Camisetas y remeras manga larga'
         ]);
-        DB::table('categoria')->insert([
-            'codigo' => 7,
+        DB::table('categorias')->insert([
             'nombre' => 'Buzos',
             'descripcion' => 'Buzos y camisetas abrigadas'
         ]);
-        DB::table('categoria')->insert([
-            'codigo' => 8,
+        DB::table('categorias')->insert([
             'nombre' => 'Vestidos',
             'descripcion' => 'Vestidos para femenidades'
         ]);

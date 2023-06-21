@@ -1,0 +1,663 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "API Manos Argentinas - Tienda Online",
+        "version": "1.0"
+    },
+    "servers": [
+        {
+            "url": "https://algorithm-avengers-laravel.vercel.app"
+        }
+    ],
+    "paths": {
+        "/rest/categorias": {
+            "get": {
+                "tags": [
+                    "categorías"
+                ],
+                "summary": "Devuelve todas las categorías",
+                "description": "Devuelve todas las categorías posibles para los productos",
+                "operationId": "a28d69e76e3226569c2736dd95030901",
+                "responses": {
+                    "200": {
+                        "description": "Operación realizada con éxito",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "data": {
+                                            "type": "array",
+                                            "items": {
+                                                "$ref": "#/components/schemas/Categoria"
+                                            }
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "Error inesperado"
+                    }
+                }
+            }
+        },
+        "/rest/categorias/{id}": {
+            "get": {
+                "tags": [
+                    "categorías"
+                ],
+                "summary": "Devuelve la categoría con el id especificado",
+                "description": "Dado un id, devuelve la categoría correspondiente a ese id",
+                "operationId": "f3aa10fc3f977bd46bffb3aa1e9ffc6c",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID de la categoría buscada",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Operación realizada con éxito",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Categoria"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "ID no encontrado. Probablemente se haya ingresado un ID no válido."
+                    },
+                    "default": {
+                        "description": "Error inesperado"
+                    }
+                }
+            }
+        },
+        "/rest/clientes": {
+            "get": {
+                "tags": [
+                    "clientes"
+                ],
+                "summary": "Devuelve todos los clientes",
+                "description": "Devuelve todos los clientes registrados en el sistema",
+                "operationId": "6f3c69649e8ec497f05d6089d6c8c12e",
+                "responses": {
+                    "200": {
+                        "description": "Operación realizada con éxito",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "data": {
+                                            "type": "array",
+                                            "items": {
+                                                "$ref": "#/components/schemas/Cliente"
+                                            }
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "Error inesperado"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "clientes"
+                ],
+                "summary": "Almacena un nuevo cliente en el sistema",
+                "description": "Almacena un nuevo cliente en el sistema y lo retorna",
+                "operationId": "35d71e8ff908bcb1b12a527948b685a4",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "email": {
+                                        "type": "string",
+                                        "format": "email"
+                                    },
+                                    "contrasena": {
+                                        "description": "Contraseña codificada en md5",
+                                        "type": "string"
+                                    },
+                                    "nombre": {
+                                        "type": "string"
+                                    },
+                                    "telefono": {
+                                        "type": "string"
+                                    },
+                                    "domicilio": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object",
+                                "example": {
+                                    "email": "juan_gonzález@example.com",
+                                    "contrasena": "2af329f4923f1ccde3cbaeb949e3fe32",
+                                    "nombre": "Juan González",
+                                    "telefono": "+54 1 111 111 1111",
+                                    "domicilio": "San Martín 1810"
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Operación realizada con éxito",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Cliente"
+                                }
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "Error inesperado"
+                    }
+                }
+            }
+        },
+        "/rest/clientes/{id}": {
+            "get": {
+                "tags": [
+                    "clientes"
+                ],
+                "summary": "Devuelve el cliente con el id especificado",
+                "description": "Dado un id, devuelve el cliente correspondiente a ese id",
+                "operationId": "60e9659e620912829116e559b83c71bc",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID del cliente buscado",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Operación realizada con éxito",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Cliente"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "ID no encontrado. Probablemente se haya ingresado un ID no válido."
+                    },
+                    "default": {
+                        "description": "Error inesperado"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "clientes"
+                ],
+                "summary": "Modifica los datos del cliente con el id especificado",
+                "description": "Dado un id, modifica los datos del cliente correspondiente a ese id y lo retorna",
+                "operationId": "aafbce86f15fec671fd1258435e3c3e6",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID del cliente a modificar",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "email": {
+                                        "type": "string",
+                                        "format": "email"
+                                    },
+                                    "contrasena": {
+                                        "description": "Contraseña codificada en md5",
+                                        "type": "string"
+                                    },
+                                    "nombre": {
+                                        "type": "string"
+                                    },
+                                    "telefono": {
+                                        "type": "string"
+                                    },
+                                    "domicilio": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object",
+                                "example": {
+                                    "email": "juan_gonzález@example.com",
+                                    "contrasena": "2af329f4923f1ccde3cbaeb949e3fe32",
+                                    "nombre": "Juan González",
+                                    "telefono": "+54 1 111 111 1111",
+                                    "domicilio": "San Martín 1810"
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Operación realizada con éxito",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Cliente"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "ID no encontrado. Probablemente se haya ingresado un ID no válido."
+                    },
+                    "default": {
+                        "description": "Error inesperado"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "clientes"
+                ],
+                "summary": "Elimina el cliente con el id especificado",
+                "description": "Dado un id, elimina el cliente correspondiente a ese id",
+                "operationId": "a795b2b56fb4db6da7e9f03dd42ee140",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID del cliente a eliminar",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Operación realizada con éxito"
+                    },
+                    "404": {
+                        "description": "ID no encontrado. Probablemente se haya ingresado un ID no válido."
+                    },
+                    "default": {
+                        "description": "Error inesperado"
+                    }
+                }
+            }
+        },
+        "/rest/compras": {
+            "get": {
+                "tags": [
+                    "compras"
+                ],
+                "summary": "Devuelve todos las compras",
+                "description": "Devuelve todas las compras efectuadas hasta el momento",
+                "operationId": "435018b814bd88d7881b7dcc96640777",
+                "responses": {
+                    "200": {
+                        "description": "Operación realizada con éxito",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "data": {
+                                            "type": "array",
+                                            "items": {
+                                                "$ref": "#/components/schemas/Compra"
+                                            }
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "Error inesperado"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "compras"
+                ],
+                "summary": "Almacena una nueva compra en el sistema",
+                "description": "Almacena una nueva compra en el sistema y la retorna",
+                "operationId": "7f4b0ceea688ee4e55391ae90bbb0949",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "id_cliente": {
+                                        "$ref": "#/components/schemas/Cliente/properties/id"
+                                    },
+                                    "direccion_entrega": {
+                                        "type": "string",
+                                        "example": "Juan Manuel de Rosas 1845"
+                                    },
+                                    "detalle": {
+                                        "type": "array",
+                                        "items": {
+                                            "properties": {
+                                                "id_producto": {
+                                                    "$ref": "#/components/schemas/Producto/properties/id"
+                                                },
+                                                "cantidad": {
+                                                    "type": "integer",
+                                                    "example": 3
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Operación realizada con éxito",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Compra"
+                                }
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "Error inesperado"
+                    }
+                }
+            }
+        },
+        "/rest/compras/{id}": {
+            "get": {
+                "tags": [
+                    "compras"
+                ],
+                "summary": "Devuelve la compra con el id especificado",
+                "description": "Dado un id, devuelve la compra correspondiente a ese id",
+                "operationId": "bc7c33448decb894f1f948b70708366c",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID de la compra buscada",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Operación realizada con éxito",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Compra"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "ID no encontrado. Probablemente se haya ingresado un ID no válido."
+                    },
+                    "default": {
+                        "description": "Error inesperado"
+                    }
+                }
+            }
+        },
+        "/rest/productos": {
+            "get": {
+                "tags": [
+                    "productos"
+                ],
+                "summary": "Muestra todos los productos",
+                "description": "Muestra la información de todos los productos junto con la información de su categoría asociada",
+                "operationId": "aac61ef801e9a5c9c65a916dac85e9ae",
+                "responses": {
+                    "200": {
+                        "description": "Operación realizada con éxito",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "data": {
+                                            "type": "array",
+                                            "items": {
+                                                "$ref": "#/components/schemas/Producto"
+                                            }
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/rest/productos/{id}": {
+            "get": {
+                "tags": [
+                    "productos"
+                ],
+                "summary": "Muestra la información de un producto",
+                "description": "Dado un id válido de un producto, muestra la información de este producto junto con la información de su categoría asociada",
+                "operationId": "fe8dc487679ef6871bd5eca076e3692d",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID del producto buscado",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Operación realizada con éxito",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Producto"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "ID no encontrado. Probablemente se haya ingresado un ID no válido."
+                    },
+                    "default": {
+                        "description": "Error inesperado"
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "Categoria": {
+                "properties": {
+                    "id": {
+                        "type": "integer",
+                        "example": 3
+                    },
+                    "nombre": {
+                        "type": "string",
+                        "example": "Masculinidades"
+                    },
+                    "descripcion": {
+                        "type": "string",
+                        "example": "Ropa diseñada para masculinidades"
+                    }
+                },
+                "type": "object"
+            },
+            "Cliente": {
+                "properties": {
+                    "id": {
+                        "type": "integer",
+                        "example": 2
+                    },
+                    "email": {
+                        "type": "string",
+                        "format": "email",
+                        "example": "juan_gonzález@example.com"
+                    },
+                    "nombre": {
+                        "type": "string",
+                        "example": "Juan González"
+                    },
+                    "telefono": {
+                        "type": "string",
+                        "example": "+54 1 111 111 1111"
+                    },
+                    "domicilio": {
+                        "type": "string",
+                        "example": "San Martín 1810"
+                    }
+                },
+                "type": "object"
+            },
+            "Compra": {
+                "properties": {
+                    "id": {
+                        "type": "integer",
+                        "example": 1
+                    },
+                    "precio": {
+                        "type": "number",
+                        "example": 12345.67
+                    },
+                    "fecha": {
+                        "type": "string",
+                        "format": "date"
+                    },
+                    "direccion_entrega": {
+                        "type": "string",
+                        "example": "Belgrano 1812"
+                    },
+                    "detalle_orden": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/DetalleOrden"
+                        }
+                    },
+                    "cliente": {
+                        "properties": {
+                            "id": {
+                                "$ref": "#/components/schemas/Cliente/properties/id"
+                            },
+                            "email": {
+                                "$ref": "#/components/schemas/Cliente/properties/email"
+                            },
+                            "nombre": {
+                                "$ref": "#/components/schemas/Cliente/properties/nombre"
+                            }
+                        },
+                        "type": "object"
+                    }
+                },
+                "type": "object"
+            },
+            "DetalleOrden": {
+                "properties": {
+                    "id": {
+                        "type": "integer",
+                        "example": 4
+                    },
+                    "id_compra": {
+                        "type": "integer",
+                        "example": 1
+                    },
+                    "id_producto": {
+                        "$ref": "#/components/schemas/Producto/properties/id"
+                    },
+                    "cantidad": {
+                        "type": "integer",
+                        "example": 2
+                    },
+                    "nombre_producto": {
+                        "$ref": "#/components/schemas/Producto/properties/nombre"
+                    }
+                },
+                "type": "object"
+            },
+            "Producto": {
+                "properties": {
+                    "id": {
+                        "type": "integer",
+                        "example": 1
+                    },
+                    "nombre": {
+                        "type": "string",
+                        "example": "Buzo Rebelde"
+                    },
+                    "descripcion": {
+                        "type": "string",
+                        "example": "Buzo estampado en la espalda"
+                    },
+                    "precio": {
+                        "type": "number",
+                        "example": 1234.56
+                    },
+                    "categoria": {
+                        "properties": {
+                            "id": {
+                                "$ref": "#/components/schemas/Categoria/properties/id"
+                            },
+                            "nombre": {
+                                "$ref": "#/components/schemas/Categoria/properties/nombre"
+                            }
+                        },
+                        "type": "object"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "responses": {
+            "default": {
+                "description": "Error inesperado"
+            }
+        }
+    }
+}
