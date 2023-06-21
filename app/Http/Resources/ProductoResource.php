@@ -75,7 +75,9 @@ class ProductoResource extends JsonResource
                 'id' => $this->id,
                 'nombre' => $this->nombre,
                 'descripcion' => $this->descripcion,
+                'imagen' => $this->imagen,
                 'precio' => $this->precio,
+                'talles' => $this->talles,
                 'categoria' => Categoria::select('id','nombre')
                     ->where('id', $this->categoria)
                     ->first()

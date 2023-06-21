@@ -25,9 +25,19 @@ use Illuminate\Database\Eloquent\Model;
  *              example="Buzo estampado en la espalda"
  *          ),
  *          @OA\Property(
+ *              property="imagen",
+ *              type="string",
+ *              example="www.sitio.com/imagen.jpg"
+ *          ),
+ *          @OA\Property(
  *              property="precio",
  *              type="number",
  *              example=1234.56
+ *          ),
+ *          @OA\Property(
+ *              property="talles",
+ *              type="string",
+ *              example="XS,S,M,L,XL,XXL,XXXL,XXXXL,XXXXXL"
  *          ),
  *          @OA\Property(
  *              property="categoria",

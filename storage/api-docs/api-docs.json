@@ -635,9 +635,17 @@
                         "type": "string",
                         "example": "Buzo estampado en la espalda"
                     },
+                    "imagen": {
+                        "type": "string",
+                        "example": "www.sitio.com/imagen.jpg"
+                    },
                     "precio": {
                         "type": "number",
                         "example": 1234.56
+                    },
+                    "talles": {
+                        "type": "string",
+                        "example": "XS,S,M,L,XL,XXL,XXXL,XXXXL,XXXXXL"
                     },
                     "categoria": {
                         "properties": {
