@@ -60,10 +60,6 @@ class ProductoController extends Controller
         $datos['producto'] = Producto::findOrFail($id);
         $datos['talles_validos'] = Producto::getTallesValidos();
         $producto = $datos['producto'];
-
-        $datos['categoria'] = Categoria::select('nombre')
-            ->where('id', $producto['categoria'])
-            ->first();
         $datos['total_categorias'] = Categoria::where('activo', true)
             ->get();
 
