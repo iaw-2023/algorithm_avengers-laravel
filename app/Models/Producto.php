@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 /**
  * @OA\Schema(
@@ -62,5 +63,9 @@ class Producto extends Model
 
     public static function getTallesValidos(){
         return self::$TALLES_VALIDOS;
+    }
+
+    public function categoria_n(): BelongsTo {
+        return $this->belongsTo(Categoria::class, 'categoria', 'id');
     }
 }

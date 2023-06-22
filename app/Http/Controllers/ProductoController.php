@@ -9,9 +9,7 @@ use App\Models\Categoria;
 class ProductoController extends Controller
 {
     public function index(){
-        $datos['productos'] = Producto::addSelect(['categoria_nombre' => Categoria::select('nombre')
-                ->whereColumn('categoria', 'categorias.id')])
-            ->where('activo', true)
+        $datos['productos'] = Producto::where('activo', true)
             ->orderBy('id', 'ASC')
             ->get();
 
