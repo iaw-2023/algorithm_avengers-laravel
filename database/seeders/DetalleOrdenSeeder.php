@@ -14,18 +14,18 @@ class DetalleOrdenSeeder extends Seeder
     public function run(): void
     {
         DB::table('detalle_orden')->insert([
-            'id_compra' => 1,
-            'id_producto' => 1,
+            'compra_id' => 1,
+            'producto_id' => 1,
             'cantidad' => 4
         ]);
         DB::table('detalle_orden')->insert([
-            'id_compra' => 1,
-            'id_producto' => 6,
+            'compra_id' => 1,
+            'producto_id' => 6,
             'cantidad' => 1
         ]);
         DB::table('detalle_orden')->insert([
-            'id_compra' => 1,
-            'id_producto' => 2,
+            'compra_id' => 1,
+            'producto_id' => 2,
             'cantidad' => 2
         ]);
 

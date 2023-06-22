@@ -27,7 +27,7 @@ class ProductoSeeder extends Seeder
             'precio' => 7999.99,
             'imagen' => 'https://manosargentinas.com/tienda/wp-content/uploads/2021/07/D_986170-MLA46506537570_062021-F-1.jpg',
             'talles' => 'S,M,L',
-            'categoria' => 1
+            'categoria_id' => 1
         ]);
         DB::table('productos')->insert([
             'nombre' => 'Buzo Rebelde Friza Malvinas',
@@ -35,7 +35,7 @@ class ProductoSeeder extends Seeder
             'precio' => 20499.00,
             'imagen' => 'https://manosargentinas.com/tienda/wp-content/uploads/2021/07/D_785920-MLA46353293446_062021-F-1.jpg',
             'talles' => 'S,M,L,XL',
-            'categoria' => 1
+            'categoria_id' => 1
         ]);
         DB::table('productos')->insert([
             'nombre' => 'Remeras Rebeldes El Diego',
@@ -43,7 +43,7 @@ class ProductoSeeder extends Seeder
             'precio' => 7999.99,
             'imagen' => 'https://manosargentinas.com/tienda/wp-content/uploads/2023/03/D_605952-MLA54097567539_032023-F.jpg',
             'talles' => 'XL,XXL,XXXL',
-            'categoria' => 1
+            'categoria_id' => 1
         ]);
         DB::table('productos')->insert([
             'nombre' => 'Remeras Rebeldes Revolución',
@@ -51,7 +51,7 @@ class ProductoSeeder extends Seeder
             'precio' => 2584.56,
             'imagen' => 'https://manosargentinas.com/tienda/wp-content/uploads/2021/07/D_845574-MLA46650504197_072021-F.jpg',
             'talles' => 'XS,S,M,L,XL',
-            'categoria' => 2
+            'categoria_id' => 2
         ]);
         DB::table('productos')->insert([
             'nombre' => 'Remeras Rebeldes Escuela Pública E Inclusiva',
@@ -59,7 +59,7 @@ class ProductoSeeder extends Seeder
             'precio' => 4500.00,
             'imagen' => 'https://manosargentinas.com/tienda/wp-content/uploads/2021/10/D_812230-MLA47680748818_092021-F.jpg',
             'talles' => 'XS,S,M,L',
-            'categoria' => 2
+            'categoria_id' => 2
         ]);
         DB::table('productos')->insert([
             'nombre' => 'Vestido Rebelde Wiphala Transformacion',
@@ -67,7 +67,7 @@ class ProductoSeeder extends Seeder
             'precio' => 14000,
             'imagen' => 'https://manosargentinas.com/tienda/wp-content/uploads/2022/12/D_666039-MLA52892124724_122022-F.jpg',
             'talles' => 'XS,S,M,L,XL',
-            'categoria' => 2
+            'categoria_id' => 2
         ]);
         DB::table('productos')->insert([
             'nombre' => 'Remeras Rebeldes Malvinas Full Estampa',
@@ -75,7 +75,7 @@ class ProductoSeeder extends Seeder
             'precio' => 7999.99,
             'imagen' => 'https://manosargentinas.com/tienda/wp-content/uploads/2021/07/D_911823-MLA46641800996_072021-F.jpg',
             'talles' => 'S,M,L,XL',
-            'categoria' => 3
+            'categoria_id' => 3
         ]);
         DB::table('productos')->insert([
             'nombre' => 'Remeras Rebeldes Maestres',
@@ -83,7 +83,7 @@ class ProductoSeeder extends Seeder
             'precio' => 7999.99,
             'imagen' => 'https://manosargentinas.com/tienda/wp-content/uploads/2022/09/D_984282-MLA51427227874_092022-F.jpg',
             'talles' => 'XL,XXL,XXXL,XXXXL',
-            'categoria' => 3
+            'categoria_id' => 3
         ]);
         DB::table('productos')->insert([
             'nombre' => 'Remeras Rebeldes Argentina No Se Usa',
@@ -91,7 +91,7 @@ class ProductoSeeder extends Seeder
             'precio' => 7999.99,
             'imagen' => 'https://manosargentinas.com/tienda/wp-content/uploads/2021/07/D_656387-MLA46405405357_062021-F-1.jpg',
             'talles' => 'S,M,L,XL',
-            'categoria' => 3
+            'categoria_id' => 3
         ]);
         DB::table('productos')->insert([
             'nombre' => 'Remeras Rebeldes Estrella Roja',
@@ -99,7 +99,7 @@ class ProductoSeeder extends Seeder
             'precio' => 3699.00,
             'imagen' => 'https://manosargentinas.com/tienda/wp-content/uploads/2022/04/D_609800-MLA49720581595_042022-F.jpg',
             'talles' => 'XS,S,M,L,XL',
-            'categoria' => 2
+            'categoria_id' => 2
         ]);
     }
 }
