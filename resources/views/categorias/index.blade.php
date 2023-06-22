@@ -33,7 +33,7 @@
                             {{ $cat->descripcion }}
                         </span>
                     </td>
-                    <td>{{ $cantidades[$cat->id] }}</td>
+                    <td>{{ $cat->productos->count() }}</td>
                     <td>
                         <div class="btn-group-vertical" role="group" aria-label="Vertical button group">
                             <form action="{{ url('/categorias/'.$cat->id.'/edit') }}">

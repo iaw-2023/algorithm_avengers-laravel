@@ -65,7 +65,7 @@ class Producto extends Model
         return self::$TALLES_VALIDOS;
     }
 
-    public function categoria_prod(): BelongsTo {
-        return $this->belongsTo(Categoria::class, 'categoria', 'id');
+    public function categoria(): BelongsTo {
+        return $this->belongsTo(Categoria::class);
     }
 }

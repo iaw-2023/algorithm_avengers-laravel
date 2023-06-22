@@ -10,15 +10,6 @@ class CategoriaController extends Controller
 {
     public function index(){
         $datos['categorias'] = Categoria::where('activo', true)->get();
-        $datos['cantidades'] = array();
-        
-        /*
-            En el arreglo 'cantidades' guardo la cantidad de productos asociados a cada categoría
-        */
-        foreach ($datos['categorias']->toArray() as $cat ){
-            $cantidad = Producto::where('categoria', $cat['id'])->count();
-            $datos['cantidades'][$cat['id']] = $cantidad;
-        }
 
         return view('categorias.index', $datos);
     }
