@@ -118,16 +118,14 @@ class CompraResource extends JsonResource
             'id' => $this->id,
             'precio' => $this->precio,
             'fecha' => $this->fecha,
-            'direccion_entrega' => $this->direccion_entrega,
-            'detalle' => DetalleOrden::select('id', 'id_compra', 'id_producto', 'cantidad')
+            'email_cliente' => $this->email_cliente,
+            'detalle' => DetalleOrden::select('id', 'id_producto', 'cantidad')
             ->addSelect(
                 ['nombre_producto' => Producto::select('nombre')
                     ->whereColumn('id_producto', 'productos.id')])
                 ->where('id_compra',$this->id)
                 ->orderBy('nombre_producto')
-                ->get(),
-            'cliente' => Cliente::select('id','email', 'nombre')
-                ->where('id', $this->id_cliente)->first()
+                ->get()
         ];;
     }
 }
