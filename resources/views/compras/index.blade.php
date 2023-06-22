@@ -19,7 +19,6 @@
                 <th scope="col">Precio</th>
                 <th scope="col">Productos</th>
                 <th scope="col">Cliente</th>
-                <th scope="col">Dirección de entrega</th>
             </tr>
         </thead>
         <tbody>
@@ -34,7 +33,6 @@
                     @endforeach
                 </td>
                 <td>{{ $compra->email_cliente }}</td>
-                <td>{{ $compra->direccion_entrega }}</td>
             </tr>
             @endforeach
         </tbody>

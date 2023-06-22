@@ -11,9 +11,7 @@ use App\Models\Producto;
 class CompraController extends Controller
 {
     public function index(){
-        $datos['compras'] = Compra::addSelect(['email_cliente' => Cliente::select('email')
-            ->whereColumn('id_cliente', 'clientes.id')])
-        ->orderBy('fecha')
+        $datos['compras'] = Compra::orderBy('fecha')
         ->get();
         $datos['productos_compra'] = array();
         
