@@ -48,10 +48,11 @@ class CategoriaController extends Controller
         return redirect('categorias');
     }
 
-    public function getProductos($id){
-        $categoria = Categoria::where('id', $id)->first();
-
-        return $categoria->productos;
+    public function getProductos($id){        
+        return Producto::select('id', 'nombre', 'descripcion', 'precio', 'imagen', 'talles')
+            ->where('categoria_id', $id)
+            ->where('activo', true)
+            ->get();
     }
 }
 

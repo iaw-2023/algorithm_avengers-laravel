@@ -26,14 +26,14 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  *              example="Buzo estampado en la espalda"
  *          ),
  *          @OA\Property(
- *              property="imagen",
- *              type="string",
- *              example="www.sitio.com/imagen.jpg"
- *          ),
- *          @OA\Property(
  *              property="precio",
  *              type="number",
  *              example=1234.56
+ *          ),
+ *          @OA\Property(
+ *              property="imagen",
+ *              type="string",
+ *              example="www.sitio.com/imagen.jpg"
  *          ),
  *          @OA\Property(
  *              property="talles",
@@ -51,6 +51,41 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  *                      property="nombre",
  *                      ref="#/components/schemas/Categoria/properties/nombre"
  *                  )
+ *          )
+ * ),
+ * 
+ * @OA\Schema(
+ *      schema="ProductoByCategoria",
+ *      type="object",
+ *          @OA\Property(
+ *              property="id",
+ *              type="integer",
+ *              example=1
+ *          ),
+ *          @OA\Property(
+ *              property="nombre",
+ *              type="string",
+ *              example="Buzo Rebelde"
+ *          ),
+ *          @OA\Property(
+ *              property="descripcion",
+ *              type="string",
+ *              example="Buzo estampado en la espalda"
+ *          ),
+ *          @OA\Property(
+ *              property="precio",
+ *              type="number",
+ *              example=1234.56
+ *          ),
+ *          @OA\Property(
+ *              property="imagen",
+ *              type="string",
+ *              example="www.sitio.com/imagen.jpg"
+ *          ),
+ *          @OA\Property(
+ *              property="talles",
+ *              type="string",
+ *              example="XS,S,M,L,XL,XXL,XXXL,XXXXL,XXXXXL"
  *          )
  * )
  */

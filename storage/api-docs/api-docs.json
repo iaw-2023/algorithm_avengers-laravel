@@ -82,6 +82,45 @@
                 }
             }
         },
+        "/rest/categorias/{id}/productos": {
+            "get": {
+                "tags": [
+                    "categorías"
+                ],
+                "summary": "Devuelve los productos asociados a la categoría con el id especificado",
+                "description": "Dado un id, devuelve los productos asociados a la categoría correspondiente a ese id",
+                "operationId": "4a2f086a81633d0a9232018c870b43f2",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID de la categoría buscada",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Operación realizada con éxito",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ProductoByCategoria"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "ID no encontrado. Probablemente se haya ingresado un ID no válido."
+                    },
+                    "default": {
+                        "description": "Error inesperado"
+                    }
+                }
+            }
+        },
         "/rest/clientes": {
             "get": {
                 "tags": [
@@ -640,13 +679,13 @@
                         "type": "string",
                         "example": "Buzo estampado en la espalda"
                     },
-                    "imagen": {
-                        "type": "string",
-                        "example": "www.sitio.com/imagen.jpg"
-                    },
                     "precio": {
                         "type": "number",
                         "example": 1234.56
+                    },
+                    "imagen": {
+                        "type": "string",
+                        "example": "www.sitio.com/imagen.jpg"
                     },
                     "talles": {
                         "type": "string",
@@ -662,6 +701,35 @@
                             }
                         },
                         "type": "object"
+                    }
+                },
+                "type": "object"
+            },
+            "ProductoByCategoria": {
+                "properties": {
+                    "id": {
+                        "type": "integer",
+                        "example": 1
+                    },
+                    "nombre": {
+                        "type": "string",
+                        "example": "Buzo Rebelde"
+                    },
+                    "descripcion": {
+                        "type": "string",
+                        "example": "Buzo estampado en la espalda"
+                    },
+                    "precio": {
+                        "type": "number",
+                        "example": 1234.56
+                    },
+                    "imagen": {
+                        "type": "string",
+                        "example": "www.sitio.com/imagen.jpg"
+                    },
+                    "talles": {
+                        "type": "string",
+                        "example": "XS,S,M,L,XL,XXL,XXXL,XXXXL,XXXXXL"
                     }
                 },
                 "type": "object"
