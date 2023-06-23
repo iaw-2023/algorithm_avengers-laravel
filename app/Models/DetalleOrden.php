@@ -16,12 +16,7 @@ use Illuminate\Database\Eloquent\Relations\HasOne;
  *              example=4
  *          ),
  *          @OA\Property(
- *              property="id_compra",
- *              type="integer",
- *              example=1
- *          ),
- *          @OA\Property(
- *              property="id_producto",
+ *              property="producto_id",
  *              ref="#/components/schemas/Producto/properties/id"
  *          ),
  *          @OA\Property(

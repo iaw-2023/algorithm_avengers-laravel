@@ -394,7 +394,7 @@
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "$ref": "#/components/schemas/Compra"
+                                    "$ref": "#/components/schemas/CompraPost"
                                 }
                             }
                         }
@@ -573,29 +573,36 @@
                         "type": "string",
                         "format": "date"
                     },
-                    "direccion_entrega": {
+                    "email_cliente": {
                         "type": "string",
-                        "example": "Belgrano 1812"
+                        "example": "jose_sanmartin@example.com"
                     },
                     "detalle_orden": {
                         "type": "array",
                         "items": {
                             "$ref": "#/components/schemas/DetalleOrden"
                         }
+                    }
+                },
+                "type": "object"
+            },
+            "CompraPost": {
+                "properties": {
+                    "id": {
+                        "type": "integer",
+                        "example": 1
                     },
-                    "cliente": {
-                        "properties": {
-                            "id": {
-                                "$ref": "#/components/schemas/Cliente/properties/id"
-                            },
-                            "email": {
-                                "$ref": "#/components/schemas/Cliente/properties/email"
-                            },
-                            "nombre": {
-                                "$ref": "#/components/schemas/Cliente/properties/nombre"
-                            }
-                        },
-                        "type": "object"
+                    "precio": {
+                        "type": "number",
+                        "example": 12345.67
+                    },
+                    "fecha": {
+                        "type": "string",
+                        "format": "date"
+                    },
+                    "email_cliente": {
+                        "type": "string",
+                        "example": "jose_sanmartin@example.com"
                     }
                 },
                 "type": "object"
@@ -606,11 +613,7 @@
                         "type": "integer",
                         "example": 4
                     },
-                    "id_compra": {
-                        "type": "integer",
-                        "example": 1
-                    },
-                    "id_producto": {
+                    "producto_id": {
                         "$ref": "#/components/schemas/Producto/properties/id"
                     },
                     "cantidad": {
