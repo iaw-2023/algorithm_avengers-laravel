@@ -13,17 +13,6 @@ class CompraController extends Controller
     public function index(){
         $datos['compras'] = Compra::orderBy('fecha')
         ->get();
-        $datos['productos_compra'] = array();
-        
-        foreach($datos['compras']->toArray() as $compra){
-            $productos = DetalleOrden::addSelect(['nombre_producto' => Producto::select('nombre')
-                ->whereColumn('producto_id', 'productos.id')])
-            ->where('compra_id', $compra['id'])
-            ->orderBy('nombre_producto')
-            ->get();
-
-            $datos['productos_compra'][$compra['id']] = $productos;
-        }
 
         return view('compras.index', $datos);
     }
