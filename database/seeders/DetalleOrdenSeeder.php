@@ -16,16 +16,19 @@ class DetalleOrdenSeeder extends Seeder
         DB::table('detalle_orden')->insert([
             'compra_id' => 1,
             'producto_id' => 1,
+            'talle' => 'S',
             'cantidad' => 4
         ]);
         DB::table('detalle_orden')->insert([
             'compra_id' => 1,
             'producto_id' => 6,
+            'talle' => 'M',
             'cantidad' => 1
         ]);
         DB::table('detalle_orden')->insert([
             'compra_id' => 1,
             'producto_id' => 2,
+            'talle' => 'XL',
             'cantidad' => 2
         ]);
 

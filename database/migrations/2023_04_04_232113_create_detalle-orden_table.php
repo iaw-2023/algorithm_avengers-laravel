@@ -3,6 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use App\Models\Producto;
 
 return new class extends Migration
 {
@@ -16,6 +17,7 @@ return new class extends Migration
             $table->unsignedBigInteger('compra_id');
             $table->unsignedBigInteger('producto_id');
             $table->unsignedTinyInteger('cantidad');
+            $table->enum('talle', Producto::getTallesValidos());
             $table->timestamps();
 
             $table->foreign('compra_id')->references('id')->on('compras');
