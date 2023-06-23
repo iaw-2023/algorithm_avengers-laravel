@@ -9,7 +9,9 @@ use App\Models\Producto;
 class CategoriaController extends Controller
 {
     public function index(){
-        $datos['categorias'] = Categoria::where('activo', true)->get();
+        $datos['categorias'] = Categoria::where('activo', true)
+            ->orderBy('nombre')
+            ->get();
 
         return view('categorias.index', $datos);
     }
