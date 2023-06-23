@@ -31,7 +31,7 @@
                 <td>{{ $cliente->email }}</td>
                 <td>{{ $cliente->telefono }}</td>
                 <td>{{ $cliente->domicilio }}</td>
-                <td>{{ $cant_compras[$cliente->id] }}</td>
+                <td>{{ $cliente->compras->count() }}</td>
             </tr>
             @endforeach
         </tbody>
