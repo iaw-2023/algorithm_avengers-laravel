@@ -68,6 +68,7 @@ Route::delete('clientes/{id}', [ClienteController::class, 'destroy']);
 Route::get('categorias/{id}', function(string $id){
     return new CategoriaResource(Categoria::findOrFail($id));
 });
+Route::get('categorias/{id}/productos', [CategoriaController::class, 'getProductos']);
 Route::get('categorias', function(){
     return CategoriaResource::collection(Categoria::all());
 });
