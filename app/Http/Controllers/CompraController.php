@@ -17,8 +17,8 @@ class CompraController extends Controller
         
         foreach($datos['compras']->toArray() as $compra){
             $productos = DetalleOrden::addSelect(['nombre_producto' => Producto::select('nombre')
-                ->whereColumn('id_producto', 'productos.id')])
-            ->where('id_compra', $compra['id'])
+                ->whereColumn('producto_id', 'productos.id')])
+            ->where('compra_id', $compra['id'])
             ->orderBy('nombre_producto')
             ->get();
 
@@ -43,13 +43,13 @@ class CompraController extends Controller
         // calculo el precio de la compra en base a los productos que la componen
         $precio = 0.0;
         foreach($detalle as $item){
-            $precio_producto = Producto::select('precio')->where('id', $item['id_producto'])->first();
+            $precio_producto = Producto::select('precio')->where('id', $item['producto_id'])->first();
             $precio += (float) $precio_producto['precio'] * $item['cantidad'];
         
             $detalle_orden = DetalleOrden::create(
                 [
-                'id_compra' => $id_compra,
-                'id_producto' => $item['id_producto'],
+                'compra_id' => $id_compra,
+                'producto_id' => $item['producto_id'],
                 'cantidad' => $item['cantidad'],
                 ]
             );
@@ -59,7 +59,7 @@ class CompraController extends Controller
         // actualizo la compra con su precio
         Compra::where('id', $id_compra)->update(['precio' => $precio]);
         
-        return Compra::select('id', 'fecha', 'precio', 'id_cliente', 'direccion_entrega')
+        return Compra::select('id', 'fecha', 'precio', 'cliente_id', 'direccion_entrega')
             ->where('id', $id_compra)
             ->first();
     }

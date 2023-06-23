@@ -27,11 +27,13 @@
                 <th scope="row">{{ $compra->id }}</th>
                 <td>{{ $compra->fecha }}</td>
                 <td>${{ number_format($compra->precio, 2, ","," ") }}</td>
-                <td>
+                <td>{{ $compra->detalles }}</td>
+
+               <!-- <td>
                     @foreach($productos_compra[$compra->id] as $prod)
                         <p>{{ $prod->nombre_producto }} ({{ $prod->cantidad }})</p>
                     @endforeach
-                </td>
+                </td>-->
                 <td>{{ $compra->email_cliente }}</td>
             </tr>
             @endforeach
