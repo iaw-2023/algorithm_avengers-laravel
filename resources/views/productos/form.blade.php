@@ -26,7 +26,7 @@
 <div class="input-group mb-3">
     <span class="input-group-text">Precio</span>
     <span class="input-group-text">$</span>
-    <input type="number" step="0.01" class="form-control" aria-label="Precio en pesos, con punto y dos decimales" name="precio" value="{{ isset($producto->precio) ? $producto->precio : '' }}" required>
+    <input type="number" min="0" step="0.01" class="form-control" aria-label="Precio en pesos, con punto y dos decimales" name="precio" value="{{ isset($producto->precio) ? $producto->precio : '' }}" required>
 </div>
 
     <div class="input-group mb-3">
@@ -52,13 +52,13 @@
 <div class="input-group mb-3">
     <span class="input-group-text">Categorías</span>    
     
-    <select required class="form-select" name="categoria">
-        @if(!isset($producto->categoria))
+    <select required class="form-select" name="categoria_id">
+        @if(!isset($producto->categoria_id))
             <option selected value="">Seleccione una categoría</option>    
         @endif  
         
         @foreach($total_categorias as $cats)
-            @if(isset($producto->categoria) && ( $producto->categoria == $cats->id ))
+            @if(isset($producto->categoria_id) && ( $producto->categoria_id == $cats->id ))
                 <option selected value="{{ $cats->id }}">{{ $cats->nombre }}</option>    
             @else
                 <option value="{{ $cats->id }}">{{ $cats->nombre }}</option>
