@@ -26,14 +26,14 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  *              example="Buzo estampado en la espalda"
  *          ),
  *          @OA\Property(
- *              property="precio",
- *              type="number",
- *              example=1234.56
- *          ),
- *          @OA\Property(
  *              property="imagen",
  *              type="string",
  *              example="www.sitio.com/imagen.jpg"
+ *          ),
+ *          @OA\Property(
+ *              property="precio",
+ *              type="number",
+ *              example=1234.56
  *          ),
  *          @OA\Property(
  *              property="talles",

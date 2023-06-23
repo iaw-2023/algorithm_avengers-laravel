@@ -655,6 +655,11 @@
                     "producto_id": {
                         "$ref": "#/components/schemas/Producto/properties/id"
                     },
+                    "talle": {
+                        "description": "Talles válidos: 'XS','S','M','L','XL','XXL','XXXL','XXXXL','XXXXXL'",
+                        "type": "string",
+                        "example": "XL"
+                    },
                     "cantidad": {
                         "type": "integer",
                         "example": 2
@@ -679,13 +684,13 @@
                         "type": "string",
                         "example": "Buzo estampado en la espalda"
                     },
-                    "precio": {
-                        "type": "number",
-                        "example": 1234.56
-                    },
                     "imagen": {
                         "type": "string",
                         "example": "www.sitio.com/imagen.jpg"
+                    },
+                    "precio": {
+                        "type": "number",
+                        "example": 1234.56
                     },
                     "talles": {
                         "type": "string",

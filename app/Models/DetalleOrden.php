@@ -20,6 +20,12 @@ use Illuminate\Database\Eloquent\Relations\HasOne;
  *              ref="#/components/schemas/Producto/properties/id"
  *          ),
  *          @OA\Property(
+ *              property="talle",
+ *              type="string",
+ *              example="XL",
+ *              description="Talles válidos: 'XS','S','M','L','XL','XXL','XXXL','XXXXL','XXXXXL'"
+ *          ),
+ *          @OA\Property(
  *              property="cantidad",
  *              type="integer",
  *              example=2
