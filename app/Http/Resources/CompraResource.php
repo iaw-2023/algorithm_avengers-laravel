@@ -119,13 +119,18 @@ class CompraResource extends JsonResource
             'precio' => $this->precio,
             'fecha' => $this->fecha,
             'email_cliente' => $this->email_cliente,
-            'detalle' => DetalleOrden::select('id', 'id_producto', 'cantidad')
+            /* 
+                en esta consulta no hice uso de la relaciones de Eloquent
+                porque quiero que en la API el detalle sea un objeto con las
+                columnas seleccionadas
+            */
+            'detalle' => DetalleOrden::select('id', 'producto_id', 'talle', 'cantidad')
             ->addSelect(
                 ['nombre_producto' => Producto::select('nombre')
-                    ->whereColumn('id_producto', 'productos.id')])
-                ->where('id_compra',$this->id)
+                    ->whereColumn('producto_id', 'productos.id')])
+                ->where('compra_id',$this->id)
                 ->orderBy('nombre_producto')
                 ->get()
-        ];;
+        ];
     }
 }

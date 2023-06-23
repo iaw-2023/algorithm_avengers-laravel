@@ -22,8 +22,7 @@ class CompraController extends Controller
         $compra = Compra::create([
             'precio' => -1,
             'fecha' => date('Y-m-d'),
-            'direccion_entrega' => $request->input('direccion_entrega'),
-            'id_cliente' => $request->input('id_cliente'),
+            'email_cliente' => $request->input('email_cliente'),
         ]);
         $id_compra = $compra['id'];
         
@@ -39,6 +38,7 @@ class CompraController extends Controller
                 [
                 'compra_id' => $id_compra,
                 'producto_id' => $item['producto_id'],
+                'talle' => $item['talle'],
                 'cantidad' => $item['cantidad'],
                 ]
             );
@@ -48,7 +48,7 @@ class CompraController extends Controller
         // actualizo la compra con su precio
         Compra::where('id', $id_compra)->update(['precio' => $precio]);
         
-        return Compra::select('id', 'fecha', 'precio', 'cliente_id', 'direccion_entrega')
+        return Compra::select('id', 'fecha', 'precio', 'email_cliente')
             ->where('id', $id_compra)
             ->first();
     }
