@@ -358,12 +358,9 @@
                         "application/json": {
                             "schema": {
                                 "properties": {
-                                    "id_cliente": {
-                                        "$ref": "#/components/schemas/Cliente/properties/id"
-                                    },
-                                    "direccion_entrega": {
+                                    "email_cliente": {
                                         "type": "string",
-                                        "example": "Juan Manuel de Rosas 1845"
+                                        "example": "jose_sanmartin@example.com"
                                     },
                                     "detalle": {
                                         "type": "array",
@@ -371,6 +368,11 @@
                                             "properties": {
                                                 "id_producto": {
                                                     "$ref": "#/components/schemas/Producto/properties/id"
+                                                },
+                                                "talle": {
+                                                    "description": "Talles válidos: 'XS','S','M','L','XL','XXL','XXXL','XXXXL','XXXXXL'",
+                                                    "type": "string",
+                                                    "example": "XL"
                                                 },
                                                 "cantidad": {
                                                     "type": "integer",

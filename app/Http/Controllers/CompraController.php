@@ -24,32 +24,36 @@ class CompraController extends Controller
             'fecha' => date('Y-m-d'),
             'email_cliente' => $request->input('email_cliente'),
         ]);
-        $id_compra = $compra['id'];
+        $compra_id = $compra['id'];
         
         $detalle = $request->input('detalle');
         
         // calculo el precio de la compra en base a los productos que la componen
-        $precio = 0.0;
+        $precio_compra = 0.0;
         foreach($detalle as $item){
-            $precio_producto = Producto::select('precio')->where('id', $item['producto_id'])->first();
-            $precio += (float) $precio_producto['precio'] * $item['cantidad'];
+            $precio_producto = Producto::select('precio')
+                ->where('id', $item['producto_id'])
+                ->first();
+            $precio_compra += (float) $precio_producto['precio'] * $item['cantidad'];
         
-            $detalle_orden = DetalleOrden::create(
+            $detalle_orden = new DetalleOrden(
                 [
-                'compra_id' => $id_compra,
                 'producto_id' => $item['producto_id'],
                 'talle' => $item['talle'],
                 'cantidad' => $item['cantidad'],
                 ]
             );
+
+            $compra->detalles()->save($detalle_orden);
             
         }
 
         // actualizo la compra con su precio
-        Compra::where('id', $id_compra)->update(['precio' => $precio]);
+        $compra->precio = $precio_compra;
+        $compra->save();
         
         return Compra::select('id', 'fecha', 'precio', 'email_cliente')
-            ->where('id', $id_compra)
+            ->where('id', $compra_id)
             ->first();
     }
 }

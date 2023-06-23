@@ -72,14 +72,9 @@ class CompraResource extends JsonResource
      *             mediaType="application/json",
      *             @OA\Schema(
      *                @OA\Property(
-     *                     property="id_cliente",
-     *                     ref="#/components/schemas/Cliente/properties/id",
-     *                     example=2
-     *                ),
-     *                @OA\Property(
-     *                     property="direccion_entrega",
+     *                     property="email_cliente",
      *                     type="string",
-     *                     example="Juan Manuel de Rosas 1845"
+     *                     example="jose_sanmartin@example.com"
      *                 ),
      *                 @OA\Property(
      *                     property="detalle",
@@ -90,6 +85,12 @@ class CompraResource extends JsonResource
      *                                property="id_producto",
      *                                ref="#/components/schemas/Producto/properties/id",
      *                                example=2
+     *                          ),
+     *                          @OA\Property(
+     *                              property="talle",
+     *                              type="string",
+     *                              example="XL",
+     *                              description="Talles válidos: 'XS','S','M','L','XL','XXL','XXXL','XXXXL','XXXXXL'"
      *                          ),
      *                          @OA\Property(
      *                               property="cantidad",
