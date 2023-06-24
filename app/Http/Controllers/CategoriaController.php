@@ -9,16 +9,9 @@ use App\Models\Producto;
 class CategoriaController extends Controller
 {
     public function index(){
-        $datos['categorias'] = Categoria::where('activo', true)->get();
-        $datos['cantidades'] = array();
-        
-        /*
-            En el arreglo 'cantidades' guardo la cantidad de productos asociados a cada categoría
-        */
-        foreach ($datos['categorias']->toArray() as $cat ){
-            $cantidad = Producto::where('categoria', $cat['id'])->count();
-            $datos['cantidades'][$cat['id']] = $cantidad;
-        }
+        $datos['categorias'] = Categoria::where('activo', true)
+            ->orderBy('nombre')
+            ->get();
 
         return view('categorias.index', $datos);
     }
@@ -53,6 +46,13 @@ class CategoriaController extends Controller
         $elemento->save();
 
         return redirect('categorias');
+    }
+
+    public function getProductos($id){        
+        return Producto::select('id', 'nombre', 'descripcion', 'precio', 'imagen', 'talles')
+            ->where('categoria_id', $id)
+            ->where('activo', true)
+            ->get();
     }
 }
 

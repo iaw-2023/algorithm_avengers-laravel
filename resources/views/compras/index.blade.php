@@ -19,7 +19,6 @@
                 <th scope="col">Precio</th>
                 <th scope="col">Productos</th>
                 <th scope="col">Cliente</th>
-                <th scope="col">Dirección de entrega</th>
             </tr>
         </thead>
         <tbody>
@@ -29,12 +28,11 @@
                 <td>{{ $compra->fecha }}</td>
                 <td>${{ number_format($compra->precio, 2, ","," ") }}</td>
                 <td>
-                    @foreach($productos_compra[$compra->id] as $prod)
-                        <p>{{ $prod->nombre_producto }} ({{ $prod->cantidad }})</p>
+                    @foreach($compra->detalles as $det)
+                        <p>{{ $det->producto->nombre }} [{{ $det->talle }}] ({{ $det->cantidad }})</p>
                     @endforeach
                 </td>
                 <td>{{ $compra->email_cliente }}</td>
-                <td>{{ $compra->direccion_entrega }}</td>
             </tr>
             @endforeach
         </tbody>

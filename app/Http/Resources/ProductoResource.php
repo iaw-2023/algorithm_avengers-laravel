@@ -75,9 +75,16 @@ class ProductoResource extends JsonResource
                 'id' => $this->id,
                 'nombre' => $this->nombre,
                 'descripcion' => $this->descripcion,
+                'imagen' => $this->imagen,
                 'precio' => $this->precio,
+                'talles' => $this->talles,
+                /* 
+                    en esta consulta no hice uso de la relaciones de Eloquent
+                    porque quiero que en la API el la categoría sea un objeto con
+                    las columnas seleccionadas
+                */
                 'categoria' => Categoria::select('id','nombre')
-                    ->where('id', $this->categoria)
+                    ->where('id', $this->categoria_id)
                     ->first()
             ];
         }

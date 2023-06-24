@@ -22,3 +22,5 @@ yarn-error.log
 *.drawio.bkp
 *.drawio.dtmp
 .vercel
+.env.supa
+.env.example

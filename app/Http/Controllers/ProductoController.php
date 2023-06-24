@@ -9,9 +9,7 @@ use App\Models\Categoria;
 class ProductoController extends Controller
 {
     public function index(){
-        $datos['productos'] = Producto::addSelect(['categoria_nombre' => Categoria::select('nombre')
-                ->whereColumn('categoria', 'categorias.id')])
-            ->where('activo', true)
+        $datos['productos'] = Producto::where('activo', true)
             ->orderBy('id', 'ASC')
             ->get();
 
@@ -30,15 +28,15 @@ class ProductoController extends Controller
         $campos = [
             'nombre' => 'required|string',
             'descripcion' => 'required|string',
-            'precio' => 'required|decimal:2',
+            'precio' => 'required|min:0',
             'imagen' => 'required|active_url|',
             'talles' => ['required','string','regex:/('.implode(')?,?(', $talles_validos).')?/'],
-            'categoria' => 'required|integer|min:1'
+            'categoria_id' => 'required|integer'
         ];
 
         $mensaje = [
             'required' => 'El atributo :attribute es requerido',
-            'min' => 'La categoría es requerida',
+            'min' => 'El precio debe ser un número positivo',
             'active_url' => 'La URL de la imagen debe ser una URL activa'
         ];
 
@@ -62,10 +60,6 @@ class ProductoController extends Controller
         $datos['producto'] = Producto::findOrFail($id);
         $datos['talles_validos'] = Producto::getTallesValidos();
         $producto = $datos['producto'];
-
-        $datos['categoria'] = Categoria::select('nombre')
-            ->where('id', $producto['categoria'])
-            ->first();
         $datos['total_categorias'] = Categoria::where('activo', true)
             ->get();
 

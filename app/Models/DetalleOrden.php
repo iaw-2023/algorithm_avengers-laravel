@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 
 /**
  * @OA\Schema(
@@ -15,13 +16,14 @@ use Illuminate\Database\Eloquent\Model;
  *              example=4
  *          ),
  *          @OA\Property(
- *              property="id_compra",
- *              type="integer",
- *              example=1
+ *              property="producto_id",
+ *              ref="#/components/schemas/Producto/properties/id"
  *          ),
  *          @OA\Property(
- *              property="id_producto",
- *              ref="#/components/schemas/Producto/properties/id"
+ *              property="talle",
+ *              type="string",
+ *              example="XL",
+ *              description="Talles válidos: 'XS','S','M','L','XL','XXL','XXXL','XXXXL','XXXXXL'"
  *          ),
  *          @OA\Property(
  *              property="cantidad",
@@ -47,4 +49,9 @@ class DetalleOrden extends Model
      * @var array
      */
     protected $guarded = ['id'];
+
+    public function producto(): hasOne{
+        return $this->hasOne(Producto::class, 'id', 'producto_id');
+    }
+
 }

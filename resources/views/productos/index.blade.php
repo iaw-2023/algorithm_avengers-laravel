@@ -38,7 +38,7 @@
                         </span>
                     </td>
                     <td>{{ $prod->talles }}</td>
-                    <td> {{ $prod->categoria_nombre }} </td>
+                    <td> {{ $prod->categoria->nombre }} </td>
                     <td><img src="{{ $prod->imagen }}" class="rounded mx-auto d-block" alt="No es posible cargar la imagen" id="imagen"</td>
                     <td>
                         <div class="btn-group-vertical" role="group" aria-label="Vertical button group">

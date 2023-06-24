@@ -18,11 +18,11 @@ return new class extends Migration
             $table->float('precio', 8, 2);
             $table->string('imagen');
             $table->string('talles');
-            $table->unsignedBigInteger('categoria');
+            $table->unsignedBigInteger('categoria_id');
             $table->boolean('activo')->default(true);
             $table->timestamps();
 
-            $table->foreign('categoria')->references('id')->on('categorias');
+            $table->foreign('categoria_id')->references('id')->on('categorias');
         });
     }
 

@@ -18,8 +18,7 @@ class ComprasSeeder extends Seeder
         DB::table('compras')->insert([
             'precio' => 86997.96,
             'fecha' => date("Y-m-d"),
-            'direccion_entrega' => 'Lomas de Santa Anita 353',
-            'id_cliente' => 1
+            'email_cliente' => "juan_perez@outlook.com"
         ]);
     }
 }

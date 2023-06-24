@@ -15,11 +15,8 @@ return new class extends Migration
             $table->id();
             $table->float('precio', 8, 2);
             $table->date('fecha');
-            $table->string('direccion_entrega');
-            $table->unsignedBigInteger('id_cliente');
+            $table->string('email_cliente');
             $table->timestamps();
-
-            $table->foreign('id_cliente')->references('id')->on('clientes');
         });
     }
 

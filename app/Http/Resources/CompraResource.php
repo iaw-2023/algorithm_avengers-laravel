@@ -72,14 +72,9 @@ class CompraResource extends JsonResource
      *             mediaType="application/json",
      *             @OA\Schema(
      *                @OA\Property(
-     *                     property="id_cliente",
-     *                     ref="#/components/schemas/Cliente/properties/id",
-     *                     example=2
-     *                ),
-     *                @OA\Property(
-     *                     property="direccion_entrega",
+     *                     property="email_cliente",
      *                     type="string",
-     *                     example="Juan Manuel de Rosas 1845"
+     *                     example="jose_sanmartin@example.com"
      *                 ),
      *                 @OA\Property(
      *                     property="detalle",
@@ -90,6 +85,12 @@ class CompraResource extends JsonResource
      *                                property="id_producto",
      *                                ref="#/components/schemas/Producto/properties/id",
      *                                example=2
+     *                          ),
+     *                          @OA\Property(
+     *                              property="talle",
+     *                              type="string",
+     *                              example="XL",
+     *                              description="Talles válidos: 'XS','S','M','L','XL','XXL','XXXL','XXXXL','XXXXXL'"
      *                          ),
      *                          @OA\Property(
      *                               property="cantidad",
@@ -104,7 +105,7 @@ class CompraResource extends JsonResource
      *      @OA\Response(
      *          response="200",
      *          description="Operación realizada con éxito",
-     *          @OA\JsonContent(ref="#/components/schemas/Compra")
+     *          @OA\JsonContent(ref="#/components/schemas/CompraPost")
      *      ),
      *      @OA\Response(
      *          response="default",
@@ -118,16 +119,19 @@ class CompraResource extends JsonResource
             'id' => $this->id,
             'precio' => $this->precio,
             'fecha' => $this->fecha,
-            'direccion_entrega' => $this->direccion_entrega,
-            'detalle' => DetalleOrden::select('id', 'id_compra', 'id_producto', 'cantidad')
+            'email_cliente' => $this->email_cliente,
+            /* 
+                en esta consulta no hice uso de la relaciones de Eloquent
+                porque quiero que en la API el detalle sea un objeto con las
+                columnas seleccionadas
+            */
+            'detalle' => DetalleOrden::select('id', 'producto_id', 'talle', 'cantidad')
             ->addSelect(
                 ['nombre_producto' => Producto::select('nombre')
-                    ->whereColumn('id_producto', 'productos.id')])
-                ->where('id_compra',$this->id)
+                    ->whereColumn('producto_id', 'productos.id')])
+                ->where('compra_id',$this->id)
                 ->orderBy('nombre_producto')
-                ->get(),
-            'cliente' => Cliente::select('id','email', 'nombre')
-                ->where('id', $this->id_cliente)->first()
-        ];;
+                ->get()
+        ];
     }
 }

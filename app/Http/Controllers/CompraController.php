@@ -11,21 +11,8 @@ use App\Models\Producto;
 class CompraController extends Controller
 {
     public function index(){
-        $datos['compras'] = Compra::addSelect(['email_cliente' => Cliente::select('email')
-            ->whereColumn('id_cliente', 'clientes.id')])
-        ->orderBy('fecha')
+        $datos['compras'] = Compra::orderBy('fecha')
         ->get();
-        $datos['productos_compra'] = array();
-        
-        foreach($datos['compras']->toArray() as $compra){
-            $productos = DetalleOrden::addSelect(['nombre_producto' => Producto::select('nombre')
-                ->whereColumn('id_producto', 'productos.id')])
-            ->where('id_compra', $compra['id'])
-            ->orderBy('nombre_producto')
-            ->get();
-
-            $datos['productos_compra'][$compra['id']] = $productos;
-        }
 
         return view('compras.index', $datos);
     }
@@ -35,34 +22,38 @@ class CompraController extends Controller
         $compra = Compra::create([
             'precio' => -1,
             'fecha' => date('Y-m-d'),
-            'direccion_entrega' => $request->input('direccion_entrega'),
-            'id_cliente' => $request->input('id_cliente'),
+            'email_cliente' => $request->input('email_cliente'),
         ]);
-        $id_compra = $compra['id'];
+        $compra_id = $compra['id'];
         
         $detalle = $request->input('detalle');
         
         // calculo el precio de la compra en base a los productos que la componen
-        $precio = 0.0;
+        $precio_compra = 0.0;
         foreach($detalle as $item){
-            $precio_producto = Producto::select('precio')->where('id', $item['id_producto'])->first();
-            $precio += (float) $precio_producto['precio'] * $item['cantidad'];
+            $precio_producto = Producto::select('precio')
+                ->where('id', $item['producto_id'])
+                ->first();
+            $precio_compra += (float) $precio_producto['precio'] * $item['cantidad'];
         
-            $detalle_orden = DetalleOrden::create(
+            $detalle_orden = new DetalleOrden(
                 [
-                'id_compra' => $id_compra,
-                'id_producto' => $item['id_producto'],
+                'producto_id' => $item['producto_id'],
+                'talle' => $item['talle'],
                 'cantidad' => $item['cantidad'],
                 ]
             );
+
+            $compra->detalles()->save($detalle_orden);
             
         }
 
         // actualizo la compra con su precio
-        Compra::where('id', $id_compra)->update(['precio' => $precio]);
+        $compra->precio = $precio_compra;
+        $compra->save();
         
-        return Compra::select('id', 'fecha', 'precio', 'id_cliente', 'direccion_entrega')
-            ->where('id', $id_compra)
+        return Compra::select('id', 'fecha', 'precio', 'email_cliente')
+            ->where('id', $compra_id)
             ->first();
     }
 }
