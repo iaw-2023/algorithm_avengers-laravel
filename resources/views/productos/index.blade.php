@@ -62,5 +62,7 @@
         </form>
     </x-ma_layout>
     </body>
+
+    {{$productos->links()}}
     
 </html>
