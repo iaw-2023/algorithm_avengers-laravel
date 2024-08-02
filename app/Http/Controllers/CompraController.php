@@ -12,7 +12,7 @@ class CompraController extends Controller
 {
     public function index(){
         $datos['compras'] = Compra::orderBy('fecha')
-        ->get();
+        ->paginate(10);
 
         return view('compras.index', $datos);
     }

@@ -37,6 +37,8 @@
             @endforeach
         </tbody>
     </table>
+
+    {{$compras->links()}}
 </x-ma_layout>
 </body>
 </html>

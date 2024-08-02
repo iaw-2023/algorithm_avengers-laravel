@@ -11,7 +11,7 @@ class ProductoController extends Controller
     public function index(){
         $datos['productos'] = Producto::where('activo', true)
             ->orderBy('id', 'ASC')
-            ->paginate(5);
+            ->paginate(10);
 
         return view('productos.index', $datos);
     }
