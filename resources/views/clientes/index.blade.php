@@ -36,6 +36,8 @@
             @endforeach
         </tbody>
     </table>
+
+    {{$clientes->links()}}
 </x-ma_layout>
 </body>
 </html>
