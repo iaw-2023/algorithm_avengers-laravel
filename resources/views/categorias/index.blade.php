@@ -54,6 +54,8 @@
         <form action="{{ url('/categorias/create') }}" method="get">
             <input type="submit" class="btn btn-primary" value="+ Nueva categoría">
         </form>
+
+        {{$categorias->links()}}
     </x-ma_layout>
     </body>
 </html>
