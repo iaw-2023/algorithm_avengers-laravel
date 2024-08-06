@@ -12,7 +12,7 @@ class ClienteController extends Controller
         $datos['clientes'] = Cliente::select('id','email', 'nombre', 'telefono','domicilio')
             ->where('activo', true)
             ->orderBy('nombre', 'ASC')
-            ->get();
+            ->paginate(15);
         $datos['cant_compras'] = array();
 
         return view('clientes.index', $datos);

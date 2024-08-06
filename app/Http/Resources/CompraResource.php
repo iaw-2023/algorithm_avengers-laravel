@@ -82,7 +82,7 @@ class CompraResource extends JsonResource
      *                     @OA\Items(
      *                          type="object",
      *                          @OA\Property(
-     *                                property="id_producto",
+     *                                property="producto_id",
      *                                ref="#/components/schemas/Producto/properties/id",
      *                                example=2
      *                          ),

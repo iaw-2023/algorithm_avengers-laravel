@@ -15,7 +15,7 @@
 - [ ] Implementar insersiones y creaciones por API
 
 ### Vistas
-- [ ] Paginar todas las vistas
+- [X] Paginar todas las vistas
 - [ ] Recuperar contraseña
 
 ### Preguntas
@@ -48,3 +48,10 @@ JSX es como un HTML
     Add Prettier? Yes
 
 BAiRWPDWyoR6R7SR
+
+## Para el final (15 puntos)
+- [ ] Autenticación de usuarios en JS (6 puntos)
+- [ ] Mercado pago (4 puntos)
+- [ ] Administración de archivos (2 puntos)
+- [ ] Accesibilidad
+- [ ] PWA

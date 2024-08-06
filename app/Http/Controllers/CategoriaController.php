@@ -11,7 +11,7 @@ class CategoriaController extends Controller
     public function index(){
         $datos['categorias'] = Categoria::where('activo', true)
             ->orderBy('nombre')
-            ->get();
+            ->paginate(10);
 
         return view('categorias.index', $datos);
     }
