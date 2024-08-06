@@ -41,7 +41,7 @@
                     <td> {{ $prod->categoria->nombre }} </td>
                     <td><img src="{{ $prod->imagen }}" class="rounded mx-auto d-block" alt="No es posible cargar la imagen" id="imagen"</td>
                     <td>
-                        <div class="btn-group-vertical" role="group" aria-label="Vertical button group">
+                        <div class="btn-group-vertical" role="group">
                             <form action="{{ url('/productos/'.$prod->id.'/edit') }}">
                                 <input type="submit" class="btn btn-primary" value="Editar">
                             </form>
@@ -57,9 +57,11 @@
                 @endforeach
             </tbody>
         </table>
-        <form action="{{ url('/productos/create') }}" method="get">
-            <input type="submit" class="btn btn-primary" value="+ Nuevo producto">
-        </form>
+        <div class="position-fixed bottom-0 start-0 m-3">
+            <form action="{{ url('/productos/create') }}" method="get">
+                <input type="submit" class="btn btn-primary" value="+ Nuevo producto">
+            </form>
+        </div>
     </x-ma_layout>
     </body>
 

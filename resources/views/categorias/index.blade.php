@@ -51,9 +51,11 @@
                 @endforeach
             </tbody>
         </table>
-        <form action="{{ url('/categorias/create') }}" method="get">
-            <input type="submit" class="btn btn-primary" value="+ Nueva categoría">
-        </form>
+        <div class="position-fixed bottom-0 start-0 m-3">
+            <form action="{{ url('/categorias/create') }}" method="get">
+                <input type="submit" class="btn btn-primary" value="+ Nueva categoría">
+            </form>
+        </div>
 
         {{$categorias->links()}}
     </x-ma_layout>
