@@ -15,7 +15,7 @@
 - [ ] Implementar insersiones y creaciones por API
 
 ### Vistas
-- [ ] Paginar todas las vistas
+- [X] Paginar todas las vistas
 - [ ] Recuperar contraseña
 
 ### Preguntas
