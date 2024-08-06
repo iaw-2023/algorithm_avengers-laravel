@@ -29,6 +29,7 @@
 
             <!-- Page Content -->
             <main>
+                este es el layout
                 {{ $slot }}
             </main>
         </div>

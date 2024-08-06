@@ -8,6 +8,8 @@
     </x-slot>
 
     <div class="container-sm">
-        {{ __("You're logged in!") }}
+        <h4>
+            <div>¡Bienvenido {{ Auth::user()->name }}!</div>
+        </h4>
     </div>
 </x-ma_layout>
