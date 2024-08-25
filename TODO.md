@@ -50,6 +50,8 @@ JSX es como un HTML
 BAiRWPDWyoR6R7SR
 
 ## Para el final (15 puntos)
+- [ ] Evitar que la verificación borre todos los campos cuando se ingresa un campo erróneo
+- [ ] Checkeo de talles por backend
 - [ ] Autenticación de usuarios en JS (6 puntos)
 - [ ] Mercado pago (4 puntos)
 - [ ] Administración de archivos (2 puntos)
