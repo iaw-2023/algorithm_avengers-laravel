@@ -29,13 +29,24 @@
     <input type="number" min="0" step="0.01" class="form-control" aria-label="Precio en pesos, con punto y dos decimales" name="precio" value="{{ isset($producto->precio) ? $producto->precio : '' }}" required>
 </div>
 
-    <div class="input-group mb-3">
+
+<div class="input-group mb-3">
+    <span class="input-group-text" id="basic-addon3">Imagen</span>
+    <input type="url" class="form-control" id="basic-url" aria-describedby="basic-addon3 basic-addon4" name="imagen" value="{{ isset($producto->imagen) ? $producto->imagen : '' }}">
+    @if(isset($producto->imagen))
+    <img src="{{ $producto->imagen }}" class="rounded float-end" alt="" style="max-width:100px;width:100%">
+    @endif
+    <input type="file" class="custom-file-input" id="validatedCustomFile" required>
+</div>
+
+
+    <!-- <div class="input-group mb-3">
         <span class="input-group-text" id="basic-addon3">URL imagen</span>
         <input type="url" class="form-control" id="basic-url" aria-describedby="basic-addon3 basic-addon4" name="imagen" value="{{ isset($producto->imagen) ? $producto->imagen : '' }}">
         @if(isset($producto->imagen))
         <img src="{{ $producto->imagen }}" class="rounded float-end" alt="" style="max-width:100px;width:100%">
         @endif
-    </div>
+    </div> -->
     
 
 <div>

@@ -12,7 +12,7 @@
 - [X] Eliminar la tabla ProdCat
 
 ### API
-- [ ] Implementar insersiones y creaciones por API
+- [ ] Implementar inserciones y creaciones por API
 
 ### Vistas
 - [X] Paginar todas las vistas
