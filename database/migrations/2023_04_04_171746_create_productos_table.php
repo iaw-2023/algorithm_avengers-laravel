@@ -17,7 +17,7 @@ return new class extends Migration
             $table->text('descripcion')->nullable();
             $table->float('precio', 8, 2);
             $table->string('imagen');
-            $table->string('imagen_public_id')->default(0);
+            $table->string('imagen_public_id')->default("0");
             $table->string('talles');
             $table->unsignedBigInteger('categoria_id');
             $table->boolean('activo')->default(true);
