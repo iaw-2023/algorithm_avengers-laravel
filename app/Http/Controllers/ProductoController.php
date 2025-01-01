@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Producto;
 use App\Models\Categoria;
+use CloudinaryLabs\CloudinaryLaravel\Facades\Cloudinary;
 
 class ProductoController extends Controller
 {
@@ -29,7 +30,7 @@ class ProductoController extends Controller
             'nombre' => 'required|string',
             'descripcion' => 'required|string',
             'precio' => 'required|min:0',
-            'imagen' => 'required|active_url|',
+            'imagen' => 'required|image|max:2048',
             'talles' => ['required','string','regex:/('.implode(')?,?(', $talles_validos).')?/'],
             'categoria_id' => 'required|integer'
         ];
@@ -42,8 +43,18 @@ class ProductoController extends Controller
 
         $this->validate($request, $campos, $mensaje);
 
-        $datos = $request->except('_token');
-        Producto::insert($datos);
+        $cloudinaryImage = $request->file('image')->sotreInCloudinary('productos');
+        $cloudinaryUrl = $cloudinaryImage->getSecurePath();
+        $cloudinaryPublicId = $cloudinaryImage->getPublicId();
+
+        Producto::create([
+            'nombre' => $request->nombre,
+            'descripcion' => $request->descripcion,
+            'imagen' => $cloudinaryUrl,
+            'imagen_public_id' => $cloudinaryPublicId,
+            'talles' => $request->talles,
+            'categoria_id' => $request->categoria_id
+        ]);
         
         return redirect('productos');
     }
@@ -66,9 +77,27 @@ class ProductoController extends Controller
         return view('productos.edit', $datos);
     }
 
-    public function update(Request $request, $id){
+    public function update(Request $request, Product $product){
         $datos = request()->except(['_token', '_method']);
-        Producto::where('id', '=', $id)->update($datos);
+
+        if($request->hasFile('imagen')){
+            Cloudinary::destroy($product->imagen_public_id);
+            $cloudinaryImage = $request->file('imagen')->storeInCloudinary('productos');
+            $cloudinaryUrl = $cloudinaryImage->getSecurePath();
+            $cloudinaryPublicId = $cloudinaryImage->getPublicId();
+
+            $product->update([
+                'imagen' => $cloudinaryUrl,
+                'imagen_public_id' => $cloudinaryPublicId
+            ]);
+        }
+
+        $product->update([
+            'nombre' => $request->nombre,
+            'descripcion' => $request->descripcion,
+            'talles' => $request->talles,
+            'categoria_id' => $request->categoria_id
+        ]);
 
         return redirect('productos');
     }

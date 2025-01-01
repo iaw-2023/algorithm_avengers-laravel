@@ -57,3 +57,5 @@ BAiRWPDWyoR6R7SR
 - [ ] Administración de archivos (2 puntos)
 - [ ] Accesibilidad
 - [ ] PWA
+- [ ] Implementar eliminado suave
+- [ ] Actualizar documentación de PHP
