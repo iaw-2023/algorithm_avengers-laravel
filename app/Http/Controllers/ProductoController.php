@@ -42,15 +42,14 @@ class ProductoController extends Controller
 
         $this->validate($request, $campos, $mensaje);
 
-       /*  dd($request); */
-        $cloudinaryImage = $request->file('imagen')->storeOnCloudinary('productos');
-        /* $cloudinaryImage = cloudinary()->upload($request->file('imagen')->getRealPath()); */
+        $cloudinaryImage = $request->file('imagen')->storeOnCloudinary('produtos');
         $cloudinaryUrl = $cloudinaryImage->getSecurePath();
         $cloudinaryPublicId = $cloudinaryImage->getPublicId();
 
         Producto::create([
             'nombre' => $request->nombre,
             'descripcion' => $request->descripcion,
+            'precio' => $request->precio,
             'imagen' => $cloudinaryUrl,
             'imagen_public_id' => $cloudinaryPublicId,
             'talles' => $request->talles,

@@ -95,6 +95,7 @@ class Producto extends Model
     use HasFactory;
 
     protected static $TALLES_VALIDOS = ['XS','S','M','L','XL','XXL','XXXL','XXXXL','XXXXXL'];
+    protected $fillable = ['nombre','descripcion','precio','imagen','imagen_public_id','talles','categoria_id'];
 
     public static function getTallesValidos(){
         return self::$TALLES_VALIDOS;
