@@ -59,3 +59,4 @@ BAiRWPDWyoR6R7SR
 - [ ] PWA
 - [ ] Implementar eliminado suave
 - [ ] Actualizar documentación de PHP
+- [ ] Arreglar vista paginada

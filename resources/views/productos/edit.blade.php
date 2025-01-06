@@ -11,7 +11,7 @@
 </head>
 <body>
 <x-ma_layout>
-    <form action="{{ url('/productos/'.$producto->id) }}" method="post">
+    <form action="{{ url('/productos/'.$producto->id) }}" method="post" enctype="multipart/form-data">
         @csrf
         {{ method_field('PATCH') }}
         <legend>Editar producto</legend>

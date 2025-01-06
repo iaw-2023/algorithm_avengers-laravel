@@ -77,7 +77,9 @@ class ProductoController extends Controller
         return view('productos.edit', $datos);
     }
 
-    public function update(Request $request, Product $product){
+    public function update(Request $request, $id){
+        $talles_validos = Producto::getTallesValidos();
+        $product = Producto::findOrFail($id);
 
         $campos = [
             'nombre' => 'required|string',
@@ -91,6 +93,7 @@ class ProductoController extends Controller
         $mensaje = [
             'required' => 'El atributo :attribute es requerido',
             'min' => 'El precio debe ser un número positivo',
+            'image' => 'La imagen debe ser una imagen válida'
         ];
 
         $this->validate($request, $campos, $mensaje);
