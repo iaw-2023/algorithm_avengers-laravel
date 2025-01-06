@@ -30,25 +30,5 @@ class CategoriaSeeder extends Seeder
             'nombre' => 'Infancias',
             'descripcion' => 'Ropa especialmente diseñada para niños y niñas'
         ]);
-        DB::table('categorias')->insert([
-            'nombre' => 'Adultos',
-            'descripcion' => 'Ropa diseñada para adultos'
-        ]);
-        DB::table('categorias')->insert([
-            'nombre' => 'Remeras',
-            'descripcion' => 'Remeras manga corta'
-        ]);
-        DB::table('categorias')->insert([
-            'nombre' => 'Camisetas',
-            'descripcion' => 'Camisetas y remeras manga larga'
-        ]);
-        DB::table('categorias')->insert([
-            'nombre' => 'Buzos',
-            'descripcion' => 'Buzos y camisetas abrigadas'
-        ]);
-        DB::table('categorias')->insert([
-            'nombre' => 'Vestidos',
-            'descripcion' => 'Vestidos para femenidades'
-        ]);
     }
 }
