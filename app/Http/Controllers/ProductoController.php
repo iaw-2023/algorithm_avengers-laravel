@@ -42,7 +42,7 @@ class ProductoController extends Controller
 
         $this->validate($request, $campos, $mensaje);
 
-        $cloudinaryImage = $request->file('imagen')->storeOnCloudinary('produtos');
+        $cloudinaryImage = $request->file('imagen')->storeOnCloudinary('products');
         $cloudinaryUrl = $cloudinaryImage->getSecurePath();
         $cloudinaryPublicId = $cloudinaryImage->getPublicId();
 
@@ -78,11 +78,26 @@ class ProductoController extends Controller
     }
 
     public function update(Request $request, Product $product){
-        $datos = request()->except(['_token', '_method']);
+
+        $campos = [
+            'nombre' => 'required|string',
+            'descripcion' => 'required|string',
+            'precio' => 'required|min:0',
+            'imagen' => 'required|image|mimes:jpeg,jpg,png|max:2048',
+            'talles' => ['required','string','regex:/('.implode(')?,?(', $talles_validos).')?/'],
+            'categoria_id' => 'required|integer'
+        ];
+
+        $mensaje = [
+            'required' => 'El atributo :attribute es requerido',
+            'min' => 'El precio debe ser un número positivo',
+        ];
+
+        $this->validate($request, $campos, $mensaje);
 
         if($request->hasFile('imagen')){
             Cloudinary::destroy($product->imagen_public_id);
-            $cloudinaryImage = $request->file('imagen')->storeOnCloudinary('productos');
+            $cloudinaryImage = $request->file('imagen')->storeOnCloudinary('products');
             $cloudinaryUrl = $cloudinaryImage->getSecurePath();
             $cloudinaryPublicId = $cloudinaryImage->getPublicId();
 
