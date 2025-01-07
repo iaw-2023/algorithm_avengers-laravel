@@ -85,15 +85,13 @@ class ProductoController extends Controller
             'nombre' => 'required|string',
             'descripcion' => 'required|string',
             'precio' => 'required|min:0',
-            'imagen' => 'required|image|mimes:jpeg,jpg,png|max:2048',
             'talles' => ['required','string','regex:/('.implode(')?,?(', $talles_validos).')?/'],
             'categoria_id' => 'required|integer'
         ];
 
         $mensaje = [
             'required' => 'El atributo :attribute es requerido',
-            'min' => 'El precio debe ser un número positivo',
-            'image' => 'La imagen debe ser una imagen válida'
+            'min' => 'El precio debe ser un número positivo'
         ];
 
         $this->validate($request, $campos, $mensaje);

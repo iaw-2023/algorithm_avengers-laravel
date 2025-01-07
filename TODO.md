@@ -52,8 +52,10 @@ BAiRWPDWyoR6R7SR
 ## Para el final (15 puntos)
 - [ ] Evitar que la verificación borre todos los campos cuando se ingresa un campo erróneo
 - [ ] Checkeo de talles por backend
-- [ ] Implementar eliminado suave
-- [ ] Actualizar documentación de PHP
+- [X] Implementar eliminado suave
+- [ ] Previsualizar imágenes antes de guardarlas
+- [ ] No puedo guardar el producto si no cambio la imagen
+- [ ] Actualizar documentación de Swagger
 - [ ] Arreglar vista paginada
 - [ ] Autenticación de usuarios en JS (6 puntos): 
     - Permitir al usuario loguearse en la aplicación de JS
@@ -61,6 +63,6 @@ BAiRWPDWyoR6R7SR
     - Extender la API para que incluya autenticación
     - Extender la API para que devuelva los pedidos del usuario debidamente autenticado
 - [ ] Mercado pago (4 puntos): Integrar Mercado Pago (en modo sandbox) para realizar el pago del carrito. Puntualmente, se debe integrar, mínimamente Checkout Bricks - Card Payment Brick
-- [ ] Administración de archivos (2 puntos): Se puede implementar la administración de archivos o imágenes. Dichos archivos o imágenes deben ser almacenados en la BD, o en su defecto, en un sistema externo. Se debe permitir subir las imagenes en Laravel, y la API las debe devolver correctamente para su uso en JS
+- [X] Administración de archivos (2 puntos): Se puede implementar la administración de archivos o imágenes. Dichos archivos o imágenes deben ser almacenados en la BD, o en su defecto, en un sistema externo. Se debe permitir subir las imagenes en Laravel, y la API las debe devolver correctamente para su uso en JS
 - [ ] Accesibilidad (2 puntos): Cumplir con al menos 3 guías de accesibilidad en la aplicación del Proyecto Javascript - React/Vue. Se debe indicar claramente cuales son las guías que fueron implementadas y mostrarlas funcionando en la defensa correspondiente.
 - [ ] PWA (2 puntos): Convertir la aplicación del Proyecto Javascript - React/Vue en PWA, mostrando claramente como se puede instalar y como mejora la experiencia del usuario.

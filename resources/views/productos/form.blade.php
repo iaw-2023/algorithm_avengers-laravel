@@ -33,10 +33,8 @@
 <div class="input-group mb-3">
     <span class="input-group-text" id="basic-addon3">Imagen</span>
     <!-- <input type="file" class="form-control" id="basic-url" aria-describedby="basic-addon3 basic-addon4" name="imagen" value="{{ isset($producto->imagen) ? $producto->imagen : '' }}" required> -->
-     <input type="file" class="form-control" id="basic-url" aria-describedby="basic-addon3 basic-addon4" name="imagen" value="{{ isset($producto->imagen) ? $producto->imagen : '' }}" required>
-    @if(isset($producto->imagen))
-    <img src="{{ $producto->imagen }}" class="rounded float-end" alt="" style="max-width:100px;width:100%">
-    @endif
+     <input type="file" class="form-control" id="producto-img" aria-describedby="basic-addon3 basic-addon4" name="imagen" value="{{ isset($producto->imagen) ? $producto->imagen : '' }}">
+     <img src="{{ isset($producto->imagen) ? $producto->imagen : '#' }}" id="producto-img-tag" class="rounded float-end" alt="" style="max-width:100px;width:100%">
 </div>
 
 
@@ -79,3 +77,7 @@
 </div>
 
 <a href="{{ url('productos/') }}" class="btn btn-danger" onclick="return confirm('¿Descartar cambios y volver?')">Volver</a>
+
+@section('scripts')
+    <script src="{{ asset('js/productos.js') }}" defer></script>
+@endsection
