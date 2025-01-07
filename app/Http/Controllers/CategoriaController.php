@@ -45,6 +45,13 @@ class CategoriaController extends Controller
         $elemento->activo = false;
         $elemento->save();
 
+        // elimino todos los productos pertenecientes a esa categoría
+        $productos = Producto::where('categoria_id', $categoria->id)->get();
+        foreach ($productos as $producto){
+            $producto->activo = false;
+            $producto->save();
+        }
+
         return redirect('categorias');
     }
 
