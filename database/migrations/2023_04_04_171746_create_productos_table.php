@@ -23,7 +23,9 @@ return new class extends Migration
             $table->boolean('activo')->default(true);
             $table->timestamps();
 
-            $table->foreign('categoria_id')->references('id')->on('categorias');
+            $table->foreign('categoria_id')->references('id')->on('categorias')
+                ->cascadeOnUpdate()
+                ->restrictOnDelete();
         });
     }
 
