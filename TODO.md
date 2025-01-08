@@ -53,8 +53,8 @@ BAiRWPDWyoR6R7SR
 - [ ] Evitar que la verificación borre todos los campos cuando se ingresa un campo erróneo
 - [ ] Checkeo de talles por backend
 - [X] Implementar eliminado suave
-- [ ] Previsualizar imágenes antes de guardarlas
-- [ ] No puedo guardar el producto si no cambio la imagen
+- [X] Previsualizar imágenes antes de guardarlas
+- [X] No puedo guardar el producto si no cambio la imagen
 - [ ] Actualizar documentación de Swagger
 - [ ] Arreglar vista paginada
 - [ ] Autenticación de usuarios en JS (6 puntos): 

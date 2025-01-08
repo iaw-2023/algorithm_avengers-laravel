@@ -1,17 +1,6 @@
-
-function readURL(input) {
-    if (input.target.files[0]) {
-        var reader = new FileReader();
-        
-        reader.onload = function (e) {
-            $('#producto-img-tag').attr('src', e.target.result);
-        }
-        
-        reader.readAsDataURL(input.target.files[0]);
+inputImagen.onchange = evt => {
+    const [file] = inputImagen.files
+    if (file) {
+        imagenProducto.src = URL.createObjectURL(file);
     }
 }
-
-$("#producto-img").change(function(){
-    console.log("EJECUTÓ")
-    readURL(this);
-});
