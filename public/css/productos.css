@@ -14,11 +14,13 @@
 
 #imagenProducto {
     max-height:200px;
-    height:100%
+    height:100%;
+    margin-left: 10px;
 }
 
 #inputImagen {
     color: transparent;
+    min-width: 300px;
 }
 
 #talles_validos {

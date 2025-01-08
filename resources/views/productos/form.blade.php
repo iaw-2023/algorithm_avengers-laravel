@@ -1,8 +1,5 @@
 <link rel="stylesheet" type="text/css" href="{{ asset('css/productos.css') }}">
 
-<!-- Bootstrap 5 (CSS y JS) -->
-<!-- @vite(['resources/js/app.js']) -->
-
 @if(count($errors) > 0)
     <div class="alert alert-danger" role="alert">
         <ul>
@@ -32,8 +29,10 @@
 
 <div class="input-group mb-3">
     <span class="input-group-text" id="basic-addon3">Imagen</span>
-     <input type="file" class="form-control" id="inputImagen" aria-describedby="basic-addon3 basic-addon4" name="imagen" value="{{ isset($producto->imagen) ? $producto->imagen : '' }}">
-     <img src="{{ isset($producto->imagen) ? $producto->imagen : '#' }}" id="imagenProducto" class="rounded float-end" alt="">
+    <div class="d-flex align-items-end">
+         <input type="file" class="form-control" id="inputImagen" aria-describedby="basic-addon3 basic-addon4" name="imagen" value="{{ isset($producto->imagen) ? $producto->imagen : '' }}">
+    </div>
+    <img src="{{ isset($producto->imagen) ? $producto->imagen : '#' }}" id="imagenProducto" class="rounded float-right" alt="">
 </div>
 
 <div>
