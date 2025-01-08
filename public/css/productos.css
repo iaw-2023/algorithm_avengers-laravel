@@ -17,6 +17,10 @@
     height:100%
 }
 
+#inputImagen {
+    color: transparent;
+}
+
 #talles_validos {
     float: left;
     padding-left: 70px;
