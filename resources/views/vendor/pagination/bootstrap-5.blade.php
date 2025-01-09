@@ -26,8 +26,8 @@
             </ul>
         </div>
 
-        <div class="d-none flex-sm-fill d-sm-flex align-items-sm-center justify-content-sm-between">
-            <div>
+        <div class="d-none flex-sm-fill d-sm-flex align-items-sm-center justify-content-sm-end">
+            <div class="p-1">
                 <p class="small text-muted">
                     {!! __('Showing') !!}
                     <span class="fw-semibold">{{ $paginator->firstItem() }}</span>
@@ -39,7 +39,7 @@
                 </p>
             </div>
 
-            <div>
+            <div class="p-3">
                 <ul class="pagination">
                     {{-- Previous Page Link --}}
                     @if ($paginator->onFirstPage())
