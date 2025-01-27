@@ -6,6 +6,8 @@ use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
+use App\Models\Categoria;
+use Illuminate\Database\Eloquent\Collection;
 
 class ProductoSeeder extends Seeder
 {
@@ -15,7 +17,7 @@ class ProductoSeeder extends Seeder
     public function run(): void
     {
         // talles = 'XS,S,M,L,XL,XXL,XXXL,XXXXL,XXXXXL'
-
+        $categorias = DB::table('categorias')->pluck('id','nombre')->toArray();
 
         DB::table('productos')->insert([
             'nombre' => 'Remeras Rebeldes San Martin Revolución',
@@ -29,7 +31,7 @@ class ProductoSeeder extends Seeder
             'imagen' => 'https://res.cloudinary.com/drspuruy2/image/upload/v1736202779/products/m1ruavqpf4lfelgaazuk.jpg',
             'imagen_public_id' => 'products/m1ruavqpf4lfelgaazuk',
             'talles' => 'S,M,L',
-            'categoria_id' => 1
+            'categoria_id' => $categorias["Masculinidades"]
         ]);
         DB::table('productos')->insert([
             'nombre' => 'Buzo Rebelde Friza Malvinas',
@@ -38,7 +40,7 @@ class ProductoSeeder extends Seeder
             'imagen' => 'https://res.cloudinary.com/drspuruy2/image/upload/v1736202766/products/wufxevdcry0nczzccv0n.jpg',
             'imagen_public_id' => 'products/wufxevdcry0nczzccv0n',
             'talles' => 'S,M,L,XL',
-            'categoria_id' => 1
+            'categoria_id' => $categorias["Masculinidades"]
         ]);
         DB::table('productos')->insert([
             'nombre' => 'Remeras Rebeldes El Diego',
@@ -47,7 +49,7 @@ class ProductoSeeder extends Seeder
             'imagen' => 'https://res.cloudinary.com/drspuruy2/image/upload/v1736202770/products/nxndrnyjteatxpbotmul.jpg',
             'imagen_public_id' => 'products/nxndrnyjteatxpbotmul',
             'talles' => 'XL,XXL,XXXL',
-            'categoria_id' => 1
+            'categoria_id' => $categorias["Masculinidades"]
         ]);
         DB::table('productos')->insert([
             'nombre' => 'Vestido Rebelde Coronados de Gloria',
@@ -56,7 +58,7 @@ class ProductoSeeder extends Seeder
             'imagen' => 'https://res.cloudinary.com/drspuruy2/image/upload/v1736202779/products/pptxwe3bnxuea0q2lbub.jpg',
             'imagen_public_id' => 'products/pptxwe3bnxuea0q2lbub',
             'talles' => 'S,M,L,XL,XXXL',
-            'categoria_id' => 2
+            'categoria_id' => $categorias["Femenidades"]
         ]);
         DB::table('productos')->insert([
             'nombre' => 'Remera Rebelde Mate',
@@ -65,7 +67,7 @@ class ProductoSeeder extends Seeder
             'imagen' => 'https://res.cloudinary.com/drspuruy2/image/upload/v1736202775/products/xiol7mhatgsk2ouqewlp.jpg',
             'imagen_public_id' => 'products/xiol7mhatgsk2ouqewlp',
             'talles' => 'XS,S,M,L',
-            'categoria_id' => 2
+            'categoria_id' => $categorias["Femenidades"]
         ]);
         DB::table('productos')->insert([
             'nombre' => 'Vestido Rebelde Bombo legüero',
@@ -74,7 +76,7 @@ class ProductoSeeder extends Seeder
             'imagen' => 'https://res.cloudinary.com/drspuruy2/image/upload/v1736202780/products/hqwzvt2z1hkjycdarngj.jpg',
             'imagen_public_id' => 'products/hqwzvt2z1hkjycdarngj',
             'talles' => 'M,XL,XXL',
-            'categoria_id' => 2
+            'categoria_id' => $categorias["Femenidades"]
         ]);
         DB::table('productos')->insert([
             'nombre' => 'Buzo rebelde Malvinas Full Estampa',
@@ -83,7 +85,7 @@ class ProductoSeeder extends Seeder
             'imagen' => 'https://res.cloudinary.com/drspuruy2/image/upload/v1736202767/products/ainvbjycxetpyzdewp29.jpg',
             'imagen_public_id' => 'products/ainvbjycxetpyzdewp29',
             'talles' => 'S,M,L,XL',
-            'categoria_id' => 3
+            'categoria_id' => $categorias["Unisex"]
         ]);
         DB::table('productos')->insert([
             'nombre' => 'Remera Rebelde Atahualpa',
@@ -92,7 +94,7 @@ class ProductoSeeder extends Seeder
             'imagen' => 'https://res.cloudinary.com/drspuruy2/image/upload/v1736202769/products/mog1hs27kjoykt5ewyg8.jpg',
             'imagen_public_id' => 'products/mog1hs27kjoykt5ewyg8',
             'talles' => 'XL,XXL,XXXL,XXXXL',
-            'categoria_id' => 3
+            'categoria_id' => $categorias["Unisex"]
         ]);
         DB::table('productos')->insert([
             'nombre' => 'Remera Rebelde Instrumentos de vientos',
@@ -101,7 +103,7 @@ class ProductoSeeder extends Seeder
             'imagen' => 'https://res.cloudinary.com/drspuruy2/image/upload/v1736202774/products/gsguywjd7j9y7l9gnyc5.jpg',
             'imagen_public_id' => 'products/gsguywjd7j9y7l9gnyc5',
             'talles' => 'S,M,L,XL,XXL',
-            'categoria_id' => 3
+            'categoria_id' => $categorias["Unisex"]
         ]);
         DB::table('productos')->insert([
             'nombre' => 'Remera Rebelde Güemes',
@@ -110,7 +112,7 @@ class ProductoSeeder extends Seeder
             'imagen' => 'https://res.cloudinary.com/drspuruy2/image/upload/v1736202772/products/jn534wj1wmqklcy8lkfl.jpg',
             'imagen_public_id' => 'products/jn534wj1wmqklcy8lkfl',
             'talles' => 'XS,S,M,L,XL',
-            'categoria_id' => 1
+            'categoria_id' => $categorias["Masculinidades"]
         ]);
         DB::table('productos')->insert([
             'nombre' => 'Remera Rebelde Leo',
@@ -119,7 +121,7 @@ class ProductoSeeder extends Seeder
             'imagen' => 'https://res.cloudinary.com/drspuruy2/image/upload/v1736202777/products/gtahluzp9zaeinwn2wdg.jpg',
             'imagen_public_id' => 'products/gtahluzp9zaeinwn2wdg',
             'talles' => 'XS,S',
-            'categoria_id' => 4
+            'categoria_id' => $categorias["Infancias"]
         ]);
         DB::table('productos')->insert([
             'nombre' => 'Remera Rebelde Escudo Nacional Argentino',
@@ -128,7 +130,7 @@ class ProductoSeeder extends Seeder
             'imagen' => 'https://res.cloudinary.com/drspuruy2/image/upload/v1736202771/products/xnwrgcezl1dcrtjrckq7.jpg',
             'imagen_public_id' => 'products/xnwrgcezl1dcrtjrckq7',
             'talles' => 'XS,S',
-            'categoria_id' => 4
+            'categoria_id' => $categorias["Infancias"]
         ]);
     }
 }

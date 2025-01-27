@@ -51,12 +51,12 @@ BAiRWPDWyoR6R7SR
 
 ## Para el final (15 puntos)
 - [ ] Evitar que la verificación borre todos los campos cuando se ingresa un campo erróneo
-- [ ] Checkeo de talles por backend
+- [X] Checkeo de talles por backend
 - [X] Implementar eliminado suave
 - [X] Previsualizar imágenes antes de guardarlas
 - [X] No puedo guardar el producto si no cambio la imagen
 - [ ] Actualizar documentación de Swagger
-- [ ] Arreglar vista paginada
+- [X] Arreglar vista paginada
 - [ ] Autenticación de usuarios en JS (6 puntos): 
     - Permitir al usuario loguearse en la aplicación de JS
     - Permitir al usuario recuperar sus pedidos
