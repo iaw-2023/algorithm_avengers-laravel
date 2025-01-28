@@ -12,25 +12,25 @@
 
 <div class="input-group mb-3">
     <span class="input-group-text">Nombre</span>
-    <input type="text" class="form-control" aria-label="Nombre del producto" name="nombre" value="{{ isset($producto->nombre) ? $producto->nombre : '' }}" required>
+    <input type="text" class="form-control" aria-label="Nombre del producto" name="nombre" value="{{ isset($producto->nombre) ? $producto->nombre : old('nombre') }}" required>
 </div>
 
 <div class="input-group mb-3">
     <span class="input-group-text">Descripción</span>
-    <textarea class="form-control" aria-label="Área de texto" name="descripcion">{{ isset($producto->descripcion) ? $producto->descripcion : ''  }}</textarea>
+    <textarea class="form-control" aria-label="Área de texto" name="descripcion">{{ isset($producto->descripcion) ? $producto->descripcion : old('descripcion')  }}</textarea>
 </div>
 
 <div class="input-group mb-3">
     <span class="input-group-text">Precio</span>
     <span class="input-group-text">$</span>
-    <input type="number" min="0" step="0.01" class="form-control" aria-label="Precio en pesos, con punto y dos decimales" name="precio" value="{{ isset($producto->precio) ? $producto->precio : '' }}" required>
+    <input type="number" min="0" step="0.01" class="form-control" aria-label="Precio en pesos, con punto y dos decimales" name="precio" value="{{ isset($producto->precio) ? $producto->precio : old('precio') }}" required>
 </div>
 
 
 <div class="input-group mb-3">
     <span class="input-group-text" id="basic-addon3">Imagen</span>
     <div class="d-flex align-items-end">
-         <input type="file" class="form-control" id="inputImagen" aria-describedby="basic-addon3 basic-addon4" name="imagen" value="{{ isset($producto->imagen) ? $producto->imagen : '' }}">
+         <input type="file" class="form-control" id="inputImagen" aria-describedby="basic-addon3 basic-addon4" name="imagen" value="{{ isset($producto->imagen) ? $producto->imagen : old('imagen') }}">
     </div>
     <img src="{{ isset($producto->imagen) ? $producto->imagen : '#' }}" id="imagenProducto" class="rounded float-right" alt="">
 </div>
@@ -38,7 +38,7 @@
 <div>
     <div class="input-group mb-3">
         <span class="input-group-text">Talles</span>
-        <input type="text" class="form-control" autocapitalize="characters" pattern="{{ '('.implode(')?,?(', $talles_validos).')?' }}" aria-label="Lista de talles (separados por ',')" aria-describedby="inputGroup-sizing-default" name="talles" value="{{ isset($producto->talles) ? $producto->talles : '' }}" required>
+        <input type="text" class="form-control" autocapitalize="characters" pattern="{{ '('.implode(')?,?(', $talles_validos).')?' }}" aria-label="Lista de talles (separados por ',')" aria-describedby="inputGroup-sizing-default" name="talles" value="{{ isset($producto->talles) ? $producto->talles : old('talles') }}" required>
     </div>
     <p class="text-body-secondary fs-6" id="talles_validos">
     Los talles válidos son {{ implode(", ", $talles_validos) }} en ese orden y separados por "," (coma)
