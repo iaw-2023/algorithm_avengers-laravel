@@ -12,11 +12,11 @@
 - [X] Eliminar la tabla ProdCat
 
 ### API
-- [ ] Implementar inserciones y creaciones por API
+- [X] Implementar inserciones y creaciones por API
 
 ### Vistas
 - [X] Paginar todas las vistas
-- [ ] Recuperar contraseña
+- [X] Recuperar contraseña
 
 ### Preguntas
 - No me carga los css definidos por mi (solucionado)

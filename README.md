@@ -1,6 +1,8 @@
 # Tienda online de Manos Argentinas 🙌️🇦🇷️
 Nuestra ropa no te cambia, te muestra tal cual sos
 
+![web_preview](https://res.cloudinary.com/drspuruy2/image/upload/v1738174031/web_preview_qyw3kb.png)
+
 ## Links
 
 Link a [deploy en Vercel](https://algorithm-avengers-laravel.vercel.app/)
