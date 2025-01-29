@@ -28,6 +28,17 @@ class CategoriaController extends Controller
 
     public function update(Request $request, $id){
         $datos = request()->except(['_token', '_method']);
+
+        $campos = [
+            'nombre' => 'required|string'
+        ];
+
+        $mensaje = [
+            'required' => 'El atributo :attribute es requerido',
+        ];
+
+        $this->validate($request, $campos, $mensaje);
+
         Categoria::where('id', '=', $id)->update($datos);
 
         return redirect('categorias');
