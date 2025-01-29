@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Producto;
 use App\Models\Categoria;
+use CloudinaryLabs\CloudinaryLaravel\Facades\Cloudinary;
+use App\Rules\TallesValidos;
 
 class ProductoController extends Controller
 {
@@ -27,23 +29,33 @@ class ProductoController extends Controller
 
         $campos = [
             'nombre' => 'required|string',
-            'descripcion' => 'required|string',
-            'precio' => 'required|min:0',
-            'imagen' => 'required|active_url|',
-            'talles' => ['required','string','regex:/('.implode(')?,?(', $talles_validos).')?/'],
+            'precio' => 'required|numeric|gt:0',
+            'imagen' => 'required|image|mimes:jpeg,jpg,png|max:2048',
+            'talles' => ['required','string', new TallesValidos($talles_validos)],
             'categoria_id' => 'required|integer'
         ];
 
         $mensaje = [
+            'categoria_id.required' => 'Debe seleccionar una categoría',
             'required' => 'El atributo :attribute es requerido',
             'min' => 'El precio debe ser un número positivo',
-            'active_url' => 'La URL de la imagen debe ser una URL activa'
         ];
 
         $this->validate($request, $campos, $mensaje);
 
-        $datos = $request->except('_token');
-        Producto::insert($datos);
+        $cloudinaryImage = $request->file('imagen')->storeOnCloudinary('products');
+        $cloudinaryUrl = $cloudinaryImage->getSecurePath();
+        $cloudinaryPublicId = $cloudinaryImage->getPublicId();
+
+        Producto::create([
+            'nombre' => $request->nombre,
+            'descripcion' => $request->descripcion,
+            'precio' => $request->precio,
+            'imagen' => $cloudinaryUrl,
+            'imagen_public_id' => $cloudinaryPublicId,
+            'talles' => $request->talles,
+            'categoria_id' => $request->categoria_id
+        ]);
         
         return redirect('productos');
     }
@@ -67,8 +79,42 @@ class ProductoController extends Controller
     }
 
     public function update(Request $request, $id){
-        $datos = request()->except(['_token', '_method']);
-        Producto::where('id', '=', $id)->update($datos);
+        $talles_validos = Producto::getTallesValidos();
+        $product = Producto::findOrFail($id);
+
+        $campos = [
+            'nombre' => 'required|string',
+            'precio' => 'required|numeric|gt:0',
+            'talles' => ['required','string', new TallesValidos($talles_validos)],
+            'categoria_id' => 'required|integer'
+        ];
+
+        $mensaje = [
+            'categoria_id.required' => 'Debe seleccionar una categoría',
+            'required' => 'El atributo :attribute es requerido',
+            'min' => 'El precio debe ser un número positivo'
+        ];
+
+        $this->validate($request, $campos, $mensaje);
+
+        if($request->hasFile('imagen')){
+            Cloudinary::destroy($product->imagen_public_id);
+            $cloudinaryImage = $request->file('imagen')->storeOnCloudinary('products');
+            $cloudinaryUrl = $cloudinaryImage->getSecurePath();
+            $cloudinaryPublicId = $cloudinaryImage->getPublicId();
+
+            $product->update([
+                'imagen' => $cloudinaryUrl,
+                'imagen_public_id' => $cloudinaryPublicId
+            ]);
+        }
+
+        $product->update([
+            'nombre' => $request->nombre,
+            'descripcion' => $request->descripcion,
+            'talles' => $request->talles,
+            'categoria_id' => $request->categoria_id
+        ]);
 
         return redirect('productos');
     }

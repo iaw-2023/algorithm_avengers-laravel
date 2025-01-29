@@ -20,8 +20,12 @@ return new class extends Migration
             $table->enum('talle', Producto::getTallesValidos());
             $table->timestamps();
 
-            $table->foreign('compra_id')->references('id')->on('compras');
-            $table->foreign('producto_id')->references('id')->on('productos');
+            $table->foreign('compra_id')->references('id')->on('compras')
+                ->cascadeOnUpdate()
+                ->restrictOnDelete();
+            $table->foreign('producto_id')->references('id')->on('productos')
+                ->cascadeOnUpdate()
+                ->restrictOnDelete();
         });
     }
 

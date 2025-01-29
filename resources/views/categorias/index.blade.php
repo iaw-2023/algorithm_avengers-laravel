@@ -43,7 +43,7 @@
                             <form action="{{ url('/categorias/'.$cat->id) }}" method="post">
                                 @csrf
                                 {{ method_field('DELETE') }}
-                                <input type="submit" class="btn btn-danger" onclick="return confirm('¿Borrar {{ $cat->nombre }}?')" value="Borrar">
+                                <input type="submit" class="btn btn-danger" onclick="return confirm('¿Borrar {{ $cat->nombre }}? También se eliminarán todos los productos pertenecientes a la categoría {{ $cat->nombre }}')" value="Borrar">
                             </form>
                         </div>
                     </td>

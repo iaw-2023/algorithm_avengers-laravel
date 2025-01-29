@@ -28,6 +28,17 @@ class CategoriaController extends Controller
 
     public function update(Request $request, $id){
         $datos = request()->except(['_token', '_method']);
+
+        $campos = [
+            'nombre' => 'required|string'
+        ];
+
+        $mensaje = [
+            'required' => 'El atributo :attribute es requerido',
+        ];
+
+        $this->validate($request, $campos, $mensaje);
+
         Categoria::where('id', '=', $id)->update($datos);
 
         return redirect('categorias');
@@ -35,6 +46,17 @@ class CategoriaController extends Controller
 
     public function store(Request $request){
         $datos = $request->except('_token');
+
+        $campos = [
+            'nombre' => 'required|string'
+        ];
+
+        $mensaje = [
+            'required' => 'El atributo :attribute es requerido',
+        ];
+
+        $this->validate($request, $campos, $mensaje);
+
         Categoria::insert($datos);
         
         return redirect('categorias');
@@ -44,6 +66,13 @@ class CategoriaController extends Controller
         $elemento = Categoria::where('id', $categoria->id)->first();
         $elemento->activo = false;
         $elemento->save();
+
+        // elimino todos los productos pertenecientes a esa categoría
+        $productos = Producto::where('categoria_id', $categoria->id)->get();
+        foreach ($productos as $producto){
+            $producto->activo = false;
+            $producto->save();
+        }
 
         return redirect('categorias');
     }
