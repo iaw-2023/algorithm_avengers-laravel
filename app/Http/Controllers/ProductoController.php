@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Producto;
 use App\Models\Categoria;
 use CloudinaryLabs\CloudinaryLaravel\Facades\Cloudinary;
-use Illuminate\Support\Facades\DB; //borrar
+use App\Rules\TallesValidos;
 
 class ProductoController extends Controller
 {
@@ -32,7 +32,7 @@ class ProductoController extends Controller
             'descripcion' => 'required|string',
             'precio' => 'required|min:0',
             'imagen' => 'required|image|mimes:jpeg,jpg,png|max:2048',
-            'talles' => ['required','string','regex:/('.implode(')?,?(', $talles_validos).')?/'],
+            'talles' => ['required','string', new TallesValidos($talles_validos)],
             'categoria_id' => 'required|integer'
         ];
 
@@ -84,15 +84,16 @@ class ProductoController extends Controller
 
         $campos = [
             'nombre' => 'required|string',
-            'descripcion' => 'required|string',
-            'precio' => 'required|min:0',
-            'talles' => ['required','string','regex:/('.implode(')?,?(', $talles_validos).')?/'],
+            'descripcion' => 'string',
+            'precio' => 'required|numeric|min:0',
+            'talles' => ['required','string', new TallesValidos($talles_validos)],
             'categoria_id' => 'required|integer'
         ];
 
         $mensaje = [
             'required' => 'El atributo :attribute es requerido',
-            'min' => 'El precio debe ser un número positivo'
+            'min' => 'El precio debe ser un número positivo',
+            'categoria_id.required' => 'Debe seleccionar una categoría'
         ];
 
         $this->validate($request, $campos, $mensaje);

@@ -61,19 +61,6 @@
         @endforeach 
 
     </select>
-    <!-- <select required class="form-select" name="categoria_id">
-        @if(!isset($producto->categoria_id))
-            <option selected value="">Seleccione una categoría</option>    
-        @endif  
-        
-        @foreach($total_categorias as $cats)
-            @if(isset($producto->categoria_id) && ( $producto->categoria_id == $cats->id ))
-                <option selected value="{{ $cats->id }}">{{ $cats->nombre }}</option>    
-            @else
-                <option value="{{ $cats->id }}">{{ $cats->nombre }}</option>
-            @endif
-        @endforeach
-    </select>    --> 
 </div>
 
 <a href="{{ url('productos/') }}" class="btn btn-danger" onclick="return confirm('¿Descartar cambios y volver?')">Volver</a>
