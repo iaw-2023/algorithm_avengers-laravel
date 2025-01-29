@@ -35,6 +35,17 @@ class CategoriaController extends Controller
 
     public function store(Request $request){
         $datos = $request->except('_token');
+
+        $campos = [
+            'nombre' => 'required|string'
+        ];
+
+        $mensaje = [
+            'required' => 'El atributo :attribute es requerido',
+        ];
+
+        $this->validate($request, $campos, $mensaje);
+
         Categoria::insert($datos);
         
         return redirect('categorias');
