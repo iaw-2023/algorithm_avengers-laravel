@@ -29,14 +29,14 @@ class ProductoController extends Controller
 
         $campos = [
             'nombre' => 'required|string',
-            'descripcion' => 'required|string',
-            'precio' => 'required|min:0',
+            'precio' => 'required|numeric|gt:0',
             'imagen' => 'required|image|mimes:jpeg,jpg,png|max:2048',
             'talles' => ['required','string', new TallesValidos($talles_validos)],
             'categoria_id' => 'required|integer'
         ];
 
         $mensaje = [
+            'categoria_id.required' => 'Debe seleccionar una categoría',
             'required' => 'El atributo :attribute es requerido',
             'min' => 'El precio debe ser un número positivo',
         ];
@@ -84,16 +84,15 @@ class ProductoController extends Controller
 
         $campos = [
             'nombre' => 'required|string',
-            'descripcion' => 'string',
-            'precio' => 'required|numeric|min:0',
+            'precio' => 'required|numeric|gt:0',
             'talles' => ['required','string', new TallesValidos($talles_validos)],
             'categoria_id' => 'required|integer'
         ];
 
         $mensaje = [
+            'categoria_id.required' => 'Debe seleccionar una categoría',
             'required' => 'El atributo :attribute es requerido',
-            'min' => 'El precio debe ser un número positivo',
-            'categoria_id.required' => 'Debe seleccionar una categoría'
+            'min' => 'El precio debe ser un número positivo'
         ];
 
         $this->validate($request, $campos, $mensaje);
