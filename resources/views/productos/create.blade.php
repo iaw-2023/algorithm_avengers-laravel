@@ -10,7 +10,7 @@
     </head>
     <body>
     <x-ma_layout>
-        <form action="{{ url('/productos') }}" method="post">
+        <form action="{{ url('/productos') }}" method="post" enctype="multipart/form-data">
             @csrf
             <legend>Cargar nuevo producto</legend>
             @include('productos.form')

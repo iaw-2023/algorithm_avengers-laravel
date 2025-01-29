@@ -39,7 +39,7 @@
                     </td>
                     <td>{{ $prod->talles }}</td>
                     <td> {{ $prod->categoria->nombre }} </td>
-                    <td><img src="{{ $prod->imagen }}" class="rounded mx-auto d-block" alt="No es posible cargar la imagen" id="imagen"</td>
+                    <td><img src="{{ $prod->imagen }}" class="rounded mx-auto d-block" alt="No es posible cargar la imagen" id="imagenProducto"</td>
                     <td>
                         <div class="btn-group-vertical" role="group">
                             <form action="{{ url('/productos/'.$prod->id.'/edit') }}">

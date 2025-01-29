@@ -405,7 +405,7 @@
                                         "type": "array",
                                         "items": {
                                             "properties": {
-                                                "id_producto": {
+                                                "producto_id": {
                                                     "$ref": "#/components/schemas/Producto/properties/id"
                                                 },
                                                 "talle": {
@@ -688,6 +688,10 @@
                         "type": "string",
                         "example": "www.sitio.com/imagen.jpg"
                     },
+                    "imagen_public_id": {
+                        "type": "string",
+                        "example": "folder/zpafbqomzvhrlzrrzezq"
+                    },
                     "precio": {
                         "type": "number",
                         "example": 1234.56
@@ -745,5 +749,23 @@
                 "description": "Error inesperado"
             }
         }
-    }
+    },
+    "tags": [
+        {
+            "name": "categorías",
+            "description": "categorías"
+        },
+        {
+            "name": "clientes",
+            "description": "clientes"
+        },
+        {
+            "name": "compras",
+            "description": "compras"
+        },
+        {
+            "name": "productos",
+            "description": "productos"
+        }
+    ]
 }
