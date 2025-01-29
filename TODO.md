@@ -50,12 +50,13 @@ JSX es como un HTML
 BAiRWPDWyoR6R7SR
 
 ## Para el final (15 puntos)
-- [ ] Evitar que la verificación borre todos los campos cuando se ingresa un campo erróneo
+- [X] Evitar que la verificación borre todos los campos cuando se ingresa un campo erróneo
 - [X] Checkeo de talles por backend
+- [ ] Checkeo de orden de talles por backend (actualmente S,XS,L,M es permitido)
 - [X] Implementar eliminado suave
 - [X] Previsualizar imágenes antes de guardarlas
 - [X] No puedo guardar el producto si no cambio la imagen
-- [ ] Actualizar documentación de Swagger
+- [X] Actualizar documentación de Swagger
 - [X] Arreglar vista paginada
 - [ ] Autenticación de usuarios en JS (6 puntos): 
     - Permitir al usuario loguearse en la aplicación de JS

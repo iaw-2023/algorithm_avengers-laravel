@@ -31,6 +31,11 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  *              example="www.sitio.com/imagen.jpg"
  *          ),
  *          @OA\Property(
+ *              property="imagen_public_id",
+ *              type="string",
+ *              example="folder/zpafbqomzvhrlzrrzezq"
+ *          ),
+ *          @OA\Property(
  *              property="precio",
  *              type="number",
  *              example=1234.56

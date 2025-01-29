@@ -28,7 +28,7 @@ class ProductoSeeder extends Seeder
             No te lo decimos para que no la laves, sino para que no las lavemos tan seguido….
             Manos Rebeldes/Manos Argentinas Oficial',
             'precio' => 41500.00,
-            'imagen' => 'https://res.cloudinary.com/drspuruy2/image/upload/v1736202779/products/m1ruavqpf4lfelgaazuk.jpg',
+            'imagen' => 'https://res.cloudinary.com/drspuruy2/image/upload/v1738172926/remera_san_martin_twapqs.jpg',
             'imagen_public_id' => 'products/m1ruavqpf4lfelgaazuk',
             'talles' => 'S,M,L',
             'categoria_id' => $categorias["Masculinidades"]
@@ -37,7 +37,7 @@ class ProductoSeeder extends Seeder
             'nombre' => 'Buzo Rebelde Friza Malvinas',
             'descripcion' => 'Buzo de Friza estampado de hombro adulto, manga ranglan, estampa en la espalda Reflex. ',
             'precio' => 80000.00,
-            'imagen' => 'https://res.cloudinary.com/drspuruy2/image/upload/v1736202766/products/wufxevdcry0nczzccv0n.jpg',
+            'imagen' => 'https://res.cloudinary.com/drspuruy2/image/upload/v1738172926/buzo_malvinas_bs6jep.jpg',
             'imagen_public_id' => 'products/wufxevdcry0nczzccv0n',
             'talles' => 'S,M,L,XL',
             'categoria_id' => $categorias["Masculinidades"]
