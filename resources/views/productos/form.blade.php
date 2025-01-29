@@ -50,6 +50,18 @@
     <span class="input-group-text">Categorías</span>    
     
     <select required class="form-select" name="categoria_id">
+        <option value="" {{ !isset($producto->categoria_id) && old('categoria_id')!==null ? 'selected' : '' }}>Seleccione una categoría</option>
+
+        @foreach($total_categorias as $cat)
+            <option value="{{ $cat->id }}" 
+                {{((isset($producto->categoria_id)&&($producto->categoria_id==$cat->id)) || 
+                    ((old('categoria_id')!==null)&&old('categoria_id')==$cat->id))  ? 'selected' : ''}}>
+                {{ $cat->nombre }} 
+            </option>
+        @endforeach 
+
+    </select>
+    <!-- <select required class="form-select" name="categoria_id">
         @if(!isset($producto->categoria_id))
             <option selected value="">Seleccione una categoría</option>    
         @endif  
@@ -61,7 +73,7 @@
                 <option value="{{ $cats->id }}">{{ $cats->nombre }}</option>
             @endif
         @endforeach
-    </select>    
+    </select>    --> 
 </div>
 
 <a href="{{ url('productos/') }}" class="btn btn-danger" onclick="return confirm('¿Descartar cambios y volver?')">Volver</a>
