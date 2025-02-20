@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
-
+use Laravel\Sanctum\HasApiTokens;
 /**
  * @OA\Schema(
  *      schema="Cliente",
@@ -38,9 +38,9 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
  *          )
  * )
  */
-class Cliente extends Model
+class Cliente extends Authenticatable
 {
-    use HasFactory;
+    use HasFactory, HasApiTokens, Notifiable;
 
     protected $guarded = ['id', 'activo'];
 
