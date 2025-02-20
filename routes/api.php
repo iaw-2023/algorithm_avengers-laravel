@@ -72,3 +72,8 @@ Route::get('categorias/{id}/productos', [CategoriaController::class, 'getProduct
 Route::get('categorias', function(){
     return CategoriaResource::collection(Categoria::all());
 });
+
+// Autenticación
+Route::post('/registrar', [AuthController::class, 'register']);
+Route::post('/login', [AuthController::class, 'login']);
+Route::post('/logout', [AuthController::class, 'logout'])->middleware('auth:sanctum');
