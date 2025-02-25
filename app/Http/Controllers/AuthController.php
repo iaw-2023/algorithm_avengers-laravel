@@ -1,13 +1,17 @@
+<?php
+
+namespace App\Http\Controllers;
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
-use App\Models\User;
+use App\Models\Cliente;
 
 class AuthController extends Controller
 {
     public function register(Request $request)
     {
         $request->validate([
-            'email' => 'required|string|email|unique:users',
+            'email' => 'required|string|email|unique:clientes',
             'contrasena' => 'required|string|min:8',
             'nombre' => 'required|string',
             'telefono' => 'numeric',
@@ -37,13 +41,13 @@ class AuthController extends Controller
             'contrasena' => 'required|string',
         ]);
 
-        $user = User::where('email', $request->email)->first();
+        $cliente = Cliente::where('email', $request->email)->first();
 
-        if (!$user || !Hash::check($request->contrasena, $user->contrasena)) {
+        if (!$cliente || !Hash::check($request->contrasena, $cliente->contrasena)) {
             return response()->json(['message' => 'Invalid credentials'], 401);
         }
 
-        $token = $user->createToken('auth_token')->plainTextToken;
+        $token = $cliente->createToken('auth_token')->plainTextToken;
 
         return response()->json([
             'access_token' => $token,

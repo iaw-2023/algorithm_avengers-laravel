@@ -47,6 +47,10 @@ class Cliente extends Authenticatable
 
     protected $guarded = ['id', 'activo'];
 
+    protected $fillable = ['email', 'nombre', 'telefono', 'domicilio'];
+
+    protected $hidden = ['contrasena'];
+
     public function compras(): HasMany{
         return $this->hasMany(Compra::class, 'email_cliente', 'email');
     }
