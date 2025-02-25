@@ -38,7 +38,7 @@ return [
     'guards' => [
         'web' => [
             'driver' => 'session',
-            'provider' => 'users',
+            'provider' => 'clientes',
         ],
     ],
 
@@ -63,6 +63,10 @@ return [
         'users' => [
             'driver' => 'eloquent',
             'model' => App\Models\User::class,
+        ],
+        'clientes' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Cliente::class,
         ],
 
         // 'users' => [
@@ -97,6 +101,12 @@ return [
             'expire' => 60,
             'throttle' => 60,
         ],
+    ],
+
+    'api' => [
+        'driver' => token,
+        'provider' => 'clientes',
+        'hash' => false,
     ],
 
     /*
