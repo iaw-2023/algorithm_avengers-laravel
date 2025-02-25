@@ -38,7 +38,7 @@ return [
     'guards' => [
         'web' => [
             'driver' => 'session',
-            'provider' => 'clientes',
+            'provider' => 'users',
         ],
     ],
 
@@ -104,7 +104,7 @@ return [
     ],
 
     'api' => [
-        'driver' => token,
+        'driver' => 'token',
         'provider' => 'clientes',
         'hash' => false,
     ],
