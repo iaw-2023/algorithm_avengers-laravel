@@ -19,8 +19,6 @@ use App\Http\Controllers\CategoriaController;
 use App\Http\Resources\CategoriaResource;
 use App\Models\Categoria;
 
-use App\Http\Controllers\AuthController;
-
 
 /*
 |--------------------------------------------------------------------------
@@ -77,13 +75,11 @@ Route::get('categorias', function(){
 
 // Autenticación
 Route::prefix('clientes')->group(function() {
-    Route::post('/registrar', [AuthController::class, 'register']);
-    Route::post('/login', [AuthController::class, 'login']);
-});
+    Route::post('/registrar', [ClienteController::class, 'register']);
+    Route::post('/login', [ClienteController::class, 'login']);
 
-Route::middleware('auth:sanctum')->group(function() {
-    Route::get('/cliente', function (Request $request){
-        return $request->user();
+    Route::middleware('auth:sanctum')->group(function () {
+        Route::get('/perfil', [ClienteController::class, 'profile']);
+        Route::post('/logout', [ClienteController::class, 'logout']);
     });
-    Route::post('/logout', [AuthController::class, 'logout']);
 });
