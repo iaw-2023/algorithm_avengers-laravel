@@ -104,7 +104,7 @@ return [
     ],
 
     'api' => [
-        'driver' => 'token',
+        'driver' => 'santum',
         'provider' => 'clientes',
         'hash' => false,
     ],

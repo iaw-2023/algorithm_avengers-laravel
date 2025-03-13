@@ -76,6 +76,14 @@ Route::get('categorias', function(){
 });
 
 // Autenticación
-Route::post('clientes/registrar', [AuthController::class, 'register']);
-Route::post('clientes/login', [AuthController::class, 'login']);
-Route::post('clientes/logout', [AuthController::class, 'logout'])->middleware('auth:sanctum');
+Route::prefix('clientes')->group(function() {
+    Route::post('/registrar', [AuthController::class, 'register']);
+    Route::post('/login', [AuthController::class, 'login']);
+});
+
+Route::middleware('auth:sanctum')->group(function() {
+    Route::get('/cliente', function (Request $request){
+        return $request->user();
+    });
+    Route::post('/logout', [AuthController::class, 'logout']);
+});
