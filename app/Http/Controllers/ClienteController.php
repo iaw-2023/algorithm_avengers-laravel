@@ -76,6 +76,19 @@ class ClienteController extends Controller
     }
 
     public function login(Request $request){
-        return "Esto es un login!";
+        $request->validate([
+            'email' => 'required|string|email',
+            'contrasena' => 'required|string'
+        ]);
+
+        $cliente = Cliente::where('email', $request->email)->first();
+        
+        if(!$cliente || !Hash::check($request->contrasena, $cliente->contrasena)){
+            return response()->json(['message' => 'Credenciales inválidas'], 401);
+        }
+
+        $token = $cliente->createToken('auth-token')->plainTextToken;
+
+        return response()->json(['token' => $token], 200);
     }
 }
