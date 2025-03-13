@@ -54,7 +54,7 @@ Route::get('compras', function(){
 Route::post('compras', [CompraController::class, 'storeAPI']);
 
 // Clientes
-Route::get('clientes/{id}', function(string $id){
+/* Route::get('clientes/{id}', function(string $id){
     return new ClienteResource(Cliente::findOrFail($id));
 });
 Route::get('clientes', function(){
@@ -62,7 +62,7 @@ Route::get('clientes', function(){
 });
 Route::post('clientes', [ClienteController::class, 'storeAPI']);
 Route::put('clientes/{id}', [ClienteController::class, 'updateAPI']);
-Route::delete('clientes/{id}', [ClienteController::class, 'destroy']);
+Route::delete('clientes/{id}', [ClienteController::class, 'destroy']); */
 
 // Categorias
 Route::get('categorias/{id}', function(string $id){

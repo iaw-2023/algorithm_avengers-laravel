@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Cliente;
 use App\Models\Compra;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Validation\ValidationException;
 
 class ClienteController extends Controller
 {
@@ -51,5 +53,29 @@ class ClienteController extends Controller
         return Cliente::select('id', 'email', 'nombre', 'telefono', 'domicilio')
             ->where('id', $id)
             ->first();
+    }
+
+    public function register(Request $request){
+        $request->validate([
+            'email' => 'required|string|email|unique:clientes',
+            'contrasena' => 'required|string|min:8',
+            'nombre' => 'required|string',
+            'telefono' => 'required|string',
+            'domicilio' => 'required|string'
+        ]);
+
+        $cliente = Cliente::create([
+            'email' => $request->email,
+            'contrasena' => Hash::make($request->contrasena),
+            'nombre' => $request->nombre,
+            'telefono' => $request->telefono,
+            'domicilio' => $request->domicilio
+        ]);
+
+        return response()->json(['message' => 'Client registered successfully'], 201);
+    }
+
+    public function login(Request $request){
+        return "Esto es un login!";
     }
 }

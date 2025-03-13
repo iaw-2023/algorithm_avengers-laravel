@@ -105,7 +105,7 @@ return [
 
     'api' => [
         'driver' => 'santum',
-        'provider' => 'users',
+        'provider' => 'clientes',
         'hash' => false,
     ],
 

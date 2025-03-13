@@ -10,7 +10,7 @@ class AuthController extends Controller
 {
     public function register(Request $request)
     {
-        $request->validate([
+        $validated = $request->validate([
             'email' => 'required|string|email|unique:clientes',
             'contrasena' => 'required|string|min:8',
             'nombre' => 'required|string',
@@ -18,15 +18,17 @@ class AuthController extends Controller
             'domicilio' => 'string'
         ]);
 
-        $user = Cliente::create([
-            'email' => $request->email,
-            'contrasena' => Hash::make($request->contrasena),
-            'nombre' => $request->nombre,
-            'telefono' => $request->telefono,
-            'domicilio' => $request->domicilio
+        $cliente = Cliente::create([
+            'email' => $validated['email'],
+            'contrasena' => Hash::make($validated['contrasena']),
+            'nombre' => $validated['nombre'],
+            'telefono' => $validated['telefono'],
+            'domicilio' => $validated['domicilio']
         ]);
 
-        $token = $user->createToken('auth_token')->plainTextToken;
+        dd($cliente);
+
+        $token = $cliente->createToken('auth_token')->plainTextToken;
 
         return response()->json([
             'access_token' => $token,

@@ -6,8 +6,6 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Laravel\Sanctum\HasApiTokens;
-use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Notifications\Notifiable;
 
 /**
  * @OA\Schema(
@@ -41,15 +39,15 @@ use Illuminate\Notifications\Notifiable;
  *          )
  * )
  */
-class Cliente extends Authenticatable
+class Cliente extends Model
 {
-    use HasFactory, HasApiTokens, Notifiable;
+    use HasFactory;
 
     protected $guarded = ['id', 'activo'];
 
-    protected $fillable = ['email', 'nombre', 'telefono', 'domicilio'];
+    protected $fillable = ['email', 'nombre', 'telefono', 'domicilio', 'contrasena'];
 
-    protected $hidden = ['contrasena'];
+    /* protected $hidden = ['contrasena']; */
 
     public function compras(): HasMany{
         return $this->hasMany(Compra::class, 'email_cliente', 'email');
