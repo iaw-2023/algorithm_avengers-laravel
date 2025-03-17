@@ -60,7 +60,7 @@ class CompraController extends Controller
     public function getPurchasesByUser(Request $request){
         $cliente = $request->user();
 
-        $compras = $cliente->compras;
+        $compras = $cliente->compras()->with('detalles')->get();        
 
         return response()->json($compras);
     }
