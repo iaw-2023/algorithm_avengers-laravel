@@ -91,4 +91,8 @@ class ClienteController extends Controller
 
         return response()->json(['token' => $token], 200);
     }
+
+    public function profile(Request $request){
+        return response()->json(auth()->user());
+    }
 }
