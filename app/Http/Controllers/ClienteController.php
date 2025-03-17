@@ -93,6 +93,12 @@ class ClienteController extends Controller
     }
 
     public function profile(Request $request){
-        return response()->json(auth()->user());
+        $user = auth()->user()->makeHidden(['contrasena']);
+        return response()->json($user);
+    }
+
+    public function logout(Request $request){
+        $request->user()->currentAccessToken()->delete();
+        return response()->json(['message' => 'Logout exitoso'], 200);
     }
 }
