@@ -56,4 +56,12 @@ class CompraController extends Controller
             ->where('id', $compra_id)
             ->first();
     }
+
+    public function getPurchasesByUser(Request $request){
+        $cliente = $request->user();
+
+        $compras = $cliente->compras;
+
+        return response()->json($compras);
+    }
 }

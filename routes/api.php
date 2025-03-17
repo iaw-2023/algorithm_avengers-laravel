@@ -81,5 +81,6 @@ Route::prefix('clientes')->group(function() {
     Route::middleware('auth:sanctum')->group(function () {
         Route::get('/perfil', [ClienteController::class, 'profile']);
         Route::post('/logout', [ClienteController::class, 'logout']);
+        Route::get('/compras', [CompraController::class, 'getPurchasesByUser']);
     });
 });
