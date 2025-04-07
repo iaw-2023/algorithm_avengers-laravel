@@ -104,7 +104,13 @@ class ClienteController extends Controller
 
     public function profile(Request $request){
         $user = auth()->user()->makeHidden(['contrasena']);
-        return response()->json($user);
+        $cliente = Cliente::where('email', $user->email)
+            ->with(['compras.detalles.productos'])
+            ->first();
+
+        $cliente->makeHidden(['contrasena']);
+        
+        return response()->json($cliente);
     }
 
     public function logout(Request $request){
