@@ -56,13 +56,21 @@ class ClienteController extends Controller
     }
 
     public function register(Request $request){
-        $request->validate([
+        $campos = [
             'email' => 'required|string|email|unique:clientes',
             'contrasena' => 'required|string|min:8',
             'nombre' => 'required|string',
             'telefono' => 'required|string',
             'domicilio' => 'required|string'
-        ]);
+        ];
+
+        $mensajes = [
+            'email.unique' => 'El e-mail ya se encuentra registrado',
+            'contrasena.min' => 'La contraseña debe tener al menos 8 caracteres',
+            'required' => 'El campo :attribute es obligatorio'
+        ];
+
+        $this->validate($request, $campos, $mensajes);
 
         $cliente = Cliente::create([
             'email' => $request->email,
