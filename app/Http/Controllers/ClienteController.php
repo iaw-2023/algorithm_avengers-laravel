@@ -80,7 +80,9 @@ class ClienteController extends Controller
             'domicilio' => $request->domicilio
         ]);
 
-        return response()->json(['message' => 'Client registered successfully'], 201);
+        $token = $cliente->createToken('auth-token')->plainTextToken;
+
+        return response()->json(['token' => $token], 200);
     }
 
     public function login(Request $request){
