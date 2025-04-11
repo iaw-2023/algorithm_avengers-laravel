@@ -105,7 +105,7 @@ class ClienteController extends Controller
     public function profile(Request $request){
         $user = auth()->user()->makeHidden(['contrasena']);
         $cliente = Cliente::where('email', $user->email)
-            ->with(['compras.detalles.productos'])
+            ->with(['compras.detalles.producto'])
             ->first();
 
         $cliente->makeHidden(['contrasena']);
