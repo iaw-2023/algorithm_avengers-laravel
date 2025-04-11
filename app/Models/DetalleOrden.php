@@ -55,7 +55,7 @@ class DetalleOrden extends Model
         return $this->belongsTo(Compra::class, 'id', 'compra_id');
     }
 
-    public function productos(): hasOne{
+    public function producto(): hasOne{
         return $this->hasOne(Producto::class, 'id', 'producto_id');
     }
 

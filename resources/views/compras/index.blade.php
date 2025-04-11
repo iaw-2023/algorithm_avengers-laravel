@@ -29,7 +29,7 @@
                 <td>${{ number_format($compra->precio, 2, ","," ") }}</td>
                 <td>
                     @foreach($compra->detalles as $det)
-                        <p>{{ $det->producto->nombre }} [{{ $det->talle }}] ({{ $det->cantidad }})</p>
+                        <p>{{ $det->producto->nombre }} [{{ $det->talle }}] (x{{ $det->cantidad }})</p>
                     @endforeach
                 </td>
                 <td>{{ $compra->email_cliente }}</td>
