@@ -50,8 +50,8 @@ Route::get('productos/{id}', function(string $id){
 });
 Route::get('compras', function(){
     return CompraResource::collection(Compra::all());
-});
-Route::post('compras', [CompraController::class, 'storeAPI']); */
+});*/
+Route::post('compras', [CompraController::class, 'storeAPI']);
 
 // Clientes
 /* Route::get('clientes/{id}', function(string $id){
