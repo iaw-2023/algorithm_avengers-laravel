@@ -58,7 +58,7 @@ BAiRWPDWyoR6R7SR
 - [X] No puedo guardar el producto si no cambio la imagen
 - [X] Actualizar documentación de Swagger
 - [X] Arreglar vista paginada
-- [ ] Autenticación de usuarios en JS (6 puntos): 
+- [X] Autenticación de usuarios en JS (6 puntos): 
     - Permitir al usuario loguearse en la aplicación de JS
     - Permitir al usuario recuperar sus pedidos
     - Extender la API para que incluya autenticación
