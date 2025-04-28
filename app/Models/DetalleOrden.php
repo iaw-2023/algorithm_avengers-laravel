@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasOne;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 /**
  * @OA\Schema(
@@ -49,6 +50,10 @@ class DetalleOrden extends Model
      * @var array
      */
     protected $guarded = ['id'];
+
+    public function compra(): belongsTo {
+        return $this->belongsTo(Compra::class, 'id', 'compra_id');
+    }
 
     public function producto(): hasOne{
         return $this->hasOne(Producto::class, 'id', 'producto_id');

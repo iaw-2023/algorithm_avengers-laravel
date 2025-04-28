@@ -45,16 +45,16 @@ Route::get('productos/{id}', function(string $id){
 });
 
 // Compras
-Route::get('compras/{id}', function(string $id){
+/* Route::get('compras/{id}', function(string $id){
     return new CompraResource(Compra::findOrFail($id));
 });
 Route::get('compras', function(){
     return CompraResource::collection(Compra::all());
-});
+});*/
 Route::post('compras', [CompraController::class, 'storeAPI']);
 
 // Clientes
-Route::get('clientes/{id}', function(string $id){
+/* Route::get('clientes/{id}', function(string $id){
     return new ClienteResource(Cliente::findOrFail($id));
 });
 Route::get('clientes', function(){
@@ -62,7 +62,7 @@ Route::get('clientes', function(){
 });
 Route::post('clientes', [ClienteController::class, 'storeAPI']);
 Route::put('clientes/{id}', [ClienteController::class, 'updateAPI']);
-Route::delete('clientes/{id}', [ClienteController::class, 'destroy']);
+Route::delete('clientes/{id}', [ClienteController::class, 'destroy']); */
 
 // Categorias
 Route::get('categorias/{id}', function(string $id){
@@ -71,4 +71,16 @@ Route::get('categorias/{id}', function(string $id){
 Route::get('categorias/{id}/productos', [CategoriaController::class, 'getProductos']);
 Route::get('categorias', function(){
     return CategoriaResource::collection(Categoria::all());
+});
+
+// Autenticación
+Route::prefix('clientes')->group(function() {
+    Route::post('/registrar', [ClienteController::class, 'register']);
+    Route::post('/login', [ClienteController::class, 'login']);
+
+    Route::middleware('auth:sanctum')->group(function () {
+        Route::get('/perfil', [ClienteController::class, 'profile']);
+        Route::post('/logout', [ClienteController::class, 'logout']);
+        Route::get('/compras', [CompraController::class, 'getPurchasesByUser']);
+    });
 });

@@ -5,6 +5,8 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Notifications\Notifiable;
+use Laravel\Sanctum\HasApiTokens;
 
 /**
  * @OA\Schema(
@@ -40,9 +42,13 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
  */
 class Cliente extends Model
 {
-    use HasFactory;
+    use HasFactory, HasApiTokens, Notifiable;
 
     protected $guarded = ['id', 'activo'];
+
+    protected $fillable = ['email', 'nombre', 'telefono', 'domicilio', 'contrasena'];
+
+    /* protected $hidden = ['contrasena']; */
 
     public function compras(): HasMany{
         return $this->hasMany(Compra::class, 'email_cliente', 'email');

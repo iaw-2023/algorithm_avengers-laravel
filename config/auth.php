@@ -40,6 +40,11 @@ return [
             'driver' => 'session',
             'provider' => 'users',
         ],
+
+        'api' => [
+            'driver' => 'sanctum',
+            'provider' => 'clientes'
+        ],
     ],
 
     /*
@@ -63,6 +68,10 @@ return [
         'users' => [
             'driver' => 'eloquent',
             'model' => App\Models\User::class,
+        ],
+        'clientes' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Cliente::class,
         ],
 
         // 'users' => [
@@ -97,6 +106,12 @@ return [
             'expire' => 60,
             'throttle' => 60,
         ],
+    ],
+
+    'api' => [
+        'driver' => 'santum',
+        'provider' => 'clientes',
+        'hash' => false,
     ],
 
     /*

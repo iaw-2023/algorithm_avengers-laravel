@@ -79,5 +79,7 @@ class Compra extends Model
         return $this->hasMany(DetalleOrden::class);
     }
 
-
+    public function cliente(){
+        return $this->belongsTo(Cliente::class);
+    }
 }
