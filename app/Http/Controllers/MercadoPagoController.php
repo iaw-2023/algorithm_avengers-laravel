@@ -3,37 +3,41 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use MercadoPago;
+use MercadoPago\Client\Preference\PreferenceClient;
+use MercadoPago\Exceptions\MPApiException;
+use MercadoPago\MercadoPagoConfig;
 
-class MercadoPagoController extends Controller
-{
+class MercadoPagoController extends Controller{
+
     public function __construct()
     {
-        MercadoPago\SDK::setAccessToken(config('services.mercadopago.access_token'));
+        MercadoPagoConfig::setAccessToken(config('services.mercadopago.access_token'));
+        MercadoPagoConfig::setRuntimeEnviroment(MercadoPagoConfig::LOCAL);
     }
 
-    public function createPreference(Request $request)
-    {
-        // Create a preference object
-        $preference = new MercadoPago\Preference();
+    public function initializePayment(Request $request){
+        $frontendUrl = env('FRONTEND_URL');
+        $client = new PreferenceClient();
         
-        // Create an item in the preference
-        $item = new MercadoPago\Item();
-        $item->title = $request->title;
-        $item->quantity = $request->quantity;
-        $item->unit_price = $request->price;
-        $preference->items = [$item];
-        
-        // Set back URLs (optional)
-        $preference->back_urls = [
-            'success' => route('payment.success'),
-            'failure' => route('payment.failure'),
-            'pending' => route('payment.pending')
-        ];
-        $preference->auto_return = 'approved';
-        
-        $preference->save();
-        
-        return response()->json(['id' => $preference->id]);
+        try{
+            $preference = $client->create([
+                "items" => [
+                    [
+                        "title" => "Test",
+                        "quantity" => 1,
+                        "unit_price" => 100.00,
+                    ]
+                ],
+                /* "back_urls" => [
+                    'success' => "${frontendUrl}/success",
+                    'failure' => "{$frontendUrl}/failure",
+                    'pending' => "{$frontendUrl}/pending"
+                ],
+                "auto_return" => "approved", */
+            ]);
+            return response()->json(['id' => $preference->id]);
+        }catch (MPApiException $e){
+            return response()->json(['error' => $e->getMessage()], 500);
+        }    
     }
 }

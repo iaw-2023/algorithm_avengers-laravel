@@ -19,6 +19,8 @@ use App\Http\Controllers\CategoriaController;
 use App\Http\Resources\CategoriaResource;
 use App\Models\Categoria;
 
+use App\Http\Controllers\MercadoPagoController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -84,3 +86,5 @@ Route::prefix('clientes')->group(function() {
         Route::get('/compras', [CompraController::class, 'getPurchasesByUser']);
     });
 });
+
+Route::post('iniciar-pago', [MercadoPagoController::class, 'initializePayment']);
