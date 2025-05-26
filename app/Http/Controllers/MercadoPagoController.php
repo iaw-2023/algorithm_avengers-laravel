@@ -21,13 +21,8 @@ class MercadoPagoController extends Controller{
         
         try{
             $preference = $client->create([
-                "items" => [
-                    [
-                        "title" => "Test",
-                        "quantity" => 1,
-                        "unit_price" => 100.00,
-                    ]
-                ],
+                "items" => $request->items,
+                "payer" => $request->payer,
                 /* "back_urls" => [
                     'success' => "${frontendUrl}/success",
                     'failure' => "{$frontendUrl}/failure",
@@ -35,7 +30,11 @@ class MercadoPagoController extends Controller{
                 ],
                 "auto_return" => "approved", */
             ]);
-            return response()->json(['id' => $preference->id]);
+            return response()->json([
+                'id' => $preference->id,
+                'items' => $preference->items,
+                'payer' => $preference->payer,
+            ]);
         }catch (MPApiException $e){
             return response()->json(['error' => $e->getMessage()], 500);
         }    
