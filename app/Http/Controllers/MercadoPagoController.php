@@ -23,6 +23,12 @@ class MercadoPagoController extends Controller{
             $preference = $client->create([
                 "items" => $request->items,
                 "payer" => $request->payer,
+                /* "back_urls" => [
+                    'success' => "${frontendUrl}/success",
+                    'failure' => "{$frontendUrl}/failure",
+                    'pending' => "{$frontendUrl}/pending"
+                ],
+                "auto_return" => "approved", */
             ]);
             return response()->json([
                 'id' => $preference->id,
