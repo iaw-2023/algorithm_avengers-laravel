@@ -18,6 +18,8 @@ class CompraController extends Controller
     }
 
     public function storeAPI(Request $request){
+        Log::alert("CompraController :: storeAPI :: request = $request");
+
         // creo la nueva compra
         $compra = Compra::create([
             'precio' => -1,
