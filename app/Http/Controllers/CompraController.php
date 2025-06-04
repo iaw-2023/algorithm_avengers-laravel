@@ -7,6 +7,7 @@ use App\Models\Compra;
 use App\Models\Cliente;
 use App\Models\DetalleOrden;
 use App\Models\Producto;
+use Illuminate\Support\Facades\Log;
 
 class CompraController extends Controller
 {
