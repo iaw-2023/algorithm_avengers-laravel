@@ -7,7 +7,6 @@ use App\Models\Compra;
 use App\Models\Cliente;
 use App\Models\DetalleOrden;
 use App\Models\Producto;
-use Illuminate\Support\Facades\Log;
 
 class CompraController extends Controller
 {
@@ -19,8 +18,6 @@ class CompraController extends Controller
     }
 
     public function storeAPI(Request $request){
-        Log::alert("CompraController :: storeAPI :: request = $request");
-
         // creo la nueva compra
         $compra = Compra::create([
             'precio' => -1,
