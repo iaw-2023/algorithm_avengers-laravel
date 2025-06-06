@@ -88,3 +88,4 @@ Route::prefix('clientes')->group(function() {
 });
 
 Route::post('iniciar-pago', [MercadoPagoController::class, 'initializePayment']);
+Route::post('procesar-pago', [MercadoPagoController::class, 'processPayment']);
