@@ -11,56 +11,6 @@ use App\Models\Producto;
 class CompraResource extends JsonResource
 {
     /**
-     * @OA\Get(
-     *      tags={"compras"},
-     *      path="/rest/compras",
-     *      summary="Devuelve todos las compras",
-     *      description="Devuelve todas las compras efectuadas hasta el momento",
-     *      @OA\Response(
-     *          response="200",
-     *          description="Operación realizada con éxito",
-     *          @OA\JsonContent(
-     *              @OA\Property(
-     *                  property="data",
-     *                  type="array",
-     *                  @OA\Items(
-     *                      ref="#/components/schemas/Compra"
-     *                  )
-     *              )
-     *          )
-     *      ),
-     *      @OA\Response(
-     *          response="default",
-     *          description="Error inesperado"
-     *      )
-     * ),
-     * 
-     * @OA\Get(
-     *      tags={"compras"},
-     *      path="/rest/compras/{id}",
-     *      summary="Devuelve la compra con el id especificado",
-     *      description="Dado un id, devuelve la compra correspondiente a ese id",
-     *      @OA\Parameter(
-     *          description="ID de la compra buscada",
-     *          in="path",
-     *          name="id",
-     *          required=true,
-     *          @OA\Schema(type="integer")
-     *      ),
-     *      @OA\Response(
-     *          response="200",
-     *          description="Operación realizada con éxito",
-     *          @OA\JsonContent(ref="#/components/schemas/Compra")
-     *      ),
-     *      @OA\Response(
-     *          response="404",
-     *          description="ID no encontrado. Probablemente se haya ingresado un ID no válido."
-     *      ),
-     *      @OA\Response(
-     *          response="default",
-     *          description="Error inesperado"
-     *      )
-     * ),
      * 
      * @OA\Post(
      *      tags={"compras"},

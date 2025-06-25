@@ -8,11 +8,49 @@ use Illuminate\Http\Resources\Json\JsonResource;
 class ClienteResource extends JsonResource
 {
     /**
+     *
+     * @OA\Components(
+     *     @OA\Schema(
+     *         schema="TokenBearer",
+     *         type="object",
+     *         @OA\Property(
+     *             property="token",
+     *             type="string",
+     *             example="146|UvgdE5fWpMoRTyTT8IpzSANxLS86wwqztYf2srx8b9217403",
+     *             description="Token Bearer de autenticación"
+     *         )
+     *     )
+     * )
+     *
      * @OA\Get(
      *      tags={"clientes"},
-     *      path="/rest/clientes",
-     *      summary="Devuelve todos los clientes",
-     *      description="Devuelve todos los clientes registrados en el sistema",
+     *      path="/rest/clientes/compras",
+     *      summary="Devuelve las compras del cliente",
+     *      description="Devuelve todas las compras realizadas por el cliente actual",
+     *      @OA\Response(
+     *          response="200",
+     *          description="Operación realizada con éxito",
+     *          @OA\JsonContent(
+     *              @OA\Property(
+     *                  property="data",
+     *                  type="array",
+     *                  @OA\Items(
+     *                      ref="#/components/schemas/Compra"
+     *                  )
+     *              )
+     *          )
+     *      ),
+     *      @OA\Response(
+     *          response="default",
+     *          description="Error inesperado"
+     *      )
+     * ),
+     * 
+     * @OA\Get(
+     *      tags={"clientes"},
+     *      path="/rest/clientes/perfil",
+     *      summary="Devuelve el perfil del cliente",
+     *      description="Devuelve los datos del cliente actual",
      *      @OA\Response(
      *          response="200",
      *          description="Operación realizada con éxito",
@@ -34,9 +72,9 @@ class ClienteResource extends JsonResource
      * 
      * @OA\Post(
      *      tags={"clientes"},
-     *      path="/rest/clientes",
-     *      summary="Almacena un nuevo cliente en el sistema",
-     *      description="Almacena un nuevo cliente en el sistema y lo retorna",
+     *      path="/rest/clientes/registrar",
+     *      summary="Registra un nuevo cliente en el sistema",
+     *      description="Registra un nuevo cliente en el sistema y retorna su Token Bearer de autorización",
      *      @OA\RequestBody(
      *         @OA\MediaType(
      *             mediaType="application/json",
@@ -63,14 +101,14 @@ class ClienteResource extends JsonResource
      *                     property="domicilio",
      *                     type="string"
      *                 ),
-     *                 example={"email":"juan_gonzález@example.com","contrasena":"2af329f4923f1ccde3cbaeb949e3fe32","nombre":"Juan González","telefono":"+54 1 111 111 1111","domicilio":"San Martín 1810"}
+     *                 example={"email":"juan_gonzález@example.com","contrasena":"12345","nombre":"Juan González","telefono":"+54 1 111 111 1111","domicilio":"San Martín 1810"}
      *             )
      *          )
      *      ),
      *      @OA\Response(
      *          response="200",
      *          description="Operación realizada con éxito",
-     *          @OA\JsonContent(ref="#/components/schemas/Cliente")
+     *          @OA\JsonContent(ref="#/components/schemas/TokenBearer")
      *      ),
      *      @OA\Response(
      *          response="default",
@@ -78,45 +116,11 @@ class ClienteResource extends JsonResource
      *      )
      * ),
      * 
-     * @OA\Get(
+     * @OA\Post(
      *      tags={"clientes"},
-     *      path="/rest/clientes/{id}",
-     *      summary="Devuelve el cliente con el id especificado",
-     *      description="Dado un id, devuelve el cliente correspondiente a ese id",
-     *      @OA\Parameter(
-     *          description="ID del cliente buscado",
-     *          in="path",
-     *          name="id",
-     *          required=true,
-     *          @OA\Schema(type="integer")
-     *      ),
-     *      @OA\Response(
-     *          response="200",
-     *          description="Operación realizada con éxito",
-     *          @OA\JsonContent(ref="#/components/schemas/Cliente")
-     *      ),
-     *      @OA\Response(
-     *          response="404",
-     *          description="ID no encontrado. Probablemente se haya ingresado un ID no válido."
-     *      ),
-     *      @OA\Response(
-     *          response="default",
-     *          description="Error inesperado"
-     *      )
-     * ),
-     * 
-     * @OA\Put(
-     *      tags={"clientes"},
-     *      path="/rest/clientes/{id}",
-     *      summary="Modifica los datos del cliente con el id especificado",
-     *      description="Dado un id, modifica los datos del cliente correspondiente a ese id y lo retorna",
-     *      @OA\Parameter(
-     *          description="ID del cliente a modificar",
-     *          in="path",
-     *          name="id",
-     *          required=true,
-     *          @OA\Schema(type="integer")
-     *      ),
+     *      path="/rest/clientes/login",
+     *      summary="Inicia sesión de un cliente",
+     *      description="Inicia sesión de un cliente previamente registrado y retorna su Token Bearer",
      *      @OA\RequestBody(
      *         @OA\MediaType(
      *             mediaType="application/json",
@@ -131,26 +135,14 @@ class ClienteResource extends JsonResource
      *                     type="string",
      *                     description="Contraseña codificada en md5"
      *                 ),
-     *                 @OA\Property(
-     *                     property="nombre",
-     *                     type="string"
-     *                 ),
-     *                 @OA\Property(
-     *                     property="telefono",
-     *                     type="string"
-     *                 ),
-     *                 @OA\Property(
-     *                     property="domicilio",
-     *                     type="string"
-     *                 ),
-     *                 example={"email":"juan_gonzález@example.com","contrasena":"2af329f4923f1ccde3cbaeb949e3fe32","nombre":"Juan González","telefono":"+54 1 111 111 1111","domicilio":"San Martín 1810"}
+     *                 example={"email":"test@mail.com","contrasena":"12345"}
      *             )
      *          )
      *      ),
      *      @OA\Response(
      *          response="200",
      *          description="Operación realizada con éxito",
-     *          @OA\JsonContent(ref="#/components/schemas/Cliente")
+     *          @OA\JsonContent(ref="#/components/schemas/TokenBearer")
      *      ),
      *      @OA\Response(
      *          response="404",
@@ -162,21 +154,15 @@ class ClienteResource extends JsonResource
      *      )
      * ),
      * 
-     * @OA\Delete(
+     * @OA\Post(
      *      tags={"clientes"},
-     *      path="/rest/clientes/{id}",
-     *      summary="Elimina el cliente con el id especificado",
-     *      description="Dado un id, elimina el cliente correspondiente a ese id",
-     *      @OA\Parameter(
-     *          description="ID del cliente a eliminar",
-     *          in="path",
-     *          name="id",
-     *          required=true,
-     *          @OA\Schema(type="integer")
-     *      ),
+     *      path="/rest/clientes/logout",
+     *      summary="Cierra sesión de un cliente",
+     *      description="Cierra sesión de un cliente con su sesión previamente iniciada",
      *      @OA\Response(
      *          response="200",
-     *          description="Operación realizada con éxito"
+     *          description="Operación realizada con éxito",
+     *          @OA\JsonContent(ref="#/components/schemas/TokenBearer")
      *      ),
      *      @OA\Response(
      *          response="404",

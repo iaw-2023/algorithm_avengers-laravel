@@ -121,246 +121,14 @@
                 }
             }
         },
-        "/rest/clientes": {
+        "/rest/clientes/compras": {
             "get": {
                 "tags": [
                     "clientes"
                 ],
-                "summary": "Devuelve todos los clientes",
-                "description": "Devuelve todos los clientes registrados en el sistema",
-                "operationId": "6f3c69649e8ec497f05d6089d6c8c12e",
-                "responses": {
-                    "200": {
-                        "description": "Operación realizada con éxito",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "properties": {
-                                        "data": {
-                                            "type": "array",
-                                            "items": {
-                                                "$ref": "#/components/schemas/Cliente"
-                                            }
-                                        }
-                                    },
-                                    "type": "object"
-                                }
-                            }
-                        }
-                    },
-                    "default": {
-                        "description": "Error inesperado"
-                    }
-                }
-            },
-            "post": {
-                "tags": [
-                    "clientes"
-                ],
-                "summary": "Almacena un nuevo cliente en el sistema",
-                "description": "Almacena un nuevo cliente en el sistema y lo retorna",
-                "operationId": "35d71e8ff908bcb1b12a527948b685a4",
-                "requestBody": {
-                    "content": {
-                        "application/json": {
-                            "schema": {
-                                "properties": {
-                                    "email": {
-                                        "type": "string",
-                                        "format": "email"
-                                    },
-                                    "contrasena": {
-                                        "description": "Contraseña codificada en md5",
-                                        "type": "string"
-                                    },
-                                    "nombre": {
-                                        "type": "string"
-                                    },
-                                    "telefono": {
-                                        "type": "string"
-                                    },
-                                    "domicilio": {
-                                        "type": "string"
-                                    }
-                                },
-                                "type": "object",
-                                "example": {
-                                    "email": "juan_gonzález@example.com",
-                                    "contrasena": "2af329f4923f1ccde3cbaeb949e3fe32",
-                                    "nombre": "Juan González",
-                                    "telefono": "+54 1 111 111 1111",
-                                    "domicilio": "San Martín 1810"
-                                }
-                            }
-                        }
-                    }
-                },
-                "responses": {
-                    "200": {
-                        "description": "Operación realizada con éxito",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/Cliente"
-                                }
-                            }
-                        }
-                    },
-                    "default": {
-                        "description": "Error inesperado"
-                    }
-                }
-            }
-        },
-        "/rest/clientes/{id}": {
-            "get": {
-                "tags": [
-                    "clientes"
-                ],
-                "summary": "Devuelve el cliente con el id especificado",
-                "description": "Dado un id, devuelve el cliente correspondiente a ese id",
-                "operationId": "60e9659e620912829116e559b83c71bc",
-                "parameters": [
-                    {
-                        "name": "id",
-                        "in": "path",
-                        "description": "ID del cliente buscado",
-                        "required": true,
-                        "schema": {
-                            "type": "integer"
-                        }
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "Operación realizada con éxito",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/Cliente"
-                                }
-                            }
-                        }
-                    },
-                    "404": {
-                        "description": "ID no encontrado. Probablemente se haya ingresado un ID no válido."
-                    },
-                    "default": {
-                        "description": "Error inesperado"
-                    }
-                }
-            },
-            "put": {
-                "tags": [
-                    "clientes"
-                ],
-                "summary": "Modifica los datos del cliente con el id especificado",
-                "description": "Dado un id, modifica los datos del cliente correspondiente a ese id y lo retorna",
-                "operationId": "aafbce86f15fec671fd1258435e3c3e6",
-                "parameters": [
-                    {
-                        "name": "id",
-                        "in": "path",
-                        "description": "ID del cliente a modificar",
-                        "required": true,
-                        "schema": {
-                            "type": "integer"
-                        }
-                    }
-                ],
-                "requestBody": {
-                    "content": {
-                        "application/json": {
-                            "schema": {
-                                "properties": {
-                                    "email": {
-                                        "type": "string",
-                                        "format": "email"
-                                    },
-                                    "contrasena": {
-                                        "description": "Contraseña codificada en md5",
-                                        "type": "string"
-                                    },
-                                    "nombre": {
-                                        "type": "string"
-                                    },
-                                    "telefono": {
-                                        "type": "string"
-                                    },
-                                    "domicilio": {
-                                        "type": "string"
-                                    }
-                                },
-                                "type": "object",
-                                "example": {
-                                    "email": "juan_gonzález@example.com",
-                                    "contrasena": "2af329f4923f1ccde3cbaeb949e3fe32",
-                                    "nombre": "Juan González",
-                                    "telefono": "+54 1 111 111 1111",
-                                    "domicilio": "San Martín 1810"
-                                }
-                            }
-                        }
-                    }
-                },
-                "responses": {
-                    "200": {
-                        "description": "Operación realizada con éxito",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/Cliente"
-                                }
-                            }
-                        }
-                    },
-                    "404": {
-                        "description": "ID no encontrado. Probablemente se haya ingresado un ID no válido."
-                    },
-                    "default": {
-                        "description": "Error inesperado"
-                    }
-                }
-            },
-            "delete": {
-                "tags": [
-                    "clientes"
-                ],
-                "summary": "Elimina el cliente con el id especificado",
-                "description": "Dado un id, elimina el cliente correspondiente a ese id",
-                "operationId": "a795b2b56fb4db6da7e9f03dd42ee140",
-                "parameters": [
-                    {
-                        "name": "id",
-                        "in": "path",
-                        "description": "ID del cliente a eliminar",
-                        "required": true,
-                        "schema": {
-                            "type": "integer"
-                        }
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "Operación realizada con éxito"
-                    },
-                    "404": {
-                        "description": "ID no encontrado. Probablemente se haya ingresado un ID no válido."
-                    },
-                    "default": {
-                        "description": "Error inesperado"
-                    }
-                }
-            }
-        },
-        "/rest/compras": {
-            "get": {
-                "tags": [
-                    "compras"
-                ],
-                "summary": "Devuelve todos las compras",
-                "description": "Devuelve todas las compras efectuadas hasta el momento",
-                "operationId": "435018b814bd88d7881b7dcc96640777",
+                "summary": "Devuelve las compras del cliente",
+                "description": "Devuelve todas las compras realizadas por el cliente actual",
+                "operationId": "e6b426b8e07f002367558f3cbcd8d11b",
                 "responses": {
                     "200": {
                         "description": "Operación realizada con éxito",
@@ -384,7 +152,181 @@
                         "description": "Error inesperado"
                     }
                 }
-            },
+            }
+        },
+        "/rest/clientes/perfil": {
+            "get": {
+                "tags": [
+                    "clientes"
+                ],
+                "summary": "Devuelve el perfil del cliente",
+                "description": "Devuelve los datos del cliente actual",
+                "operationId": "1d913b4c62903d3d11d7448274426fe3",
+                "responses": {
+                    "200": {
+                        "description": "Operación realizada con éxito",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "data": {
+                                            "type": "array",
+                                            "items": {
+                                                "$ref": "#/components/schemas/Cliente"
+                                            }
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "Error inesperado"
+                    }
+                }
+            }
+        },
+        "/rest/clientes/registrar": {
+            "post": {
+                "tags": [
+                    "clientes"
+                ],
+                "summary": "Registra un nuevo cliente en el sistema",
+                "description": "Registra un nuevo cliente en el sistema y retorna su Token Bearer de autorización",
+                "operationId": "9a519cd44994ccb7070233b492daec2e",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "email": {
+                                        "type": "string",
+                                        "format": "email"
+                                    },
+                                    "contrasena": {
+                                        "description": "Contraseña codificada en md5",
+                                        "type": "string"
+                                    },
+                                    "nombre": {
+                                        "type": "string"
+                                    },
+                                    "telefono": {
+                                        "type": "string"
+                                    },
+                                    "domicilio": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object",
+                                "example": {
+                                    "email": "juan_gonzález@example.com",
+                                    "contrasena": "12345",
+                                    "nombre": "Juan González",
+                                    "telefono": "+54 1 111 111 1111",
+                                    "domicilio": "San Martín 1810"
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Operación realizada con éxito",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/TokenBearer"
+                                }
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "Error inesperado"
+                    }
+                }
+            }
+        },
+        "/rest/clientes/login": {
+            "post": {
+                "tags": [
+                    "clientes"
+                ],
+                "summary": "Inicia sesión de un cliente",
+                "description": "Inicia sesión de un cliente previamente registrado y retorna su Token Bearer",
+                "operationId": "4615fc020af6c2cd945ca25d74cb2c4f",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "email": {
+                                        "type": "string",
+                                        "format": "email"
+                                    },
+                                    "contrasena": {
+                                        "description": "Contraseña codificada en md5",
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object",
+                                "example": {
+                                    "email": "test@mail.com",
+                                    "contrasena": "12345"
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Operación realizada con éxito",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/TokenBearer"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "ID no encontrado. Probablemente se haya ingresado un ID no válido."
+                    },
+                    "default": {
+                        "description": "Error inesperado"
+                    }
+                }
+            }
+        },
+        "/rest/clientes/logout": {
+            "post": {
+                "tags": [
+                    "clientes"
+                ],
+                "summary": "Cierra sesión de un cliente",
+                "description": "Cierra sesión de un cliente con su sesión previamente iniciada",
+                "operationId": "abf647ba920165d8d41802227b971bf3",
+                "responses": {
+                    "200": {
+                        "description": "Operación realizada con éxito",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/TokenBearer"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "ID no encontrado. Probablemente se haya ingresado un ID no válido."
+                    },
+                    "default": {
+                        "description": "Error inesperado"
+                    }
+                }
+            }
+        },
+        "/rest/compras": {
             "post": {
                 "tags": [
                     "compras"
@@ -437,45 +379,6 @@
                                 }
                             }
                         }
-                    },
-                    "default": {
-                        "description": "Error inesperado"
-                    }
-                }
-            }
-        },
-        "/rest/compras/{id}": {
-            "get": {
-                "tags": [
-                    "compras"
-                ],
-                "summary": "Devuelve la compra con el id especificado",
-                "description": "Dado un id, devuelve la compra correspondiente a ese id",
-                "operationId": "bc7c33448decb894f1f948b70708366c",
-                "parameters": [
-                    {
-                        "name": "id",
-                        "in": "path",
-                        "description": "ID de la compra buscada",
-                        "required": true,
-                        "schema": {
-                            "type": "integer"
-                        }
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "Operación realizada con éxito",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/Compra"
-                                }
-                            }
-                        }
-                    },
-                    "404": {
-                        "description": "ID no encontrado. Probablemente se haya ingresado un ID no válido."
                     },
                     "default": {
                         "description": "Error inesperado"
@@ -555,6 +458,16 @@
     },
     "components": {
         "schemas": {
+            "TokenBearer": {
+                "properties": {
+                    "token": {
+                        "description": "Token Bearer de autenticación",
+                        "type": "string",
+                        "example": "146|UvgdE5fWpMoRTyTT8IpzSANxLS86wwqztYf2srx8b9217403"
+                    }
+                },
+                "type": "object"
+            },
             "Categoria": {
                 "properties": {
                     "id": {
